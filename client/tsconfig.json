@@ -16,6 +16,6 @@
     "noEmit": true,
     "jsx": "react-jsx"
   },
-  "include": ["src"],
+  "include": ["./.eslintrc.js"],
   "extends": "@tsconfig/react-native/tsconfig.json"
 }
