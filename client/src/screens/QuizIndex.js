@@ -1,11 +1,11 @@
-import React from "react";
-import { ScrollView, StatusBar } from "react-native";
+import React from 'react';
+import { ScrollView, StatusBar } from 'react-native';
 
-import spaceQuestions from "../data/elbrus";
-import westernsQuestions from "../data/julia";
-import restQuestions from "../data/rest";
+import spaceQuestions from '../data/elbrus';
+import westernsQuestions from '../data/julia';
+import restQuestions from '../data/rest';
 
-import { RowItem } from "../components/RowItem";
+import { RowItem } from '../components/RowItem';
 
 export default ({ navigation }) => (
   <ScrollView>
@@ -14,10 +14,10 @@ export default ({ navigation }) => (
       name="Эльбрус"
       color="#36b1f0"
       onPress={() =>
-        navigation.navigate("Quiz", {
-          title: "elbrus",
+        navigation.navigate('Quiz', {
+          title: 'elbrus',
           questions: spaceQuestions,
-          color: "#36b1f0"
+          color: '#36b1f0',
         })
       }
     />
@@ -25,10 +25,10 @@ export default ({ navigation }) => (
       name="Юля Тарасова"
       color="#799496"
       onPress={() =>
-        navigation.navigate("Quiz", {
-          title: "julia",
+        navigation.navigate('Quiz', {
+          title: 'julia',
           questions: westernsQuestions,
-          color: "#799496"
+          color: '#799496',
         })
       }
     />
@@ -36,10 +36,21 @@ export default ({ navigation }) => (
       name="Рестораны"
       color="#49475B"
       onPress={() =>
-        navigation.navigate("Quiz", {
-          title: "rest",
+        navigation.navigate('Quiz', {
+          title: 'rest',
           questions: restQuestions,
-          color: "#49475B"
+          color: '#49475B',
+        })
+      }
+    />
+    <RowItem
+      name="Карточки"
+      color="#49475B"
+      onPress={() =>
+        navigation.navigate('MainPage', {
+          title: 'Restaurant',
+          questions: restQuestions,
+          color: '#49475B',
         })
       }
     />
