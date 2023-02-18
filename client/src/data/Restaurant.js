@@ -1,0 +1,113 @@
+const dates = {
+  restaurants: [
+    {
+      id: 1,
+      text: 'White Rabbit',
+      img: 'https://kudamoscow.ru/uploads/11d71eb745bd268c0dd57845b59d803c.jpg',
+      lat: '55.747166',
+      lng: '37.581409',
+      latDelta: '0.0474',
+      lngDelta: '0.0421',
+    },
+    {
+      id: 2,
+      text: 'Якитория',
+      img: 'https://www.restoclub.ru/uploads/place_thumbnail_big/9/c/e/5/9ce56194489bddde28096b1f1dd74562.jpg',
+      correct: true,
+      lat: '55.759999345153254',
+      lng: '37.6115755376932',
+      latDelta: '0.0422',
+      lngDelta: '0.0421',
+    },
+    {
+      id: 3,
+      text: 'Турандот',
+      img: 'https://kudamoscow.ru/uploads/3c2534ad95ae194a76d8c347abd4bc65.jpg',
+      lat: '55.76288033714381',
+      lng: '37.604172041868026',
+      latDelta: '0.0422',
+      lngDelta: '0.0421',
+    },
+  ],
+  parks: [
+    {
+      id: 1,
+      text: 'Парк Горького',
+      img: 'https://kudamoscow.ru/uploads/081738ebb161059dae2243bb7ac12127.jpg',
+      correct: true,
+      lat: '55.730670',
+      lng: '37.601082',
+      latDelta: '0.0122',
+      lngDelta: '0.0121',
+    },
+    {
+      id: 2,
+      text: 'ВДНХ',
+      img: 'https://um.mos.ru/upload/iblock/662/%D0%B2%D0%B4%D0%BD%D1%85.jpg',
+      correct: true,
+      lat: '55.827128',
+      lng: '37.637684',
+      latDelta: '0.0422',
+      lngDelta: '0.0421',
+    },
+    {
+      id: 3,
+      text: 'Царицыно',
+      img: 'https://kudamoscow.ru/uploads/b380af8ebb9e12adabb878009dbf208c.jpg',
+      correct: true,
+      lat: '55.609749',
+      lng: '37.675130',
+      latDelta: '0.0422',
+      lngDelta: '0.0421',
+    },
+  ],
+  more: [
+    {
+      id: 1,
+      time: '12.03.2022',
+    },
+    {
+      id: 2,
+      time: '22.03.2022',
+    },
+    {
+      id: 3,
+      time: '02.03.2022',
+    },
+  ],
+};
+
+export default dates;
+
+// parks: [
+//   {
+//     id: 1,
+//     text: "Парк Горького",
+//     img: "https://kudamoscow.ru/uploads/081738ebb161059dae2243bb7ac12127.jpg",
+//     correct: true,
+//     lat: "55.730670",
+//     lng: "37.601082",
+//     latDelta: "0.0122",
+//     lngDelta: "0.0121",
+//   },
+//   {
+//     id: 2,
+//     text: "ВДНХ",
+//     img: "https://um.mos.ru/upload/iblock/662/%D0%B2%D0%B4%D0%BD%D1%85.jpg",
+//     correct: true,
+//     lat: "55.827128",
+//     lng: "37.637684",
+//     latDelta: "0.0422",
+//     lngDelta: "0.0421",
+//   },
+//   {
+//     id: 3,
+//     text: "Царицыно",
+//     img: "https://kudamoscow.ru/uploads/b380af8ebb9e12adabb878009dbf208c.jpg",
+//     correct: true,
+//     lat: "55.609749",
+//     lng: "37.675130",
+//     latDelta: "0.0422",
+//     lngDelta: "0.0421",
+//   },
+// ],
