@@ -11,19 +11,18 @@ function Navigation() {
   return (
     <Stack.Navigator>
       <Stack.Screen
-        name="Home"
+        name="Домой"
         component={Home}
         options={{headerShown: false}}
       />
       <Stack.Screen
-        name="MainPage"
+        name="Карточки"
         component={MainPage}
-        options={{headerShown: false}}
       />
       <Stack.Screen
         name="Quiz"
         component={Quiz}
-        options={({ navigation }) => ({
+        navigationOptions= {({ navigation }) => ({
           headerTitle: navigation.getParam("title"),
           headerTintColor: "#fff",
           headerStyle: {
@@ -33,9 +32,8 @@ function Navigation() {
         })}
       />
       <Stack.Screen
-        name="QuizIndex"
+        name="Свидания"
         component={QuizIndex}
-        options={{headerShown: false}}
       />
     </Stack.Navigator>
   );
