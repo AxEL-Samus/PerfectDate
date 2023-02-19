@@ -1,16 +1,16 @@
 const express = require('express');
-const { Post } = require('../db/models');
+const { Date } = require('../db/models');
 
-const postRouter = express.Router();
+const dateRouter = express.Router();
 
-postRouter
+dateRouter
   .route('/')
   .get(async (req, res) => {
     try {
-      const allPosts = await Post.findAll({
+      const allDates = await Date.findAll({
         order: [['createdAt', 'DESC']],
       });
-      res.json(allPosts);
+      res.json(allDates);
     } catch (error) {
       console.log(error);
       res.sendStatus(500);
@@ -18,20 +18,20 @@ postRouter
   })
   .post(async (req, res) => {
     try {
-      const newPost = await Post.create({ ...req.body, userId: 1 });
-      res.json(newPost);
+      const newDate = await Date.create({ ...req.body, userId: 1 });
+      res.json(newDate);
     } catch (error) {
       console.log(error);
       res.sendStatus(500);
     }
   });
 
-postRouter
+dateRouter
   .route('/:id')
   .get(async (req, res) => {
     try {
-      const onePost = await Post.findByPk(req.params.id);
-      res.json(onePost);
+      const oneDate = await Date.findByPk(req.params.id);
+      res.json(oneDate);
     } catch (error) {
       console.log(error);
       res.sendStatus(500);
@@ -39,7 +39,7 @@ postRouter
   })
   .delete(async (req, res) => {
     try {
-      await Post.destroy({ where: { id: req.params.id } });
+      await Date.destroy({ where: { id: req.params.id } });
       res.sendStatus(200);
     } catch (error) {
       console.log(error);
@@ -47,4 +47,4 @@ postRouter
     }
   });
 
-module.exports = postRouter;
+module.exports = dateRouter;
