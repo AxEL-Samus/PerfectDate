@@ -3,6 +3,7 @@ import { Button, Card } from 'react-native-paper';
 import { StyleSheet, Text, View, ScrollView, Image } from 'react-native';
 import dates from '../data/Restaurant';
 import Modules from './Modules';
+import { useAppSelector } from '../redux/hook';
 
 export default function MainPage() {
   const [modalVisible, setModalVisible] = useState(false);
@@ -11,7 +12,8 @@ export default function MainPage() {
   const [parksCoords, setParksCoords] = useState({});
   const [park, setPark] = useState('');
   const [time, setTime] = useState('');
-  
+  const dates1 = useAppSelector((store) => store.dates.dates);
+  console.log('=-=-=-=-=-=-=-=--=', dates1);
   return (
     <>
       <ScrollView>
