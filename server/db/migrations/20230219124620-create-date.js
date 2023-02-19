@@ -1,4 +1,3 @@
-'use strict';
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
@@ -7,79 +6,79 @@ module.exports = {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
       },
       title: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       date: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       loveId: {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
-          model: "Loves",
-          key: "id",
+          model: 'Loves',
+          key: 'id',
         },
-        onDelete: "CASCADE",
+        onDelete: 'CASCADE',
       },
       restLat: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       restLng: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       restTitle: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       kinoLat: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       kinoLng: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       kinoTitle: {
-      type: Sequelize.STRING
-    },
+        type: Sequelize.STRING,
+      },
       parkLat: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       parkLng: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       parkTitle: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       taxi: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       kinoDate: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       movieTitle: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       userId: {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
-          model: "Users",
-          key: "id",
+          model: 'Users',
+          key: 'id',
         },
-        onDelete: "CASCADE",
+        onDelete: 'CASCADE',
       },
       createdAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
       },
       updatedAt: {
         allowNull: false,
-        type: Sequelize.DATE
-      }
+        type: Sequelize.DATE,
+      },
     });
   },
   async down(queryInterface, Sequelize) {
     await queryInterface.dropTable('Dates');
-  }
+  },
 };
