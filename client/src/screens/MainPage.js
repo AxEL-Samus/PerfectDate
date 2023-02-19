@@ -11,7 +11,7 @@ export default function MainPage() {
   const [parksCoords, setParksCoords] = useState({});
   const [park, setPark] = useState('');
   const [time, setTime] = useState('');
-
+  
   return (
     <>
       <ScrollView>
