@@ -9,7 +9,7 @@ const Home = ({ navigation }) => {
       <View style={styles.bannerContainer}>
         <Image
           source={{
-            url: 'https://www.nicepng.com/png/detail/116-1161011_creative-heart-logo-png-svg-love-logo-png.png',
+            url: 'https://avatars.mds.yandex.net/i?id=a43eb8cee5d9b82502fa15adeaca5ad7e065c39a-8456088-images-thumbs&n=13',
           }}
           style={styles.banner}
           resizeMode="contain"
@@ -28,6 +28,7 @@ const styles = StyleSheet.create({
   banner: {
     height: 300,
     width: 300,
+    borderRadius: 20,
   },
   bannerContainer: {
     justifyContent: 'center',

@@ -16,15 +16,27 @@ export const datesSlice = createSlice({
     setDatesCards: (state, action: PayloadAction<DatesState[]>) => {
       state.date = action.payload;
     },
+    deleteOneCard: (state, action: PayloadAction<DatesState['id']>) => {
+      state.date.filter((el) => el.id !== action.payload);
+    },
   },
 });
 
-export const { setDatesCards } = datesSlice.actions;
+export const { setDatesCards, deleteOneCard } = datesSlice.actions;
 
 export const setDates = (): AppThunk => (dispatch) => {
   axios<DatesState[]>('/api/dates')
     .then((res) => dispatch(setDatesCards(res.data)))
     .catch(console.log);
 };
+
+export const deleteCard =
+  (id: number): AppThunk =>
+  (dispatch) => {
+    axios
+      .delete(`/api/dates/${id}`)
+      .then(() => dispatch(deleteOneCard(id)))
+      .catch(console.log);
+  };
 
 export default datesSlice.reducer;
