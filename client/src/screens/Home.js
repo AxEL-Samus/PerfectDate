@@ -1,11 +1,11 @@
-import React from 'react';
-import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import * as React from 'react';
+import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import Title from '../components/title';
 
-const Home = ({navigation}) => {
+const Home = ({ navigation }) => {
   return (
     <View style={styles.container}>
-      <Title titleText='Идеальное свидание' />
+      <Title titleText="Идеальное свидание" />
       <View style={styles.bannerContainer}>
         <Image
           source={{
@@ -15,10 +15,8 @@ const Home = ({navigation}) => {
           resizeMode="contain"
         />
       </View>
-      <TouchableOpacity
-        onPress={() => navigation.navigate('Свидания')}
-        style={styles.button}>
-        <Text style={styles.buttonText}>Свидание {"->"}</Text>
+      <TouchableOpacity onPress={() => navigation.navigate('Login')} style={styles.button}>
+        <Text style={styles.buttonText}>Начать {'->'}</Text>
       </TouchableOpacity>
     </View>
   );

@@ -12,10 +12,8 @@ const App = () => {
   return (
     // <BrowserRouter>
     <Provider store={store}>
-      <NavigationContainer>
-        {/* <Navigation / */}
-      </NavigationContainer>
       <MainContainer />
+      <NavigationContainer>{/* <Navigation /> */}</NavigationContainer>
     </Provider>
     // </BrowserRouter>
   );

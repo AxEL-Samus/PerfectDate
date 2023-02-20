@@ -7,6 +7,12 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import HomeScreen from '../src/screens/HomeScreen';
 import AddScreen from '../src/screens/AddScreen';
 import ProfileScreen from '../src/screens/ProfileScreen';
+import { useAuth } from '../../client/src/redux/userSlice/fireStormSlice';
+
+import { Login } from '../src/screens/user/Login';
+import { Register } from '../src/screens/user/Register';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import Home from '../src/screens/Home';
 
 const profileName = 'Профиль';
 const homeName = 'Домой';
@@ -15,6 +21,8 @@ const addName = 'Добавить';
 const Tab = createBottomTabNavigator();
 
 export default function MainContainer() {
+  const { isAuth } = useAuth();
+
   return (
     <>
       <NavigationContainer>
@@ -42,11 +50,49 @@ export default function MainContainer() {
             style: { padding: 10, height: 70 },
           }}
         >
-          <Tab.Screen name={homeName} component={HomeScreen} />
-          <Tab.Screen name={addName} component={AddScreen} />
-          <Tab.Screen name={profileName} component={ProfileScreen} />
+          {isAuth ? (
+            <>
+              <Tab.Screen name={homeName} component={HomeScreen} />
+              <Tab.Screen name={addName} component={AddScreen} />
+              <Tab.Screen name={profileName} component={ProfileScreen} />
+            </>
+          ) : (
+            <>
+              <Tab.Screen
+                name="Perfect Date"
+                component={HomeNavigator}
+                options={{ headerShown: false }}
+              />
+              {/* <Tab.Screen
+                name="Perfect Date"
+                component={AuthNavigator}
+                options={{ headerShown: false }}
+              /> */}
+            </>
+          )}
         </Tab.Navigator>
       </NavigationContainer>
     </>
+  );
+}
+
+const AuthStack = createNativeStackNavigator();
+
+// function AuthNavigator() {
+//   return (
+//     <AuthStack.Navigator initialRouteName="Login">
+//       <AuthStack.Screen name="Login" component={Login} />
+//       <AuthStack.Screen name="Register" component={Register} />
+//     </AuthStack.Navigator>
+//   );
+//
+
+function HomeNavigator() {
+  return (
+    <AuthStack.Navigator initialRouteName="Home">
+      <AuthStack.Screen name="Home" component={Home} />
+      <AuthStack.Screen name="Login" component={Login} />
+      <AuthStack.Screen name="Register" component={Register} />
+    </AuthStack.Navigator>
   );
 }

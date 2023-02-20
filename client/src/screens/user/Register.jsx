@@ -1,4 +1,6 @@
 import React from 'react';
+import RNPickerSelect from 'react-native-picker-select';
+
 import {
   Button,
   TextInput,
@@ -8,7 +10,7 @@ import {
   Keyboard,
   Image,
 } from 'react-native';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 import { Formik } from 'formik';
 import { auth } from '../../../config/firebase';
@@ -18,8 +20,6 @@ import { setUserFirestorm } from '../../redux/userSlice/fireStormSlice';
 
 export function Register({ navigation }) {
   const dispatch = useDispatch();
-
-  const user = useSelector((store) => store.user);
 
   const registerHandler = (email, password, name) => {
     createUserWithEmailAndPassword(auth, email, password)
@@ -126,6 +126,27 @@ export function Register({ navigation }) {
                   onBlur={handleBlur('password')}
                   value={values.password}
                   secureTextEntry={true}
+                />
+              </View>
+
+              <View
+                style={{
+                  flexDirection: 'row',
+                  marginHorizontal: 55,
+                  marginTop: 10,
+                  borderWidth: 2,
+                  borderRadius: 7,
+                  width: 300,
+                  height: 40,
+                }}
+              >
+                <RNPickerSelect
+                  onValueChange={(value) => console.log(value)}
+                  items={[
+                    { label: 'Мужчина', value: 'Мужчина' },
+                    { label: 'Девушка', value: 'Девушка' },
+                    { label: 'Не бинарная личность', value: 'Не бинарная личность' },
+                  ]}
                 />
               </View>
 
