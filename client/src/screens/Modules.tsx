@@ -1,7 +1,9 @@
 import React from 'react';
-import { Modal, View, StyleSheet, Text, Linking, SafeAreaView } from 'react-native';
+import { Modal, View, StyleSheet, Text, Linking, SafeAreaView, ScrollView } from 'react-native';
 import { Button, Card } from 'react-native-paper';
 import MapView, { Callout, Marker, PROVIDER_GOOGLE } from 'react-native-maps';
+import { useAppDispatch } from '../redux/hook';
+import { deleteCard } from '../redux/datesSlice/datesSlice';
 
 export default function Modules({
   time,
@@ -14,106 +16,117 @@ export default function Modules({
   kinoCoords,
   kinoUrl,
   restUrl,
+  id,
 }): JSX.Element {
+  const dispatch = useAppDispatch();
+
   return (
-    <SafeAreaView
-      style={{
-        backgroundColor: 'rgba(0,0,0, 0.8)',
-      }}
-    >
-      <View
+    <ScrollView>
+      <SafeAreaView
         style={{
           backgroundColor: 'rgba(0,0,0, 0.8)',
         }}
       >
-        <Modal
-          animationType="fade"
-          transparent={true}
-          visible={modalVisible}
-          onRequestClose={() => {
-            alert('Modal has been closed.');
-            setModalVisible(!modalVisible);
+        <View
+          style={{
+            backgroundColor: 'rgba(0,0,0, 0.8)',
           }}
         >
-          <View style={styles.container1}>
-            <Card
-              style={{
-                borderRadius: 20,
-              }}
-            >
-              <MapView
-                provider={PROVIDER_GOOGLE}
+          <Modal
+            animationType="fade"
+            transparent={true}
+            visible={modalVisible}
+            onRequestClose={() => {
+              alert('Modal has been closed.');
+              setModalVisible(!modalVisible);
+            }}
+          >
+            <View style={styles.container1}>
+              <Card
                 style={{
-                  height: '50%',
-                  width: '100%',
-                  borderRadius: 15,
-                }}
-                showsUserLocation={true}
-                region={{
-                  latitude: coords.lat,
-                  longitude: coords.lng,
-                  latitudeDelta: 0.0374,
-                  longitudeDelta: 0.0321,
+                  borderRadius: 20,
                 }}
               >
-                <Marker
-                  coordinate={{
+                <MapView
+                  provider={PROVIDER_GOOGLE}
+                  style={{
+                    height: '50%',
+                    width: '100%',
+                    borderRadius: 15,
+                  }}
+                  showsUserLocation={true}
+                  region={{
                     latitude: coords.lat,
                     longitude: coords.lng,
+                    latitudeDelta: 0.0374,
+                    longitudeDelta: 0.0321,
                   }}
-                  pinColor="red"
-                  title={`Тут рестороан: ${modalVariant}`}
-                  onPress={() => Linking.openURL(restUrl)}
                 >
-                  <Callout>
-                    <Button>{`Тут рестороан: ${modalVariant}`}</Button>
-                  </Callout>
-                </Marker>
-                <Marker
-                  coordinate={{
-                    latitude: parksCoords.lat,
-                    longitude: parksCoords.lng,
-                  }}
-                  pinColor="black"
-                  title="Тут парк"
-                />
-                <Marker
-                  coordinate={{
-                    latitude: kinoCoords.lat,
-                    longitude: kinoCoords.lng,
-                  }}
-                  title={`Тут кинотеатр: ${time.name}`}
-                  description={`Cсылка на бронь: ${(<Button>Нажми</Button>)}`}
-                  pinColor="blue"
-                  onPress={() => Linking.openURL(kinoUrl)}
+                  <Marker
+                    coordinate={{
+                      latitude: coords.lat,
+                      longitude: coords.lng,
+                    }}
+                    pinColor="red"
+                    title={`Тут рестороан: ${modalVariant}`}
+                    onPress={() => Linking.openURL(restUrl)}
+                  >
+                    <Callout>
+                      <Button>{`Тут рестороан: ${modalVariant}`}</Button>
+                    </Callout>
+                  </Marker>
+                  <Marker
+                    coordinate={{
+                      latitude: parksCoords.lat,
+                      longitude: parksCoords.lng,
+                    }}
+                    pinColor="black"
+                    title="Тут парк"
+                  />
+                  <Marker
+                    coordinate={{
+                      latitude: kinoCoords.lat,
+                      longitude: kinoCoords.lng,
+                    }}
+                    title={`Тут кинотеатр: ${time.name}`}
+                    description={`Cсылка на бронь: ${(<Button>Нажми</Button>)}`}
+                    pinColor="blue"
+                    onPress={() => Linking.openURL(kinoUrl)}
+                  >
+                    <Callout>
+                      <Button>{`Тут кинотеатр: ${time.name}`}</Button>
+                    </Callout>
+                  </Marker>
+                </MapView>
+                <Text style={styles.paragraph}>{`Ресторан: ${modalVariant} (красная метка)`}</Text>
+                <Text style={styles.paragraph}>{`Парк: ${park} (черная метка)`}</Text>
+                {time.name === '' ? null : (
+                  <Text style={styles.paragraph}>{`Кинотеатр: ${time.name} (синяя метка)`}</Text>
+                )}
+                {time.movie === '' ? null : (
+                  <Text style={styles.paragraph}>{`Фильм: ${time.movie}`}</Text>
+                )}
+                {time.time === '' ? null : (
+                  <Text style={styles.paragraph}>{`Время: ${time.time}`}</Text>
+                )}
+                <Button
+                  style={[styles.button, styles.buttonClose]}
+                  onPress={() => dispatch(deleteCard(id))}
                 >
-                  <Callout>
-                    <Button>{`Тут кинотеатр: ${time.name}`}</Button>
-                  </Callout>
-                </Marker>
-              </MapView>
-              <Text style={styles.paragraph}>{`Ресторан: ${modalVariant} (красная метка)`}</Text>
-              <Text style={styles.paragraph}>{`Парк: ${park} (черная метка)`}</Text>
-              {time.name === '' ? null : (
-                <Text style={styles.paragraph}>{`Кинотеатр: ${time.name} (синяя метка)`}</Text>
-              )}
-              {time.movie === '' ? null : (
-                <Text style={styles.paragraph}>{`Фильм: ${time.movie}`}</Text>
-              )}
-              {time.time === '' ? null : (
-                <Text style={styles.paragraph}>{`Время: ${time.time}`}</Text>
-              )}
-              <Button
-                style={[styles.button, styles.buttonClose]}
-                onPress={() => setModalVisible(!modalVisible)}
-              >
-                <Text style={styles.paragraph}>Закрыть</Text>
-              </Button>
-            </Card>
-          </View>
-        </Modal>
-      </View>
-    </SafeAreaView>
+                  <Text style={styles.paragraph}>Удалить</Text>
+                </Button>
+                <Button
+                  style={[styles.button, styles.buttonClose]}
+                  onPress={() => setModalVisible(!modalVisible)}
+                >
+                  <Text style={styles.paragraph}>Закрыть</Text>
+                </Button>
+              </Card>
+            </View>
+          </Modal>
+        </View>
+      </SafeAreaView>
+    </ScrollView>
   );
 }
 
