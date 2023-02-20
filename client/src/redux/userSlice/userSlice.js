@@ -31,7 +31,7 @@ export const findUserAction = () => (dispatch) => {
 
 export const registrationAction = (regInput) => (dispatch) => {
   axios
-    .post('/user/signup', regInput)
+    .post('user/signup', regInput)
     .then((res) => dispatch(setUser(res.data)))
     .catch((err) => {
       Alert.alert('Error', err.response.data.message);
@@ -40,7 +40,7 @@ export const registrationAction = (regInput) => (dispatch) => {
 };
 export const loginAction = (input) => (dispatch) => {
   axios
-    .post('/user/signin', input)
+    .post('user/signin', input)
     .then((res) => dispatch(setUser(res.data)))
     .catch((err) => {
       Alert.alert('Error', err.response.data.message);
@@ -49,14 +49,14 @@ export const loginAction = (input) => (dispatch) => {
 };
 export const userCheckAction = () => (dispatch) => {
   axios
-    .post('/user/check')
+    .post('user/check')
     .then((res) => dispatch(setUser(res.data)))
     .catch(console.log);
 };
 
 export const userLogoutAction = () => (dispatch) => {
   axios
-    .get('/user/logout')
+    .get('user/logout')
     .then(() => dispatch(logoutUser()))
     .catch(console.log);
 };

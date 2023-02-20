@@ -22,7 +22,7 @@ export const datesSlice = createSlice({
 export const { setDatesCards } = datesSlice.actions;
 
 export const setDates = (): AppThunk => (dispatch) => {
-  axios<DatesState[]>('/api/dates')
+  axios<DatesState[]>('api/dates')
     .then((res) => dispatch(setDatesCards(res.data)))
     .catch(console.log);
 };

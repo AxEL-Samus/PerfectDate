@@ -5,7 +5,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
 import HomeScreen from '../src/screens/HomeScreen';
-import AddScreen from '../src/screens/AddScreen';
+import AddScreen from '../src/screens/input/AddScreen';
 import ProfileScreen from '../src/screens/ProfileScreen';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Home from '../src/screens/Home';
