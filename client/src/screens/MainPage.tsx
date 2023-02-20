@@ -15,6 +15,8 @@ export default function MainPage(): JSX.Element {
   const [park, setPark] = useState('');
   const [time, setTime] = useState({});
   const [kinoCoords, setKinoCoords] = useState({});
+  const [kinoUrl, setKinoUrl] = useState('');
+  const [restUrl, setRestUrl] = useState('');
   const dispatch = useAppDispatch();
   const dates = useAppSelector((store) => store.dates.date);
   useEffect(() => {
@@ -65,6 +67,8 @@ export default function MainPage(): JSX.Element {
                       lat: el.kinoLat,
                       lng: el.kinoLng,
                     });
+                    setKinoUrl(el.kinoUrl);
+                    setRestUrl(el.restUrl);
                     setTime({ name: el.kinoTitle, time: el.kinoDate });
                     setPark(el.parkTitle);
                     setModalVariant(el.restTitle);
@@ -76,6 +80,8 @@ export default function MainPage(): JSX.Element {
               </View>
             </Card>
             <Modules
+              restUrl={restUrl}
+              kinoUrl={kinoUrl}
               kinoCoords={kinoCoords}
               time={time}
               parksCoords={parksCoords}

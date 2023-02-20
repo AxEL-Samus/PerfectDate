@@ -7,10 +7,12 @@ export type DatesState = {
   restLng: string;
   restTitle: string;
   restImg: string;
+  restUrl: string;
   kinoLat: string;
   kinoLng: string;
   kinoTitle: string;
   kinoImg: string;
+  kinoUrl: string;
   parkLat: string;
   parkLng: string;
   parkTitle: string;
