@@ -11,7 +11,7 @@ export default ({ navigation }) => (
   <ScrollView>
     <StatusBar barStyle="dark-content" />
     <RowItem
-      name="Эльбрус"
+      name="Не нажимать"
       color="#36b1f0"
       onPress={() =>
         navigation.navigate('Quiz', {
@@ -22,7 +22,7 @@ export default ({ navigation }) => (
       }
     />
     <RowItem
-      name="Юля Тарасова"
+      name="Не нажимать"
       color="#799496"
       onPress={() =>
         navigation.navigate('Quiz', {
@@ -33,7 +33,7 @@ export default ({ navigation }) => (
       }
     />
     <RowItem
-      name="Рестораны"
+      name="Не нажимать"
       color="#49475B"
       onPress={() =>
         navigation.navigate('Quiz', {
@@ -47,7 +47,7 @@ export default ({ navigation }) => (
       name="Карточки"
       color="#49475B"
       onPress={() =>
-        navigation.navigate('MainPage', {
+        navigation.navigate('Карточки', {
           title: 'Restaurant',
           questions: restQuestions,
           color: '#49475B',

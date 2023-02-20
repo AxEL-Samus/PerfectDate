@@ -1,0 +1,24 @@
+import * as React from 'react';
+
+import NameChange from '../src/screens/profile/NameChange';
+import Push from '../src/screens/profile/Push';
+import Settings from '../src/screens/profile/Settings';
+import StyleSettings from '../src/screens/profile/StyleSettings';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import AboutUs from '../src/screens/profile/AboutUs';
+import Profile from '../src/screens/profile/Profile';
+
+const Stack = createNativeStackNavigator();
+
+export default function ProfileStack() {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen name="Profile" component={Profile} />
+      <Stack.Screen name="NameChange" component={NameChange} />
+      <Stack.Screen name="Settings" component={Settings} />
+      <Stack.Screen name="Push" component={Push} />
+      <Stack.Screen name="StyleSettings" component={StyleSettings} />
+      <Stack.Screen name="AboutUs" component={AboutUs} />
+    </Stack.Navigator>
+  );
+}
