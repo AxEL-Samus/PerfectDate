@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import RNPickerSelect from 'react-native-picker-select';
+import { useAuth } from '../../redux/userSlice/fireStormSlice';
 
 import {
   Button,
@@ -10,7 +11,7 @@ import {
   Keyboard,
   Image,
 } from 'react-native';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { Formik } from 'formik';
 import { auth } from '../../../config/firebase';
@@ -20,8 +21,9 @@ import { setUserFirestorm } from '../../redux/userSlice/fireStormSlice';
 
 export function Register({ navigation }) {
   const dispatch = useDispatch();
+  const [select, setSelect] = useState('');
 
-  const registerHandler = (email, password, name) => {
+  const registerHandler = (email, password, name, sex) => {
     createUserWithEmailAndPassword(auth, email, password)
       .then(({ user }) => {
         dispatch(
@@ -33,7 +35,14 @@ export function Register({ navigation }) {
         );
       })
       .catch(console.error);
-    dispatch(registrationAction({ email, password, name }));
+    dispatch(registrationAction({ email, password, name, sex: select }));
+
+    // const { isAuth } = useAuth();
+    // const submitHandler = () => {
+    //   if (isAuth) {
+    //     return { handleSubmit } && navigation.navigate('NameChange');
+    //   }
+    // };
   };
   return (
     <TouchableWithoutFeedback
@@ -42,9 +51,9 @@ export function Register({ navigation }) {
       }}
     >
       <Formik
-        initialValues={{ email: '', password: '', name: '' }}
+        initialValues={{ email: '', password: '', name: '', sex: '' }}
         onSubmit={(values, { resetForm }) => {
-          registerHandler(values.email, values.password, values.name);
+          registerHandler(values.email, values.password, values.name, values.sex);
           resetForm({ values: '' });
         }}
       >
@@ -141,7 +150,8 @@ export function Register({ navigation }) {
                 }}
               >
                 <RNPickerSelect
-                  onValueChange={(value) => console.log(value)}
+                  // value={values.sex}
+                  onValueChange={(value) => setSelect(value)}
                   items={[
                     { label: 'Мужчина', value: 'Мужчина' },
                     { label: 'Девушка', value: 'Девушка' },

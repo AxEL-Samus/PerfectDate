@@ -10,13 +10,15 @@ userRouter.get('/signup', (req, res) => {
 
 userRouter.post('/signup', async (req, res) => {
   try {
-    const { pass, email, name } = req.body;
-    const hashpass = await bcrypt.hash(pass, 10);
+    const { password, email, name, sex } = req.body;
+    const hashpass = await bcrypt.hash(password, 10);
     const [user, created] = await User.findOrCreate({
       where: { email },
       defaults: {
         name,
         pass: hashpass,
+        theme: false,
+        sex,
       },
     });
     console.log(user, created);
