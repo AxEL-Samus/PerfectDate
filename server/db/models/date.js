@@ -1,7 +1,5 @@
-'use strict';
-const {
-  Model
-} = require('sequelize');
+const { Model } = require('sequelize');
+
 module.exports = (sequelize, DataTypes) => {
   class Date extends Model {
     /**
@@ -13,26 +11,32 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
     }
   }
-  Date.init({
-    title: DataTypes.STRING,
-    date: DataTypes.STRING,
-    loveId: DataTypes.INTEGER,
-    restLat: DataTypes.STRING,
-    restLng: DataTypes.STRING,
-    restTitle: DataTypes.STRING,
-    kinoLat: DataTypes.STRING,
-    kinoLng: DataTypes.STRING,
-    kinoTitle: DataTypes.STRING,
-    parkLat: DataTypes.STRING,
-    parkLng: DataTypes.STRING,
-    parkTitle: DataTypes.STRING,
-    taxi: DataTypes.STRING,
-    kinoDate: DataTypes.STRING,
-    movieTitle: DataTypes.STRING,
-    userId: DataTypes.INTEGER
-  }, {
-    sequelize,
-    modelName: 'Date',
-  });
+  Date.init(
+    {
+      title: DataTypes.STRING,
+      date: DataTypes.STRING,
+      loveId: DataTypes.INTEGER,
+      restLat: DataTypes.STRING,
+      restLng: DataTypes.STRING,
+      restTitle: DataTypes.STRING,
+      restImg: DataTypes.STRING,
+      kinoLat: DataTypes.STRING,
+      kinoLng: DataTypes.STRING,
+      kinoTitle: DataTypes.STRING,
+      kinoImg: DataTypes.STRING,
+      parkLat: DataTypes.STRING,
+      parkLng: DataTypes.STRING,
+      parkTitle: DataTypes.STRING,
+      parkImg: DataTypes.STRING,
+      taxi: DataTypes.STRING,
+      kinoDate: DataTypes.STRING,
+      movieTitle: DataTypes.STRING,
+      userId: DataTypes.INTEGER,
+    },
+    {
+      sequelize,
+      modelName: 'Date',
+    },
+  );
   return Date;
 };

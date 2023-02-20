@@ -32,6 +32,9 @@ module.exports = {
       restTitle: {
         type: Sequelize.STRING,
       },
+      restImg: {
+        type: Sequelize.STRING,
+      },
       kinoLat: {
         type: Sequelize.STRING,
       },
@@ -41,6 +44,9 @@ module.exports = {
       kinoTitle: {
         type: Sequelize.STRING,
       },
+      kinoImg: {
+        type: Sequelize.STRING,
+      },
       parkLat: {
         type: Sequelize.STRING,
       },
@@ -48,6 +54,9 @@ module.exports = {
         type: Sequelize.STRING,
       },
       parkTitle: {
+        type: Sequelize.STRING,
+      },
+      parkImg: {
         type: Sequelize.STRING,
       },
       taxi: {
