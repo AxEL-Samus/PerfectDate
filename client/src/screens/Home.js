@@ -1,24 +1,22 @@
 import React from 'react';
-import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import Title from '../components/title';
 
-const Home = ({navigation}) => {
+const Home = ({ navigation }) => {
   return (
     <View style={styles.container}>
-      <Title titleText='Идеальное свидание' />
+      <Title titleText="Идеальное свидание" />
       <View style={styles.bannerContainer}>
         <Image
           source={{
-            url: 'https://www.nicepng.com/png/detail/116-1161011_creative-heart-logo-png-svg-love-logo-png.png',
+            url: 'https://avatars.mds.yandex.net/i?id=a43eb8cee5d9b82502fa15adeaca5ad7e065c39a-8456088-images-thumbs&n=13',
           }}
           style={styles.banner}
           resizeMode="contain"
         />
       </View>
-      <TouchableOpacity
-        onPress={() => navigation.navigate('Login')}
-        style={styles.button}>
-        <Text style={styles.buttonText}>Свидание {"->"}</Text>
+      <TouchableOpacity onPress={() => navigation.navigate('Login')} style={styles.button}>
+        <Text style={styles.buttonText}>Свидание {'->'}</Text>
       </TouchableOpacity>
     </View>
   );
@@ -30,6 +28,7 @@ const styles = StyleSheet.create({
   banner: {
     height: 300,
     width: 300,
+    borderRadius: 20,
   },
   bannerContainer: {
     justifyContent: 'center',

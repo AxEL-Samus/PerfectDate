@@ -5,7 +5,6 @@ import { StyleSheet, Text, View, ScrollView, Image, SafeAreaView } from 'react-n
 import Modules from './Modules';
 import { useAppDispatch, useAppSelector } from '../redux/hook';
 import { setDates } from '../redux/datesSlice/datesSlice';
-import type { DatesState } from '../redux/datesSlice/datesType';
 
 export default function MainPage(): JSX.Element {
   const [modalVisible, setModalVisible] = useState(false);
@@ -71,6 +70,7 @@ export default function MainPage(): JSX.Element {
               </View>
             </SafeAreaView>
             <Modules
+              id={el.id}
               restUrl={restUrl}
               kinoUrl={kinoUrl}
               kinoCoords={kinoCoords}
