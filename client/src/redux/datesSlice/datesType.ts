@@ -1,16 +1,22 @@
 export type DatesState = {
+  id: number;
   title: string;
   date: string;
   loveId: number;
   restLat: string;
   restLng: string;
   restTitle: string;
+  restImg: string;
+  restUrl: string;
   kinoLat: string;
   kinoLng: string;
   kinoTitle: string;
+  kinoImg: string;
+  kinoUrl: string;
   parkLat: string;
   parkLng: string;
   parkTitle: string;
+  parkImg: string;
   taxi: string;
   kinoDate: string;
   movieTitle: string;
@@ -18,5 +24,5 @@ export type DatesState = {
 };
 
 export type DateTypeSlice = {
-  dates: DatesState[];
+  date: DatesState[];
 };

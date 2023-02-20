@@ -1,7 +1,7 @@
 import React from 'react';
-import { Modal, View, StyleSheet, Text } from 'react-native';
+import { Modal, View, StyleSheet, Text, Linking } from 'react-native';
 import { Button } from 'react-native-paper';
-import MapView, { Marker, PROVIDER_GOOGLE } from 'react-native-maps';
+import MapView, { Callout, Marker, PROVIDER_GOOGLE } from 'react-native-maps';
 
 export default function Modules({
   time,
@@ -11,7 +11,10 @@ export default function Modules({
   modalVariant,
   modalVisible,
   setModalVisible,
-}) {
+  kinoCoords,
+  kinoUrl,
+  restUrl,
+}): JSX.Element {
   return (
     <View>
       <Modal
@@ -53,27 +56,52 @@ export default function Modules({
                   latitude: coords.lat,
                   longitude: coords.lng,
                 }}
-                strokeColor="red"
+                pinColor="red"
                 fillColor="green"
                 strokeWidth={2}
-                title="Тут рестороан"
-              />
+                title={`Тут рестороан: ${modalVariant}`}
+                onPress={() => Linking.openURL(restUrl)}
+              >
+                <Callout>
+                  <Button>{`Тут рестороан: ${modalVariant}`}</Button>
+                </Callout>
+              </Marker>
               <Marker
                 coordinate={{
                   latitude: parksCoords.lat,
                   longitude: parksCoords.lng,
                 }}
-                strokeColor="red"
+                pinColor="white"
                 fillColor="green"
                 strokeWidth={2}
-                title="Тут парк"
+                title={`Тут: ${park}`}
               />
+              <Marker
+                coordinate={{
+                  latitude: kinoCoords.lat,
+                  longitude: kinoCoords.lng,
+                }}
+                title={`Тут кинотеатр: ${time.name}`}
+                description={`Cсылка на бронь: ${(<Button>Нажми</Button>)}`}
+                pinColor="blue"
+                // onCalloutPress={() => alert('Cсылка на бронь: ')}
+                onPress={() => Linking.openURL(kinoUrl)}
+              >
+                <Callout>
+                  <Button>{`Тут кинотеатр: ${time.name}`}</Button>
+                </Callout>
+              </Marker>
             </MapView>
           </View>
           <View style={styles.modalView}>
-            <Text style={styles.modalText}>{`Ресторан: ${modalVariant}`}</Text>
-            <Text style={styles.modalText}>{`Парк: ${park}`}</Text>
-            <Text style={styles.modalText}>{`Время: ${time}`}</Text>
+            <Text style={styles.modalText}>{`Ресторан: ${modalVariant} (красная метка)`}</Text>
+            <Text style={styles.modalText}>{`Парк: ${park} (черная метка)`}</Text>
+            {time.name && time.time === '' ? null : (
+              <>
+                <Text style={styles.modalText}>{`Кинотеатр: ${time.name} (синяя метка)`}</Text>
+                <Text style={styles.modalText}>{`Время сеанса: ${time.time}`}</Text>
+              </>
+            )}
           </View>
           <Button
             style={[styles.button, styles.buttonClose]}
