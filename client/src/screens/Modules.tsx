@@ -11,7 +11,7 @@ export default function Modules({
   modalVariant,
   modalVisible,
   setModalVisible,
-}) {
+}): JSX.Element {
   return (
     <View>
       <Modal

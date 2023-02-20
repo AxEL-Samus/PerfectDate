@@ -1,7 +1,7 @@
 const express = require('express');
 const morgan = require('morgan');
-const store = require ("session-file-store");
-const session = require ("express-session");
+const store = require('session-file-store');
+const session = require('express-session');
 const cors = require('cors');
 const indexRouter = require('./router/indexRouter');
 const dateRouter = require('./router/dateRouter');
@@ -25,14 +25,14 @@ const sessionConfig = {
   },
 };
 
-app.use(cors());
+app.use(cors({ origin: true, credentials: true }));
 app.use(express.static('public'));
 app.use(morgan('dev'));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(session(sessionConfig));
 
-app.use("/", indexRouter);
+app.use('/', indexRouter);
 app.use('/api/users/', userRouter);
 app.use('/api/dates/', dateRouter);
 

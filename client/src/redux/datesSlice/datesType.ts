@@ -1,4 +1,5 @@
 export type DatesState = {
+  id: number;
   title: string;
   date: string;
   loveId: number;
@@ -18,5 +19,5 @@ export type DatesState = {
 };
 
 export type DateTypeSlice = {
-  dates: DatesState[];
+  date: DatesState[];
 };
