@@ -7,11 +7,18 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import HomeScreen from '../src/screens/HomeScreen';
 import AddScreen from '../src/screens/AddScreen';
 import ProfileScreen from '../src/screens/ProfileScreen';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import Home from '../src/screens/Home';
+import { Login } from '../src/screens/user/Login';
+import MainPage from '../src/screens/MainPage';
 
+const debugCard = 'Меню отладки'
 const profileName = 'Профиль';
-const homeName = 'Домой';
+const homeName = 'Свидания';
 const addName = 'Добавить';
+const loginName = 'Login';
 
+const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 
 export default function MainContainer() {
@@ -27,7 +34,8 @@ export default function MainContainer() {
 
               if (rn === homeName) {
                 iconName = focused ? 'home' : 'home-outline';
-              } else if (rn === addName) {
+              } 
+              else if (rn === addName) {
                 iconName = focused ? 'list' : 'list-outline';
               } else if (rn === profileName) {
                 iconName = focused ? 'settings' : 'settings-outline';
@@ -43,8 +51,10 @@ export default function MainContainer() {
           }}
         >
           <Tab.Screen name={homeName} component={HomeScreen} />
+          {/* <Tab.Screen name={loginName} component={Login} /> */}
           <Tab.Screen name={addName} component={AddScreen} />
           <Tab.Screen name={profileName} component={ProfileScreen} />
+          <Tab.Screen name={debugCard} component={MainPage} />
         </Tab.Navigator>
       </NavigationContainer>
     </>
