@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Button, Card } from 'react-native-paper';
 import { StyleSheet, Text, View, ScrollView, Image } from 'react-native';
-import dates from '../data/Restaurant';
+// import dates from '../data/Restaurant';
 import Modules from './Modules';
 import { useAppDispatch, useAppSelector } from '../redux/hook';
 import { setDates } from '../redux/datesSlice/datesSlice';
@@ -13,17 +13,18 @@ export default function MainPage(): JSX.Element {
   const [coords, setCoords] = useState({});
   const [parksCoords, setParksCoords] = useState({});
   const [park, setPark] = useState('');
-  const [time, setTime] = useState('');
+  const [time, setTime] = useState({});
+  const [kinoCoords, setKinoCoords] = useState({});
   const dispatch = useAppDispatch();
-  const dates1 = useAppSelector((store) => store.dates.date);
+  const dates = useAppSelector((store) => store.dates.date);
   useEffect(() => {
     dispatch(setDates());
   }, []);
-  console.log('=-=-=-=-=-=-=-=--=', dates1);
+  console.log('=-=-=-=-=-=-=-=--=', dates);
   return (
     <>
       <ScrollView>
-        {dates.restaurants.map((el, i) => (
+        {dates.map((el) => (
           <>
             <Card style={styles.cardMain}>
               <View style={styles.container}>
@@ -32,35 +33,41 @@ export default function MainPage(): JSX.Element {
                     <Image
                       style={styles.img}
                       source={{
-                        uri: el.img,
+                        uri: el.parkImg,
                       }}
                     />
-                    <View style={styles.imgAndMap}>
-                      <Image style={styles.img2} source={{ uri: dates.parks[i].img }} />
-                    </View>
+                    {el.kinoImg === '' ? (
+                      <View style={styles.imgAndMap}>
+                        <Image style={styles.img2} source={{ uri: el.restImg }} />
+                      </View>
+                    ) : (
+                      <View style={styles.imgAndMap}>
+                        <Image style={styles.img2} source={{ uri: el.kinoImg }} />
+                      </View>
+                    )}
                   </View>
                   <View style={styles.text_container}>
-                    <Text style={styles.card_title}>{`Ваше свидание №: ${el.id}`}</Text>
+                    <Text style={styles.card_title}>{`Свидание - ${el.title}`}</Text>
                   </View>
                 </View>
                 <Button
                   style={styles.buttonMore}
                   onPress={() => {
                     setCoords({
-                      lat: el.lat,
-                      lng: el.lng,
-                      latDelta: el.latDelta,
-                      lngDelta: el.lngDelta,
+                      lat: el.restLat,
+                      lng: el.restLng,
                     });
                     setParksCoords({
-                      lat: dates.parks[i].lat,
-                      lng: dates.parks[i].lng,
-                      latDelta: dates.parks[i].latDelta,
-                      lngDelta: dates.parks[i].lngDelta,
+                      lat: el.parkLat,
+                      lng: el.parkLng,
                     });
-                    setTime(dates.more[i].time);
-                    setPark(dates.parks[i].text);
-                    setModalVariant(el.text);
+                    setKinoCoords({
+                      lat: el.kinoLat,
+                      lng: el.kinoLng,
+                    });
+                    setTime({ name: el.kinoTitle, time: el.kinoDate });
+                    setPark(el.parkTitle);
+                    setModalVariant(el.restTitle);
                     setModalVisible(!modalVisible);
                   }}
                 >
@@ -69,6 +76,7 @@ export default function MainPage(): JSX.Element {
               </View>
             </Card>
             <Modules
+              kinoCoords={kinoCoords}
               time={time}
               parksCoords={parksCoords}
               coords={coords}

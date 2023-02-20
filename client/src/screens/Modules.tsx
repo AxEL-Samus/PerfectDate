@@ -11,6 +11,7 @@ export default function Modules({
   modalVariant,
   modalVisible,
   setModalVisible,
+  kinoCoords,
 }): JSX.Element {
   return (
     <View>
@@ -56,7 +57,7 @@ export default function Modules({
                 strokeColor="red"
                 fillColor="green"
                 strokeWidth={2}
-                title="Тут рестороан"
+                title={`Тут рестороан: ${modalVariant}`}
               />
               <Marker
                 coordinate={{
@@ -66,14 +67,29 @@ export default function Modules({
                 strokeColor="red"
                 fillColor="green"
                 strokeWidth={2}
-                title="Тут парк"
+                title={`Тут: ${park}`}
+              />
+              <Marker
+                coordinate={{
+                  latitude: kinoCoords.lat,
+                  longitude: kinoCoords.lng,
+                }}
+                strokeColor="red"
+                fillColor="green"
+                strokeWidth={2}
+                title={`Тут кинотеатр: ${time.name}`}
               />
             </MapView>
           </View>
           <View style={styles.modalView}>
             <Text style={styles.modalText}>{`Ресторан: ${modalVariant}`}</Text>
             <Text style={styles.modalText}>{`Парк: ${park}`}</Text>
-            <Text style={styles.modalText}>{`Время: ${time}`}</Text>
+            {time.name && time.time === '' ? null : (
+              <>
+                <Text style={styles.modalText}>{`Кинотеатр: ${time.name}`}</Text>
+                <Text style={styles.modalText}>{`Время сеанса: ${time.time}`}</Text>
+              </>
+            )}
           </View>
           <Button
             style={[styles.button, styles.buttonClose]}
