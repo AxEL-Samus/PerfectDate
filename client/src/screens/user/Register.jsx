@@ -1,4 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
+import RNPickerSelect from 'react-native-picker-select';
+import { useAuth } from '../../redux/userSlice/fireStormSlice';
+
 import {
   Button,
   TextInput,
@@ -18,10 +21,9 @@ import { setUserFirestorm } from '../../redux/userSlice/fireStormSlice';
 
 export function Register({ navigation }) {
   const dispatch = useDispatch();
+  const [select, setSelect] = useState('');
 
-  const user = useSelector((store) => store.user);
-
-  const registerHandler = (email, password, name) => {
+  const registerHandler = (email, password, name, sex) => {
     createUserWithEmailAndPassword(auth, email, password)
       .then(({ user }) => {
         dispatch(
@@ -33,7 +35,14 @@ export function Register({ navigation }) {
         );
       })
       .catch(console.error);
-    dispatch(registrationAction({ email, password, name }));
+    dispatch(registrationAction({ email, password, name, sex: select }));
+
+    // const { isAuth } = useAuth();
+    // const submitHandler = () => {
+    //   if (isAuth) {
+    //     return { handleSubmit } && navigation.navigate('NameChange');
+    //   }
+    // };
   };
   return (
     <TouchableWithoutFeedback
@@ -42,9 +51,9 @@ export function Register({ navigation }) {
       }}
     >
       <Formik
-        initialValues={{ email: '', password: '', name: '' }}
+        initialValues={{ email: '', password: '', name: '', sex: '' }}
         onSubmit={(values, { resetForm }) => {
-          registerHandler(values.email, values.password, values.name);
+          registerHandler(values.email, values.password, values.name, values.sex);
           resetForm({ values: '' });
         }}
       >
@@ -126,6 +135,28 @@ export function Register({ navigation }) {
                   onBlur={handleBlur('password')}
                   value={values.password}
                   secureTextEntry={true}
+                />
+              </View>
+
+              <View
+                style={{
+                  flexDirection: 'row',
+                  marginHorizontal: 55,
+                  marginTop: 10,
+                  borderWidth: 2,
+                  borderRadius: 7,
+                  width: 300,
+                  height: 40,
+                }}
+              >
+                <RNPickerSelect
+                  // value={values.sex}
+                  onValueChange={(value) => setSelect(value)}
+                  items={[
+                    { label: 'Мужчина', value: 'Мужчина' },
+                    { label: 'Девушка', value: 'Девушка' },
+                    { label: 'Не бинарная личность', value: 'Не бинарная личность' },
+                  ]}
                 />
               </View>
 

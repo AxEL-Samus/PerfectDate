@@ -5,7 +5,7 @@ import { Register } from '../src/screens/user/Register';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Home from '../src/screens/Home';
 
-const Stack = createNativeStackNavigator();
+const AuthStack = createNativeStackNavigator();
 
 export default function MyStack() {
   return (

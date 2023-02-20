@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import Title from '../components/title';
 
@@ -16,7 +16,7 @@ const Home = ({ navigation }) => {
         />
       </View>
       <TouchableOpacity onPress={() => navigation.navigate('Login')} style={styles.button}>
-        <Text style={styles.buttonText}>Свидание {'->'}</Text>
+        <Text style={styles.buttonText}>Начать {'->'}</Text>
       </TouchableOpacity>
     </View>
   );

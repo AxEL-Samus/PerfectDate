@@ -1,5 +1,13 @@
 import React from 'react';
-import { Button, TextInput, View, Text, TouchableWithoutFeedback, Image } from 'react-native';
+import {
+  Button,
+  TextInput,
+  View,
+  Text,
+  TouchableWithoutFeedback,
+  Image,
+  TouchableOpacity,
+} from 'react-native';
 import { Formik } from 'formik';
 import { useDispatch, useSelector } from 'react-redux';
 import { signInWithEmailAndPassword } from 'firebase/auth';
@@ -70,13 +78,15 @@ export const Login = ({ navigation }) => {
                   height: 40,
                 }}
               >
-                <TextInput
-                  style={{ paddingHorizontal: 10 }}
-                  placeholder="Введите логин"
-                  onChangeText={handleChange('email')}
-                  onBlur={handleBlur('email')}
-                  value={values.email}
-                />
+                <TouchableOpacity>
+                  <TextInput
+                    style={{ paddingHorizontal: 10 }}
+                    placeholder="Введите логин"
+                    onChangeText={handleChange('email')}
+                    onBlur={handleBlur('email')}
+                    value={values.email}
+                  />
+                </TouchableOpacity>
               </View>
               <View
                 style={{
@@ -90,14 +100,16 @@ export const Login = ({ navigation }) => {
                   height: 40,
                 }}
               >
-                <TextInput
-                  style={{ paddingHorizontal: 10 }}
-                  placeholder="Введите пароль"
-                  onChangeText={handleChange('password')}
-                  onBlur={handleBlur('password')}
-                  value={values.password}
-                  secureTextEntry={true}
-                />
+                <TouchableOpacity>
+                  <TextInput
+                    style={{ paddingHorizontal: 10 }}
+                    placeholder="Введите пароль"
+                    onChangeText={handleChange('password')}
+                    onBlur={handleBlur('password')}
+                    value={values.password}
+                    secureTextEntry={true}
+                  />
+                </TouchableOpacity>
               </View>
               <View
                 style={{
@@ -120,15 +132,17 @@ export const Login = ({ navigation }) => {
                   marginTop: 40,
                 }}
               >
-                <Text
-                  onPress={() => navigation.navigate('Register')}
-                  style={{
-                    marginTop: 10,
-                    alignSelf: 'center',
-                  }}
-                >
-                  Или зарегистрируйтесь
-                </Text>
+                <TouchableOpacity>
+                  <Text
+                    onPress={() => navigation.navigate('Register')}
+                    style={{
+                      marginTop: 10,
+                      alignSelf: 'center',
+                    }}
+                  >
+                    Или зарегистрируйтесь
+                  </Text>
+                </TouchableOpacity>
               </View>
             </View>
           </>

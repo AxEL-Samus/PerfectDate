@@ -24,14 +24,14 @@ export const { findUser, setUser, logoutUser } = userSlice.actions;
 export default userSlice.reducer;
 
 export const findUserAction = () => (dispatch) => {
-  axios('/user')
+  axios('/api/user')
     .then((res) => dispatch(findUser(res.data)))
     .catch(console.log);
 };
 
 export const registrationAction = (regInput) => (dispatch) => {
   axios
-    .post('/user/signup', regInput)
+    .post('/api/users/signup', regInput)
     .then((res) => dispatch(setUser(res.data)))
     .catch((err) => {
       Alert.alert('Error', err.response.data.message);
@@ -40,7 +40,7 @@ export const registrationAction = (regInput) => (dispatch) => {
 };
 export const loginAction = (input) => (dispatch) => {
   axios
-    .post('/user/signin', input)
+    .post('/api/users/signin', input)
     .then((res) => dispatch(setUser(res.data)))
     .catch((err) => {
       Alert.alert('Error', err.response.data.message);
@@ -49,14 +49,14 @@ export const loginAction = (input) => (dispatch) => {
 };
 export const userCheckAction = () => (dispatch) => {
   axios
-    .post('/user/check')
+    .post('/api/users/check')
     .then((res) => dispatch(setUser(res.data)))
     .catch(console.log);
 };
 
 export const userLogoutAction = () => (dispatch) => {
   axios
-    .get('/user/logout')
+    .get('/api/users/logout')
     .then(() => dispatch(logoutUser()))
     .catch(console.log);
 };
