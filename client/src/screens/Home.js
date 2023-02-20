@@ -16,7 +16,7 @@ const Home = ({navigation}) => {
         />
       </View>
       <TouchableOpacity
-        onPress={() => navigation.navigate('Свидания')}
+        onPress={() => navigation.navigate('Login')}
         style={styles.button}>
         <Text style={styles.buttonText}>Свидание {"->"}</Text>
       </TouchableOpacity>

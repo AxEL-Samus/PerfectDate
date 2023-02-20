@@ -13,7 +13,7 @@ const Stack = createNativeStackNavigator();
 export default function ProfileStack() {
   return (
     <Stack.Navigator>
-      <Stack.Screen name="Profile" component={Profile} />
+      <Stack.Screen name="Profile" component={Profile} options={{headerShown: false}}/>
       <Stack.Screen name="NameChange" component={NameChange} />
       <Stack.Screen name="Settings" component={Settings} />
       <Stack.Screen name="Push" component={Push} />
