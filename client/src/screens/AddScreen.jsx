@@ -243,9 +243,7 @@ export default function AddScreen({ navigation }) {
                             },
                           ]}
                         />
-                    {!rest.restTitle !== !'' && (
-                        <Text> Ваше свидание укомплектовано </Text>
-                        )}
+                        {!rest.restTitle !== !'' && <Text> Ваше свидание укомплектовано </Text>}
                       </>
                     )}
                   </>

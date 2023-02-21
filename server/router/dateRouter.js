@@ -39,6 +39,7 @@ dateRouter
   })
   .delete(async (req, res) => {
     try {
+      console.log('=-=-=-==-=-=-=-=-==-==-==-=-', req.params);
       await Date.destroy({ where: { id: req.params.id } });
       res.sendStatus(200);
     } catch (error) {
