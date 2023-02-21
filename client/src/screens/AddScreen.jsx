@@ -4,12 +4,14 @@ import RNPickerSelect from 'react-native-picker-select';
 import { Picker } from '@react-native-picker/picker';
 import Constants from 'expo-constants';
 import { Card, TextInput, Button } from 'react-native-paper';
+import { useAppDispatch } from '../redux/hook';
 // import TextInput from './TextInput';
 
 import { Form, Field, Submit } from 'react-swift-form';
 import * as yup from 'yup';
 import { useState } from 'react';
 import { Formik } from 'formik';
+import { addDate } from '../redux/datesSlice/datesSlice';
 
 const initialValues = {
   rest: '',
@@ -26,20 +28,21 @@ const validators = {
     .max(80, 'You must be younger than 80 years old'),
 };
 
+// 1
 export default function AddScreen({ navigation }) {
   const onFormSubmit = (values) => {
     alert(JSON.stringify(values, null, 2));
   };
-  // const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   
-  // const addHandler = (rest, kino, park, kinodate) => {
-    // createUserWithEmailAndPassword(rest, kino, park, kinodate)
-    // dispatch(addAction({ rest, kino, date, park }));
-    // }
-    const [selectLove, setLove] = useState('');
-    const [title, setTitle] = useState('');
-    const [rest, setRest] = useState({});
-    const [park, setPark] = useState({});
+  const [selectLove, setLove] = useState('');
+  const [title, setTitle] = useState('');
+  const [rest, setRest] = useState({});
+  const [park, setPark] = useState({});
+  
+  const submitHandler = () => {
+    dispatch(addDate({ id: 1, selectLove, rest, title, rest, park }));
+    }
 
   return (
     <TouchableWithoutFeedback
@@ -166,7 +169,7 @@ items={[
 
 
                 <Submit onSubmit={onFormSubmit}>
-                  {({ submit }) => <Button title="Submit" onPress={submit} />}
+                  {({ submit }) => <Button title="Submit" onPress={submitHandler} />}
                 </Submit>
 
 
