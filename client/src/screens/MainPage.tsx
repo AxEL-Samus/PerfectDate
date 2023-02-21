@@ -25,7 +25,7 @@ export default function MainPage(): JSX.Element {
   return (
     <>
       <ScrollView>
-        {dates.map((el) => (
+        {dates?.map((el) => (
           <>
             <SafeAreaView style={styles.container1}>
               <View style={styles.container1}>
