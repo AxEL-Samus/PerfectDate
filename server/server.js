@@ -1,4 +1,5 @@
 const express = require('express');
+// eslint-disable-next-line import/no-extraneous-dependencies
 const morgan = require('morgan');
 const store = require('session-file-store');
 const session = require('express-session');
