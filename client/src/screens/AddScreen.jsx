@@ -40,8 +40,12 @@ export default function AddScreen({ navigation }) {
   const [rest, setRest] = useState({});
   const [park, setPark] = useState({});
 
+  const [kino, setKino] = useState('');
+  const [movie, setMovie] = useState('');
+  const [data, setData] = useState('');
+
   const submitHandler = () => {
-    dispatch(addDate({ loveId: 1, restLat: rest.restLat, restLng: rest.restLng, restTitle: rest.restTitle, title, parkLat: park.parkLat, parkLng: park.parkLng, parkTitle: park.parkTitle, restImg: "https://www.restoclub.ru/uploads/place_thumbnail_big/9/c/e/5/9ce56194489bddde28096b1f1dd74562.jpg" }));
+    dispatch(addDate({ userId: 1, loveId: Math.floor(Math.random() * 4), restLat: rest.restLat, restLng: rest.restLng, restTitle: rest.restTitle, title, parkLat: park.parkLat, parkLng: park.parkLng, parkTitle: park.parkTitle, restImg: "https://www.restoclub.ru/uploads/place_thumbnail_big/9/c/e/5/9ce56194489bddde28096b1f1dd74562.jpg", kinoUrl: kino, kinoLat: kino, kinoLng: kino, kinoUrl: kino, kinoImg: kino, date: data, restUrl: '', kinoTitle: '',parkImg: 'https://api.parkseason.ru/images/styles/1024_auto/74/8e/9414a8f5b810972c3c9a0e2860c075325647926f048da798540217.jpg', taxi: '', kinoDate: '', movieTitle: ''}));
   };
 
   return (
@@ -98,6 +102,17 @@ export default function AddScreen({ navigation }) {
                       onChangeText={(text) => changeValue(setTitle(text))}
                       placeholder=""
                       label="Название свидания"
+                    />
+                  )}
+                </Field>
+                <Field id="date">
+                  {({ value, error, changeValue }) => (
+                    <TextInput
+                      value={value}
+                      error={error}
+                      onChangeText={(text) => changeValue(setData(text))}
+                      placeholder=""
+                      label="Дата"
                     />
                   )}
                 </Field>
