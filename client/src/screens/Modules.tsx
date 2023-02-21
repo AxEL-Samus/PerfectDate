@@ -19,7 +19,6 @@ export default function Modules({
   id,
 }): JSX.Element {
   const dispatch = useAppDispatch();
-
   return (
     <ScrollView>
       <SafeAreaView
@@ -111,7 +110,10 @@ export default function Modules({
                 )}
                 <Button
                   style={[styles.button, styles.buttonClose]}
-                  onPress={() => dispatch(deleteCard(id))}
+                  onPress={() => {
+                    setModalVisible(!modalVisible);
+                    dispatch(deleteCard(id));
+                  }}
                 >
                   <Text style={styles.paragraph}>Удалить</Text>
                 </Button>
