@@ -7,15 +7,18 @@ import StyleSettings from '../src/screens/profile/StyleSettings';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import AboutUs from '../src/screens/profile/AboutUs';
 import Profile from '../src/screens/profile/Profile';
+import { Login } from '../src/screens/user/Login';
 
 const Stack = createNativeStackNavigator();
 
 export default function ProfileStack() {
   return (
     <Stack.Navigator>
-      <Stack.Screen name="Profile" component={Profile} options={{headerShown: false}}/>
+      <Stack.Screen name="Profile" component={Profile} options={{ headerShown: false }} />
       <Stack.Screen name="NameChange" component={NameChange} />
       <Stack.Screen name="Settings" component={Settings} />
+      <Stack.Screen name="Login" component={Login} />
+
       <Stack.Screen name="Push" component={Push} />
       <Stack.Screen name="StyleSettings" component={StyleSettings} />
       <Stack.Screen name="AboutUs" component={AboutUs} />

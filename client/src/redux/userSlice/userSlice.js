@@ -54,7 +54,7 @@ export const userCheckAction = () => (dispatch) => {
     .catch(console.log);
 };
 
-export const userLogoutAction = () => (dispatch) => {
+export const logoutAction = () => (dispatch) => {
   axios
     .get('/api/users/logout')
     .then(() => dispatch(logoutUser()))
