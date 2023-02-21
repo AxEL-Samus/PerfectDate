@@ -1,63 +1,70 @@
-import React from "react";
-import { View, Text, Image } from "react-native";
+import React, { useEffect } from 'react';
+import { View, Text, Image } from 'react-native';
+import { useAppDispatch, useAppSelector } from '../../redux/hook';
+import { findUserAction, userLogoutAction } from '../../redux/userSlice/userSlice';
 
 export default function Profile({ navigation }) {
+  const dispatch = useAppDispatch();
+  const user = useAppSelector((store) => store.userSlice);
+  useEffect(() => {
+    dispatch(findUserAction());
+  }, []);
   return (
     <View
       style={{
-        display: "flex",
-        flexDirection: "column",
-        height: "100%",
-        position: "absolute",
+        display: 'flex',
+        flexDirection: 'column',
+        height: '100%',
+        position: 'absolute',
       }}
     >
       <View
         style={{
           flex: 1,
-          alignItems: "center",
-          justifyContent: "center",
-          alignItems: "center",
+          alignItems: 'center',
+          justifyContent: 'center',
+          alignItems: 'center',
           marginHorizontal: 20,
           marginTop: 10,
           borderWidth: 2,
           borderRadius: 20,
           width: 350,
           height: 90,
-          position: "relative",
+          position: 'relative',
         }}
       >
         <Image
           source={{
-            uri: "https://cdn-icons-png.flaticon.com/512/149/149452.png",
+            uri: 'https://cdn-icons-png.flaticon.com/512/149/149452.png',
           }}
-          style={{ width: 60, height: 60, position: "relative" }}
-          onPress={() => console.log("1")}
+          style={{ width: 60, height: 60, position: 'relative' }}
+          onPress={() => console.log('1')}
         />
         <Text
-          onPress={() => navigation.navigate("NameChange")}
-          style={{ fontSize: 26, fontWeight: "bold" }}
+          onPress={() => navigation.navigate('NameChange')}
+          style={{ fontSize: 20, fontWeight: 'bold' }}
         >
-          Имяsdgsdfdsafg
+          {`Имя ${user.name}`}
         </Text>
       </View>
       <View
         style={{
           flex: 1,
-          alignItems: "center",
-          justifyContent: "center",
-          alignItems: "center",
+          alignItems: 'center',
+          justifyContent: 'center',
+          alignItems: 'center',
           marginHorizontal: 20,
           marginTop: 10,
           borderWidth: 2,
           borderRadius: 20,
           width: 350,
           height: 90,
-          position: "relative",
+          position: 'relative',
         }}
       >
         <Text
-          onPress={() => navigation.navigate("Settings")}
-          style={{ fontSize: 26, fontWeight: "bold" }}
+          onPress={() => navigation.navigate('Settings')}
+          style={{ fontSize: 26, fontWeight: 'bold' }}
         >
           Настроки
         </Text>
@@ -65,43 +72,46 @@ export default function Profile({ navigation }) {
       <View
         style={{
           flex: 1,
-          alignItems: "center",
-          justifyContent: "center",
-          alignItems: "center",
+          alignItems: 'center',
+          justifyContent: 'center',
+          alignItems: 'center',
           marginHorizontal: 20,
           marginTop: 10,
           borderWidth: 2,
           borderRadius: 20,
           width: 350,
           height: 90,
-          position: "relative",
+          position: 'relative',
         }}
       >
         <Text
-          onPress={() => navigation.navigate("Push")}
-          style={{ fontSize: 26, fontWeight: "bold" }}
+          onPress={() => {
+            dispatch(userLogoutAction());
+            navigation.navigate('Home');
+          }}
+          style={{ fontSize: 26, fontWeight: 'bold' }}
         >
-          Push уведомления
+          Выйти
         </Text>
       </View>
       <View
         style={{
           flex: 1,
-          alignItems: "center",
-          justifyContent: "center",
-          alignItems: "center",
+          alignItems: 'center',
+          justifyContent: 'center',
+          alignItems: 'center',
           marginHorizontal: 20,
           marginTop: 10,
           borderWidth: 2,
           borderRadius: 20,
           width: 350,
           height: 90,
-          position: "relative",
+          position: 'relative',
         }}
       >
         <Text
-          onPress={() => navigation.navigate("StyleSettings")}
-          style={{ fontSize: 26, fontWeight: "bold" }}
+          onPress={() => navigation.navigate('StyleSettings')}
+          style={{ fontSize: 26, fontWeight: 'bold' }}
         >
           Настройки стилей
         </Text>
@@ -109,9 +119,9 @@ export default function Profile({ navigation }) {
       <View
         style={{
           flex: 1,
-          alignItems: "center",
-          justifyContent: "center",
-          alignItems: "center",
+          alignItems: 'center',
+          justifyContent: 'center',
+          alignItems: 'center',
           marginHorizontal: 20,
           marginTop: 10,
           marginBottom: 10,
@@ -119,12 +129,12 @@ export default function Profile({ navigation }) {
           borderRadius: 20,
           width: 350,
           height: 90,
-          position: "relative",
+          position: 'relative',
         }}
       >
         <Text
-          onPress={() => navigation.navigate("AboutUs")}
-          style={{ fontSize: 26, fontWeight: "bold" }}
+          onPress={() => navigation.navigate('AboutUs')}
+          style={{ fontSize: 26, fontWeight: 'bold' }}
         >
           О нас
         </Text>

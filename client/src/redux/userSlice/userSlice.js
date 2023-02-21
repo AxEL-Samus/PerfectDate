@@ -24,7 +24,7 @@ export const { findUser, setUser, logoutUser } = userSlice.actions;
 export default userSlice.reducer;
 
 export const findUserAction = () => (dispatch) => {
-  axios('/api/user')
+  axios('/api/users')
     .then((res) => dispatch(findUser(res.data)))
     .catch(console.log);
 };
@@ -40,7 +40,7 @@ export const registrationAction = (regInput) => (dispatch) => {
 };
 export const loginAction = (input) => (dispatch) => {
   axios
-    .post('/api/users/signin', input)
+    .post('/api/users/login', input)
     .then((res) => dispatch(setUser(res.data)))
     .catch((err) => {
       Alert.alert('Error', err.response.data.message);

@@ -9,16 +9,16 @@ import axios from 'axios';
 import MainContainer from './navigation/MainContainer';
 
 axios.defaults.withCredentials = true;
-axios.defaults.baseURL = 'http://192.168.3.245:3002';
+axios.defaults.baseURL = 'http://192.168.3.208:3002';
 
-const App = () => {
+const App = ({ user }) => {
   return (
     // <BrowserRouter>
     <Provider store={store}>
       {/* <NavigationContainer> */}
       {/* <Navigation / */}
       {/* </NavigationContainer> */}
-      <MainContainer />
+      <MainContainer user={user} />
       <NavigationContainer>{/* <Navigation /> */}</NavigationContainer>
     </Provider>
     // </BrowserRouter>
