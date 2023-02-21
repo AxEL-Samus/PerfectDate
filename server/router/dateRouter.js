@@ -18,7 +18,7 @@ dateRouter
   })
   .post(async (req, res) => {
     try {
-      const newDate = await Date.create({ ...req.body, userId: req.session.user.id });
+      const newDate = await Date.create({ ...req.body });
       res.json(newDate);
     } catch (error) {
       console.log(error);
