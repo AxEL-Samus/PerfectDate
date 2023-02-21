@@ -24,7 +24,7 @@ export const { findUser, setUser, logoutUser } = userSlice.actions;
 export default userSlice.reducer;
 
 export const findUserAction = () => (dispatch) => {
-  axios('/api/user')
+  axios('/api/users')
     .then((res) => dispatch(findUser(res.data)))
     .catch(console.log);
 };

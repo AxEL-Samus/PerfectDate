@@ -6,7 +6,7 @@ module.exports = {
       [
         {
           name: 'Алексей',
-          pass: '123',
+          pass: 'o1lSev8BGtQGIA40i1xqctpWeGp1',
           email: 'alex@elbrus.ru',
           sex: 'sex-machine',
           theme: true,
@@ -15,7 +15,7 @@ module.exports = {
         },
         {
           name: 'Максим',
-          pass: '123',
+          pass: 'o1lSev8BGtQGIA40i1xqctpWeGp1',
           email: 'maxFaks@elbrus.ru',
           sex: 'male',
           theme: true,
@@ -24,7 +24,7 @@ module.exports = {
         },
         {
           name: 'Андрей',
-          pass: '123',
+          pass: 'o1lSev8BGtQGIA40i1xqctpWeGp1',
           email: 'andrey@elbrus.ru',
           sex: 'male',
           theme: false,

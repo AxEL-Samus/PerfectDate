@@ -4,6 +4,14 @@ const { User } = require('../db/models');
 
 const userRouter = express.Router();
 
+userRouter.get('/', (req, res) => {
+  try {
+    return res.json(req.session.user);
+  } catch (error) {
+    console.log(error);
+  }
+});
+
 userRouter.get('/signup', (req, res) => {
   res.render('Layout');
 });

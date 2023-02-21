@@ -1,7 +1,14 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { View, Text, Image } from 'react-native';
+import { useAppDispatch, useAppSelector } from '../../redux/hook';
+import { findUserAction, userLogoutAction } from '../../redux/userSlice/userSlice';
 
 export default function Profile({ navigation }) {
+  const dispatch = useAppDispatch();
+  const user = useAppSelector((store) => store.userSlice);
+  useEffect(() => {
+    dispatch(findUserAction());
+  }, []);
   return (
     <View
       style={{
@@ -37,7 +44,7 @@ export default function Profile({ navigation }) {
           onPress={() => navigation.navigate('NameChange')}
           style={{ fontSize: 20, fontWeight: 'bold' }}
         >
-          Имя
+          {`Имя ${user.name}`}
         </Text>
       </View>
       <View
@@ -78,10 +85,13 @@ export default function Profile({ navigation }) {
         }}
       >
         <Text
-          onPress={() => navigation.navigate('Push')}
+          onPress={() => {
+            dispatch(userLogoutAction());
+            navigation.navigate('Home');
+          }}
           style={{ fontSize: 26, fontWeight: 'bold' }}
         >
-          Push уведомления
+          Выйти
         </Text>
       </View>
       <View
