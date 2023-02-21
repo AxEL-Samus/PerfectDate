@@ -7,6 +7,7 @@ import {
   TouchableWithoutFeedback,
   Image,
   TouchableOpacity,
+  Keyboard,
 } from 'react-native';
 import { Formik } from 'formik';
 import { useDispatch, useSelector } from 'react-redux';

@@ -36,13 +36,6 @@ export function Register({ navigation }) {
       })
       .catch(console.error);
     dispatch(registrationAction({ email, password, name, sex: select }));
-
-    // const { isAuth } = useAuth();
-    // const submitHandler = () => {
-    //   if (isAuth) {
-    //     return { handleSubmit } && navigation.navigate('NameChange');
-    //   }
-    // };
   };
   return (
     <TouchableWithoutFeedback
@@ -150,7 +143,6 @@ export function Register({ navigation }) {
                 }}
               >
                 <RNPickerSelect
-                  // value={values.sex}
                   onValueChange={(value) => setSelect(value)}
                   items={[
                     { label: 'Мужчина', value: 'Мужчина' },

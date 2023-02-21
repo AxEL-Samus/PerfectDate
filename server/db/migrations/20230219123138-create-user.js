@@ -23,6 +23,10 @@ module.exports = {
       theme: {
         type: Sequelize.BOOLEAN,
       },
+      // avatar: {
+      //   type: Sequelize.STRING,
+      //   allowNull: true,
+      // },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,
