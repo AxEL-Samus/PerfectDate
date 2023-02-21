@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react';
 import { View, Text, Image } from 'react-native';
 import { useAppDispatch, useAppSelector } from '../../redux/hook';
-import { findUserAction, userLogoutAction } from '../../redux/userSlice/userSlice';
+import { removeUserFirestorm } from '../../redux/userSlice/fireStormSlice';
+import { findUserAction, logoutAction } from '../../redux/userSlice/userSlice';
 
 export default function Profile({ navigation }) {
   const dispatch = useAppDispatch();
@@ -44,54 +45,7 @@ export default function Profile({ navigation }) {
           onPress={() => navigation.navigate('NameChange')}
           style={{ fontSize: 20, fontWeight: 'bold' }}
         >
-          {`Имя ${user.name}`}
-        </Text>
-      </View>
-      <View
-        style={{
-          flex: 1,
-          alignItems: 'center',
-          justifyContent: 'center',
-          alignItems: 'center',
-          marginHorizontal: 20,
-          marginTop: 10,
-          borderWidth: 2,
-          borderRadius: 20,
-          width: 350,
-          height: 90,
-          position: 'relative',
-        }}
-      >
-        <Text
-          onPress={() => navigation.navigate('Settings')}
-          style={{ fontSize: 26, fontWeight: 'bold' }}
-        >
-          Настроки
-        </Text>
-      </View>
-      <View
-        style={{
-          flex: 1,
-          alignItems: 'center',
-          justifyContent: 'center',
-          alignItems: 'center',
-          marginHorizontal: 20,
-          marginTop: 10,
-          borderWidth: 2,
-          borderRadius: 20,
-          width: 350,
-          height: 90,
-          position: 'relative',
-        }}
-      >
-        <Text
-          onPress={() => {
-            dispatch(userLogoutAction());
-            navigation.navigate('Home');
-          }}
-          style={{ fontSize: 26, fontWeight: 'bold' }}
-        >
-          Выйти
+          {`${user.name}`}
         </Text>
       </View>
       <View
@@ -137,6 +91,32 @@ export default function Profile({ navigation }) {
           style={{ fontSize: 26, fontWeight: 'bold' }}
         >
           О нас
+        </Text>
+      </View>
+      <View
+        style={{
+          flex: 1,
+          alignItems: 'center',
+          justifyContent: 'center',
+          alignItems: 'center',
+          marginHorizontal: 20,
+          marginTop: 10,
+          borderWidth: 2,
+          borderRadius: 20,
+          width: 350,
+          height: 40,
+          position: 'relative',
+        }}
+      >
+        <Text
+          onPress={() => {
+            dispatch(logoutAction());
+            dispatch(removeUserFirestorm());
+            navigation.navigate('Login');
+          }}
+          style={{ fontSize: 26, fontWeight: 'bold' }}
+        >
+          Выйти
         </Text>
       </View>
     </View>
