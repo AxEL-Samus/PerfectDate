@@ -9,8 +9,12 @@ import axios from 'axios';
 import MainContainer from './navigation/MainContainer';
 
 axios.defaults.withCredentials = true;
+<<<<<<< HEAD
 axios.defaults.baseURL = 'http://192.168.1.99:3002';
 
+=======
+axios.defaults.baseURL = 'http://192.168.3.208:3002';
+>>>>>>> 7a360cbd276cf28188508704032db193f49600dc
 
 const App = ({ user }) => {
   return (
