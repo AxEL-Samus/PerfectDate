@@ -32,6 +32,11 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(session(sessionConfig));
 
+app.use((req, res, next) => {
+  res.locals.user = req.session.user;
+  next();
+});
+
 app.use('/', indexRouter);
 app.use('/api/users/', userRouter);
 app.use('/api/dates/', dateRouter);

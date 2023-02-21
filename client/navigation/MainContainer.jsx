@@ -14,7 +14,7 @@ import { Register } from '../src/screens/user/Register';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Home from '../src/screens/Home';
 
-const debugCard = 'Меню отладки'
+const debugCard = 'Меню отладки';
 const profileName = 'Профиль';
 const homeName = 'Свидания';
 const addName = 'Добавить';
@@ -23,7 +23,7 @@ const loginName = 'Login';
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 
-export default function MainContainer() {
+export default function MainContainer({ user }) {
   const { isAuth } = useAuth();
 
   return (
@@ -38,8 +38,7 @@ export default function MainContainer() {
 
               if (rn === homeName) {
                 iconName = focused ? 'home' : 'home-outline';
-              } 
-              else if (rn === addName) {
+              } else if (rn === addName) {
                 iconName = focused ? 'list' : 'list-outline';
               } else if (rn === profileName) {
                 iconName = focused ? 'settings' : 'settings-outline';
