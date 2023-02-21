@@ -11,6 +11,7 @@ import MainContainer from './navigation/MainContainer';
 axios.defaults.withCredentials = true;
 axios.defaults.baseURL = 'http://192.168.3.245:3002';
 
+
 const App = ({ user }) => {
   return (
     // <BrowserRouter>
