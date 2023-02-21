@@ -92,17 +92,6 @@ export default function AddScreen({ navigation }) {
           <View style={styles.container}>
             <Card style={styles.card}>
               <Form initialState={initialValues} validator={validators}>
-                <Field id="love">
-                  {({ value, error, changeValue }) => (
-                    <TextInput
-                      value={value}
-                      error={error}
-                      onChangeText={(text) => changeValue(setLove(text))}
-                      placeholder=""
-                      label="Девушка"
-                    />
-                  )}
-                </Field>
                 <Field id="title">
                   {({ value, error, changeValue }) => (
                     <TextInput
@@ -125,9 +114,20 @@ export default function AddScreen({ navigation }) {
                     />
                   )}
                 </Field>
+                <Field id="love">
+                  {({ value, error, changeValue }) => (
+                    <TextInput
+                      value={value}
+                      error={error}
+                      onChangeText={(text) => changeValue(setLove(text))}
+                      placeholder=""
+                      label="Девушка"
+                    />
+                  )}
+                </Field>
                 {selectLove === 'Катя' && (
                   <>
-                    <Text> Лучшим выбором будет начать свидание в этих ресторанах: </Text>
+                    <Text> Катя не любит кино, поэтому лучшим выбором будет начать свидание в этих ресторанах: </Text>
 
                     <RNPickerSelect
                       onValueChange={(value) => setRest(value)}
@@ -164,7 +164,7 @@ export default function AddScreen({ navigation }) {
                         },
                       ]}
                     />
-                    {!rest == !{} && <Text> После ресторана следует вызвать ей такси </Text>}
+                    {!rest == !{} && <Text> Ваше свидание укомплектовано </Text>}
                   </>
                 )}
                 {selectLove === 'Оля' && (
@@ -202,11 +202,11 @@ export default function AddScreen({ navigation }) {
                         },
                       ]}
                     />
-                    {park.parkTitle === 'Сокольники' && (
+                    {park.parkTitle !== ''  && (
                       <>
                         <Text>
                           {' '}
-                          После Сокольников идеальным вариантом будет удивить ее этими местами{' '}
+                          {`После ${park.parkTitle} идеальным вариантом будет удивить ее этими местами`}{' '}
                         </Text>
                         <RNPickerSelect
                           onValueChange={(value) => setRest(value)}
