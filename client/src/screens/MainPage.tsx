@@ -16,6 +16,7 @@ export default function MainPage(): JSX.Element {
   const [kinoCoords, setKinoCoords] = useState({});
   const [kinoUrl, setKinoUrl] = useState('');
   const [restUrl, setRestUrl] = useState('');
+  const [isSelectedModule, setIsSelectedModule] = useState(false);
   const dispatch = useAppDispatch();
   const dates = useAppSelector((store) => store.dates.date);
   useEffect(() => {
@@ -25,7 +26,7 @@ export default function MainPage(): JSX.Element {
   return (
     <>
       <ScrollView>
-        {dates?.map((el) => (
+        {dates.map((el) => (
           <>
             <SafeAreaView style={styles.container1}>
               <View style={styles.container1}>
@@ -62,6 +63,7 @@ export default function MainPage(): JSX.Element {
                       setPark(el.parkTitle);
                       setModalVariant(el.restTitle);
                       setModalVisible(!modalVisible);
+                      setIsSelectedModule(true);
                     }}
                   >
                     <Text style={styles.paragraph}>Подробнее</Text>
@@ -69,19 +71,22 @@ export default function MainPage(): JSX.Element {
                 </Card>
               </View>
             </SafeAreaView>
-            <Modules
-              id={el.id}
-              restUrl={restUrl}
-              kinoUrl={kinoUrl}
-              kinoCoords={kinoCoords}
-              time={time}
-              parksCoords={parksCoords}
-              coords={coords}
-              park={park}
-              modalVariant={modalVariant}
-              setModalVisible={setModalVisible}
-              modalVisible={modalVisible}
-            />
+            {isSelectedModule && (
+              <Modules
+                el={el}
+                key={el.id}
+                restUrl={restUrl}
+                kinoUrl={kinoUrl}
+                kinoCoords={kinoCoords}
+                time={time}
+                parksCoords={parksCoords}
+                coords={coords}
+                park={park}
+                modalVariant={modalVariant}
+                setModalVisible={setModalVisible}
+                modalVisible={modalVisible}
+              />
+            )}
           </>
         ))}
       </ScrollView>
