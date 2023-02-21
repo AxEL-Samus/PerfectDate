@@ -1,10 +1,10 @@
-import * as React from 'react';
+import React, { useEffect } from 'react';
 import { View, Text, StyleSheet, TouchableWithoutFeedback, Keyboard } from 'react-native';
 import RNPickerSelect from 'react-native-picker-select';
 import { Picker } from '@react-native-picker/picker';
 import Constants from 'expo-constants';
 import { Card, TextInput, Button } from 'react-native-paper';
-import { useAppDispatch } from '../redux/hook';
+import { useAppDispatch, useAppSelector } from '../redux/hook';
 // import TextInput from './TextInput';
 
 import { Form, Field, Submit } from 'react-swift-form';
@@ -12,6 +12,7 @@ import * as yup from 'yup';
 import { useState } from 'react';
 import { Formik } from 'formik';
 import { addDate } from '../redux/datesSlice/datesSlice';
+import { findUserAction } from '../redux/userSlice/userSlice';
 
 const initialValues = {
   rest: '',
@@ -39,9 +40,26 @@ export default function AddScreen({ navigation }) {
   const [title, setTitle] = useState('');
   const [rest, setRest] = useState({});
   const [park, setPark] = useState({});
-
+  const user = useAppSelector((store) => store.userSlice);
+  useEffect(() => {
+    dispatch(findUserAction());
+  }, []);
   const submitHandler = () => {
-    dispatch(addDate({ loveId: 1, restLat: rest.restLat, restLng: rest.restLng, restTitle: rest.restTitle, title, parkLat: park.parkLat, parkLng: park.parkLng, parkTitle: park.parkTitle, restImg: "https://www.restoclub.ru/uploads/place_thumbnail_big/9/c/e/5/9ce56194489bddde28096b1f1dd74562.jpg" }));
+    dispatch(
+      addDate({
+        loveId: 1,
+        restLat: rest.restLat,
+        restLng: rest.restLng,
+        restTitle: rest.restTitle,
+        title,
+        parkLat: park.parkLat,
+        parkLng: park.parkLng,
+        parkTitle: park.parkTitle,
+        restImg:
+          'https://www.restoclub.ru/uploads/place_thumbnail_big/9/c/e/5/9ce56194489bddde28096b1f1dd74562.jpg',
+        userId: user.id,
+      }),
+    );
   };
 
   return (
