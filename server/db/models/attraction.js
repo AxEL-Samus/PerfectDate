@@ -16,6 +16,7 @@ module.exports = (sequelize, DataTypes) => {
   }
   Attraction.init(
     {
+      name: DataTypes.STRING,
       lat: DataTypes.STRING,
       lng: DataTypes.STRING,
       imgUrl: DataTypes.STRING,
