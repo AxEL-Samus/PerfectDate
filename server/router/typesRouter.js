@@ -1,17 +1,11 @@
 const express = require('express');
-const { Attraction, Type } = require('../db/models');
+const { Type } = require('../db/models');
 
 const typesRouter = express.Router();
 
-typesRouter.route('/')(async (req, res) => {
+typesRouter.get('/')(async (req, res) => {
   try {
-    const { typeId } = req.params;
-    const alltypes = await Type.findAll({
-      where: { typeId },
-      include: {
-        model: Attraction,
-      },
-    });
+    const alltypes = await Type.findAll();
     res.json(alltypes);
   } catch (error) {
     console.log(error);

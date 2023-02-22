@@ -3,14 +3,11 @@ import { View, Text, StyleSheet, TouchableWithoutFeedback, Keyboard } from 'reac
 import RNPickerSelect from 'react-native-picker-select';
 import Constants from 'expo-constants';
 import { Card, TextInput, Button } from 'react-native-paper';
-import { useAppDispatch, useAppSelector, useAppSelector } from '../redux/hook';
+import { useAppDispatch, useAppSelector } from '../redux/hook';
 
 import { Form, Field, Submit } from 'react-swift-form';
 import { useState } from 'react';
 import { Formik } from 'formik';
-import { addDate } from '../redux/datesSlice/datesSlice';
-import { findUserAction } from '../redux/userSlice/userSlice';
-
 
 const enterObject = {
   1: 'ресторан',
@@ -37,20 +34,16 @@ const type = [
 ];
 
 export default function AddScreen({ navigation }) {
-  const dispatch = useAppDispatch();
-  const allTypes = useAppSelector((store) => store.typeSlice.type);
-
-  const onFormSubmit = (values) => {
-    alert(JSON.stringify(values, null, 2));
-  };
-
   const [attractionId1, setAttractionId1] = useState('');
   const [attractionId2, setAttractionId2] = useState('');
   const [attractionId3, setAttractionId3] = useState('');
 
-  // const submitHandler = () => {
-  //   dispatch(setAttractionId({ id: 1, selectLove, rest, title, park }));
-  // };
+  const dispatch = useAppDispatch();
+  const allTypes = useAppSelector((store) => store.typeSlice.type);
+
+  useEffect(() => {
+    dispatch(getType());
+  }, []);
 
   return (
     <TouchableWithoutFeedback
@@ -100,8 +93,8 @@ export default function AddScreen({ navigation }) {
                     <RNPickerSelect
                       onValueChange={(value) => setAttractionId1(value)}
                       items={[
-                        allTypes[1].name.split(' ').map((rest) => {
-                          rest.name;
+                        allTypes.map((type) => {
+                          type.name;
                         }),
                       ]}
                     />
