@@ -5,89 +5,24 @@ import { StyleSheet, Text, View, ScrollView, Image, SafeAreaView } from 'react-n
 import Modules from './Modules';
 import { useAppDispatch, useAppSelector } from '../redux/hook';
 import { setDates } from '../redux/datesSlice/datesSlice';
+import OneDateCard from './OneDateCard';
 
 export default function MainPage(): JSX.Element {
-  const [modalVisible, setModalVisible] = useState(false);
-  const [modalVariant, setModalVariant] = useState('');
-  const [coords, setCoords] = useState({});
-  const [parksCoords, setParksCoords] = useState({});
-  const [park, setPark] = useState('');
-  const [time, setTime] = useState({});
-  const [kinoCoords, setKinoCoords] = useState({});
-  const [kinoUrl, setKinoUrl] = useState('');
-  const [restUrl, setRestUrl] = useState('');
-  const [isSelectedModule, setIsSelectedModule] = useState(false);
   const dispatch = useAppDispatch();
   const dates = useAppSelector((store) => store.dates.date);
   useEffect(() => {
     dispatch(setDates());
   }, []);
   console.log('=-=-=-=-=-=-=-=--=', dates);
+  const dateId1 = [];
+  dates.map((date) => {
+    if (!dateId1.filter((el) => el.dateId1 === date.dateId).length) dateId1.push(date);
+  });
   return (
     <>
       <ScrollView>
-        {dates?.map((el) => (
-          <>
-            <SafeAreaView style={styles.container1}>
-              <View style={styles.container1}>
-                <Card
-                  style={{
-                    borderRadius: 20,
-                  }}
-                >
-                  <Image
-                    style={styles.img2}
-                    source={{
-                      uri: el.restImg,
-                    }}
-                  />
-                  <Text style={styles.paragraph}>{`Ваше свидание: ${el.title}`}</Text>
-                  <Button
-                    style={[styles.button, styles.buttonClose]}
-                    onPress={() => {
-                      setCoords({
-                        lat: el.restLat,
-                        lng: el.restLng,
-                      });
-                      setParksCoords({
-                        lat: el.parkLat,
-                        lng: el.parkLng,
-                      });
-                      setKinoCoords({
-                        lat: el.kinoLat,
-                        lng: el.kinoLng,
-                      });
-                      setKinoUrl(el.kinoUrl);
-                      setRestUrl(el.restUrl);
-                      setTime({ name: el.kinoTitle, time: el.kinoDate, movie: el.movieTitle });
-                      setPark(el.parkTitle);
-                      setModalVariant(el.restTitle);
-                      setModalVisible(!modalVisible);
-                      setIsSelectedModule(true);
-                    }}
-                  >
-                    <Text style={styles.paragraph}>Подробнее</Text>
-                  </Button>
-                </Card>
-              </View>
-            </SafeAreaView>
-            {isSelectedModule && (
-              <Modules
-                el={el}
-                key={el.id}
-                restUrl={restUrl}
-                kinoUrl={kinoUrl}
-                kinoCoords={kinoCoords}
-                time={time}
-                parksCoords={parksCoords}
-                coords={coords}
-                park={park}
-                modalVariant={modalVariant}
-                setModalVisible={setModalVisible}
-                modalVisible={modalVisible}
-              />
-            )}
-          </>
+        {dateId1.map((el) => (
+          <OneDateCard key={el.id} oneDate={el} />
         ))}
       </ScrollView>
     </>

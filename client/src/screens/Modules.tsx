@@ -6,8 +6,8 @@ import { useAppDispatch } from '../redux/hook';
 import { deleteCard } from '../redux/datesSlice/datesSlice';
 
 export default function Modules({
-  time,
   park,
+  kinoName,
   parksCoords,
   coords,
   modalVariant,
@@ -89,27 +89,18 @@ export default function Modules({
                       latitude: kinoCoords.lat,
                       longitude: kinoCoords.lng,
                     }}
-                    title={`Тут кинотеатр: ${time.name}`}
+                    title={`Тут кинотеатр: ${kinoName}`}
                     description={`Cсылка на бронь: ${(<Button>Нажми</Button>)}`}
                     pinColor="blue"
                     onPress={() => Linking.openURL(kinoUrl)}
                   >
                     <Callout>
-                      <Button>{`Тут кинотеатр: ${time.name}`}</Button>
+                      <Button>{`Тут кинотеатр: ${kinoName}`}</Button>
                     </Callout>
                   </Marker>
                 </MapView>
                 <Text style={styles.paragraph}>{`Ресторан: ${modalVariant} (красная метка)`}</Text>
                 <Text style={styles.paragraph}>{`Парк: ${park} (черная метка)`}</Text>
-                {time.name === '' ? null : (
-                  <Text style={styles.paragraph}>{`Кинотеатр: ${time.name} (синяя метка)`}</Text>
-                )}
-                {time.movie === '' ? null : (
-                  <Text style={styles.paragraph}>{`Фильм: ${time.movie}`}</Text>
-                )}
-                {time.time === '' ? null : (
-                  <Text style={styles.paragraph}>{`Время: ${time.time}`}</Text>
-                )}
                 <Button
                   style={[styles.button, styles.buttonClose]}
                   onPress={() => {
