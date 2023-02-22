@@ -3,7 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
 import { AppThunk } from '../hook';
 import axios from 'axios';
-import { TypeType, TypeTypeSlice } from './typeType';
+import { TypeType, TypeTypeSlice } from '../typeSlice/typeType';
 
 const initialState: TypeTypeSlice = {
   type: [],

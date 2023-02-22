@@ -8,7 +8,7 @@ userRouter.get('/', (req, res) => {
   try {
     return res.json(req.session.user);
   } catch (error) {
-    console.log(error);
+    return console.log(error);
   }
 });
 
@@ -39,7 +39,7 @@ userRouter.post('/signup', async (req, res) => {
     res.sendStatus(200);
   } catch (error) {
     console.log(error);
-    res.sendStatus(500);
+    return res.sendStatus(500);
   }
 });
 

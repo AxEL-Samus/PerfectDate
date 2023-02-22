@@ -18,7 +18,7 @@ dateRouter
   })
   .post(async (req, res) => {
     try {
-      const newDate = await Date.create({ ...req.body, userId: req.session.user.id });
+      const newDate = await Date.create({ ...req.body });
       res.json(newDate);
     } catch (error) {
       console.log(error);
@@ -39,6 +39,7 @@ dateRouter
   })
   .delete(async (req, res) => {
     try {
+      console.log('=-=-=-==-=-=-=-=-==-==-==-=-', req.params);
       await Date.destroy({ where: { id: req.params.id } });
       res.sendStatus(200);
     } catch (error) {

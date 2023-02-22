@@ -16,8 +16,10 @@ export default function Modules({
   kinoCoords,
   kinoUrl,
   restUrl,
-  id,
+  el,
 }): JSX.Element {
+  console.log('-=-=-=-==--', el);
+
   const dispatch = useAppDispatch();
   return (
     <ScrollView>
@@ -111,8 +113,8 @@ export default function Modules({
                 <Button
                   style={[styles.button, styles.buttonClose]}
                   onPress={() => {
+                    dispatch(deleteCard(el.id));
                     setModalVisible(!modalVisible);
-                    dispatch(deleteCard(id));
                   }}
                 >
                   <Text style={styles.paragraph}>Удалить</Text>

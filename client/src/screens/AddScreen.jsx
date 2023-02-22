@@ -1,14 +1,16 @@
-import * as React from 'react';
+import React, { useEffect } from 'react';
 import { View, Text, StyleSheet, TouchableWithoutFeedback, Keyboard } from 'react-native';
 import RNPickerSelect from 'react-native-picker-select';
 import Constants from 'expo-constants';
 import { Card, TextInput, Button } from 'react-native-paper';
-import { useAppDispatch, useAppSelector } from '../redux/hook';
+import { useAppDispatch, useAppSelector, useAppSelector } from '../redux/hook';
 
 import { Form, Field, Submit } from 'react-swift-form';
 import { useState } from 'react';
 import { Formik } from 'formik';
 import { addDate } from '../redux/datesSlice/datesSlice';
+import { findUserAction } from '../redux/userSlice/userSlice';
+
 
 const enterObject = {
   1: 'ресторан',
