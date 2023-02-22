@@ -22,8 +22,13 @@ export const typeSlice = createSlice({
 export const { setType } = typeSlice.actions;
 
 export const getType = (): AppThunk => (dispatch) => {
+  console.log('THUNK!!!!!!!!!');
+
   axios<TypeType[]>('/api/types')
-    .then((res) => dispatch(setType(res.data)))
+    .then((res) => {
+      console.log(res.data, '1241235634623q4');
+      dispatch(setType(res.data));
+    })
     .catch(console.log);
 };
 
