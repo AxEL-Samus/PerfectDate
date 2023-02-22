@@ -48,23 +48,30 @@ export default function AddScreen({ navigation }) {
     >
       <Formik
         initialValues={{
+          id: '',
+          glo: '',
           name: '',
+          photo: '',
+          typeId: '',
         }}
         onSubmit={(values, { resetForm }) => {
-          dateHandler(values.name);
+          typeHandler(values.name);
           resetForm({ values: '' });
         }}
       >
         <>
           <View style={styles.container}>
             <Card style={styles.card}>
-              <Form initialState={initialValues} validator={validators}>
+              <Form
+              // initialState={initialValues}
+              // validator={validators}
+              >
                 <Field id="love">
                   {({ value, error, changeValue }) => (
                     <TextInput
                       value={value}
                       error={error}
-                      onChangeText={(text) => changeValue(setAttractionId1(text))}
+                      // onChangeText={(text) => changeValue(setAttractionId1(text))}
                       placeholder=""
                       label="Девушка"
                     />
@@ -75,7 +82,7 @@ export default function AddScreen({ navigation }) {
                     <TextInput
                       value={value}
                       error={error}
-                      onChangeText={(text) => changeValue(setAttractionId2(text))}
+                      // onChangeText={(text) => changeValue(setAttractionId2(text))}
                       placeholder=""
                       label="Название свидания"
                     />
@@ -87,10 +94,8 @@ export default function AddScreen({ navigation }) {
                     <RNPickerSelect
                       onValueChange={(value) => setAttractionId1(value)}
                       items={[
-                        allTypes.map((type) => {
-                          {
-                            type.name;
-                          }
+                        atraction.map((attr) => {
+                          attr.name;
                         }),
                       ]}
                     />
@@ -98,7 +103,7 @@ export default function AddScreen({ navigation }) {
                   </>
                 )}
 
-                <Submit onSubmit={onFormSubmit}>
+                <Submit onSubmit={''}>
                   {({ submit }) => <Button title="Submit" onPress={submitHandler} />}
                 </Submit>
               </Form>
