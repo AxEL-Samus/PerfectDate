@@ -1,5 +1,5 @@
 const express = require('express');
-const { Date, Attraction } = require('../db/models');
+const { Date, Attraction, Type } = require('../db/models');
 
 const dateRouter = express.Router();
 
@@ -11,6 +11,9 @@ dateRouter
         include: [
           {
             model: Attraction,
+            include: {
+              model: Type,
+            },
           },
         ],
         order: [['createdAt', 'DESC']],
