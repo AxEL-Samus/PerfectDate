@@ -1,7 +1,7 @@
 /* eslint-disable no-param-reassign */
 import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
-import type { DatesState, DateTypeSlice } from './datesType';
+import type { Attraction, DatesState, DateTypeSlice, RootObject } from './datesType';
 import { AppThunk } from '../hook';
 import axios from 'axios';
 
@@ -13,21 +13,21 @@ export const datesSlice = createSlice({
   name: 'dates',
   initialState,
   reducers: {
-    setDatesCards: (state, action: PayloadAction<DatesState[]>) => {
+    setDatesCards: (state, action: PayloadAction<RootObject[]>) => {
       state.date = action.payload;
     },
-    deleteOneCard: (state, action: PayloadAction<DatesState['id']>) => ({
+    deleteOneCard: (state, action: PayloadAction<RootObject['id']>) => ({
       ...state,
       date: state.date.filter((el) => el.id !== action.payload),
     }),
-    addDate: (state, action: PayloadAction<DatesState>) => [action.payload, ...state.date],
+    addDateCard: (state, action: PayloadAction<RootObject>) => [action.payload, ...state.date],
   },
 });
 
 export const { setDatesCards, deleteOneCard, addDateCard } = datesSlice.actions;
 
 export const setDates = (): AppThunk => (dispatch) => {
-  axios<DatesState[]>('/api/dates')
+  axios<RootObject[]>('/api/dates')
     .then((res) => dispatch(setDatesCards(res.data)))
     .catch(console.log);
 };
@@ -42,10 +42,10 @@ export const deleteCard =
   };
 
 export const addDate =
-  (reqbody: DatesState): AppThunk =>
+  (reqbody: RootObject): AppThunk =>
   (dispatch) => {
     axios
-      .post<DatesState>('/api/dates', reqbody)
+      .post<RootObject>('/api/dates', reqbody)
       .then((res) => dispatch(addDateCard(res.data)))
       .catch(console.log);
   };
