@@ -12,22 +12,22 @@ module.exports = {
         type: Sequelize.INTEGER,
         references: {
           model: 'Attractions',
+          key: 'id',
         },
-        key: 'id',
       },
       attraction2id: {
         type: Sequelize.INTEGER,
         references: {
           model: 'Attractions',
+          key: 'id',
         },
-        key: 'id',
       },
       attraction3id: {
         type: Sequelize.INTEGER,
         references: {
           model: 'Attractions',
+          key: 'id',
         },
-        key: 'id',
       },
       time: {
         type: Sequelize.STRING,
