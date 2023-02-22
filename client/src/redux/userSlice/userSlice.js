@@ -47,12 +47,6 @@ export const loginAction = (input) => (dispatch) => {
       console.log(err.response.data);
     });
 };
-export const userCheckAction = () => (dispatch) => {
-  axios
-    .post('/api/users/check')
-    .then((res) => dispatch(setUser(res.data)))
-    .catch(console.log);
-};
 
 export const logoutAction = () => (dispatch) => {
   axios
