@@ -15,7 +15,7 @@ export default function Profile({ navigation }) {
       style={{
         display: 'flex',
         flexDirection: 'column',
-        height: '100%',
+        // height: '70%',
         position: 'absolute',
       }}
     >
@@ -32,6 +32,7 @@ export default function Profile({ navigation }) {
           width: 350,
           height: 90,
           position: 'relative',
+          backgroundColor: 'lightgrey',
         }}
       >
         <Image
@@ -61,6 +62,7 @@ export default function Profile({ navigation }) {
           width: 350,
           height: 90,
           position: 'relative',
+          backgroundColor: 'lightgrey',
         }}
       >
         <Text
@@ -84,6 +86,7 @@ export default function Profile({ navigation }) {
           width: 350,
           height: 90,
           position: 'relative',
+          backgroundColor: 'lightgrey',
         }}
       >
         <Text
@@ -95,17 +98,20 @@ export default function Profile({ navigation }) {
       </View>
       <View
         style={{
-          flex: 1,
-          alignItems: 'center',
+          // flex: 1,
+          // alignItems: 'center',
           justifyContent: 'center',
           alignItems: 'center',
           marginHorizontal: 20,
-          marginTop: 10,
+          // marginTop: 10,
           borderWidth: 2,
           borderRadius: 20,
-          width: 350,
-          height: 40,
-          position: 'relative',
+          width: 150,
+          height: 50,
+          backgroundColor: 'lightgrey',
+          // position: 'relative',
+          marginLeft: 120,
+          marginTop: 280,
         }}
       >
         <Text

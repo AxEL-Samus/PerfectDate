@@ -20,7 +20,7 @@ export const datesSlice = createSlice({
       ...state,
       date: state.date.filter((el) => el.id !== action.payload),
     }),
-    addDateCard: (state, action: PayloadAction<DatesState>) => [action.payload, ...state.date],
+    addDate: (state, action: PayloadAction<DatesState>) => [action.payload, ...state.date],
   },
 });
 

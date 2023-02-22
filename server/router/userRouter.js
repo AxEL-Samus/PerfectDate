@@ -15,7 +15,10 @@ userRouter.get('/', (req, res) => {
 userRouter.post('/signup', async (req, res) => {
   try {
     const { password, email, name, sex } = req.body;
-    const hashpass = await bcrypt.hash(password, 10);
+    if (!password || !email || !name || !sex) {
+      return res.status(400).send({ message: 'Заполните все поля' });
+    }
+    const hashpass = await bcrypt.hash(password, 5);
     const [user, created] = await User.findOrCreate({
       where: { email },
       defaults: {
@@ -25,12 +28,15 @@ userRouter.post('/signup', async (req, res) => {
         sex,
       },
     });
-    console.log(user, created);
     if (!created) {
-      return res.status(401).send('Email уже используется другим пользователем');
+      return res.status(403).send({ message: 'Пользователь уже существует' });
     }
-    req.session.user = user;
-    return res.sendStatus(200);
+    req.session.user = {
+      id: user.id,
+      name: user.name,
+      email: user.email,
+    };
+    res.sendStatus(200);
   } catch (error) {
     console.log(error);
     res.sendStatus(500);
@@ -40,16 +46,22 @@ userRouter.post('/signup', async (req, res) => {
 userRouter.post('/login', async (req, res) => {
   try {
     const { email, password } = req.body;
+    if (!email || !password) {
+      return res.status(400).send({ message: 'Заполните все поля' });
+    }
     const foundUser = await User.findOne({
       where: { email },
     });
-    if (!(foundUser && (await bcrypt.compare(password, foundUser.pass)))) {
-      return res.sendStatus(401);
+    if (!foundUser) {
+      return res.status(400).send({ message: 'Пользователь не найден' });
     }
-    const user = JSON.parse(JSON.stringify(foundUser));
-    delete user.pass;
-    req.session.user = user;
-    return res.sendStatus(200);
+    const compare = await bcrypt.compare(password, foundUser.password);
+    if (compare) {
+      req.session.user = { id: foundUser.id, name: foundUser.name };
+    } else {
+      return res.status(400).send({ message: 'Неправильный пароль или логин' });
+    }
+    res.sendStatus(200);
   } catch (err) {
     console.log(err);
     return res.sendStatus(500);
@@ -58,7 +70,7 @@ userRouter.post('/login', async (req, res) => {
 
 userRouter.get('/logout', (req, res) => {
   req.session.destroy();
-  res.clearCookie('user_sid');
+  res.clearCookie('user_sid').sendStatus(200);
 });
 
 module.exports = userRouter;

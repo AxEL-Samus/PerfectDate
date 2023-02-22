@@ -1,48 +1,54 @@
 import * as React from 'react';
 import { View, Text, StyleSheet, TouchableWithoutFeedback, Keyboard } from 'react-native';
 import RNPickerSelect from 'react-native-picker-select';
-import { Picker } from '@react-native-picker/picker';
 import Constants from 'expo-constants';
 import { Card, TextInput, Button } from 'react-native-paper';
-import { useAppDispatch } from '../redux/hook';
-// import TextInput from './TextInput';
+import { useAppDispatch, useAppSelector } from '../redux/hook';
 
 import { Form, Field, Submit } from 'react-swift-form';
-import * as yup from 'yup';
 import { useState } from 'react';
 import { Formik } from 'formik';
 import { addDate } from '../redux/datesSlice/datesSlice';
 
-const initialValues = {
-  rest: '',
-  email: '',
-  age: 18,
+const enterObject = {
+  1: 'ресторан',
+  2: 'парк',
+  9: 'музей',
 };
 
-const validators = {
-  rest: yup.string().required('rest is required').min(3, 'rest must be ...'),
-  email: yup.string().required('Kino is required').email('Invalid kino'),
-  age: yup
-    .number()
-    .min(18, 'You must be at least 18 years old')
-    .max(80, 'You must be younger than 80 years old'),
-};
+const atraction = [
+  { id: 1, glo: '12.412.42', name: 'Ресторан Гоголь1', photo: 'url', typeId: 1 },
+  { id: 2, glo: '12.412.42', name: 'Ресторан Гоголь2', photo: 'url', typeId: 1 },
+  { id: 3, glo: '12.412.42', name: 'Ресторан Гоголь3', photo: 'url', typeId: 1 },
+  { id: 1, glo: '12.412.42', name: 'Парк Сокольники1', photo: 'url', typeId: 2 },
+  { id: 2, glo: '12.412.42', name: 'Парк Сокольники2', photo: 'url', typeId: 2 },
+  { id: 3, glo: '12.412.42', name: 'Парк Сокольники3', photo: 'url', typeId: 2 },
+  { id: 1, glo: '12.412.42', name: 'Музей Победа1', photo: 'url', typeId: 9 },
+  { id: 2, glo: '12.412.42', name: 'Музей Победа2', photo: 'url', typeId: 9 },
+  { id: 4, glo: '12.412.42', name: 'Ресторан Гоголь4', photo: 'url', typeId: 1 },
+];
 
-// 1
+const type = [
+  { id: 1, name: 'Ресторан' },
+  { id: 2, name: 'Парк' },
+  { id: 9, name: 'Музей' },
+];
+
 export default function AddScreen({ navigation }) {
+  const dispatch = useAppDispatch();
+  const allTypes = useAppSelector((store) => store.typeSlice.type);
+
   const onFormSubmit = (values) => {
     alert(JSON.stringify(values, null, 2));
   };
-  const dispatch = useAppDispatch();
-  
-  const [selectLove, setLove] = useState('');
-  const [title, setTitle] = useState('');
-  const [rest, setRest] = useState({});
-  const [park, setPark] = useState({});
-  
-  const submitHandler = () => {
-    dispatch(addDate({ id: 1, selectLove, rest, title, rest, park }));
-    }
+
+  const [attractionId1, setAttractionId1] = useState('');
+  const [attractionId2, setAttractionId2] = useState('');
+  const [attractionId3, setAttractionId3] = useState('');
+
+  // const submitHandler = () => {
+  //   dispatch(setAttractionId({ id: 1, selectLove, rest, title, park }));
+  // };
 
   return (
     <TouchableWithoutFeedback
@@ -51,9 +57,11 @@ export default function AddScreen({ navigation }) {
       }}
     >
       <Formik
-        initialValues={{ title: '', kinoDate: '', parkLat: '', parkLng: '', parkTitle: '', restLat: '', restLng: '', restTitle: '' }}
+        initialValues={{
+          name: '',
+        }}
         onSubmit={(values, { resetForm }) => {
-          dateHandler(values.title, values.kinoDate, values.parkLat, values.parkLng, values.partTitle, values.restLat, values.restLng, values.restTitle);
+          dateHandler(values.name);
           resetForm({ values: '' });
         }}
       >
@@ -61,12 +69,12 @@ export default function AddScreen({ navigation }) {
           <View style={styles.container}>
             <Card style={styles.card}>
               <Form initialState={initialValues} validator={validators}>
-                <Field id="love">
+                {/* <Field id="love">
                   {({ value, error, changeValue }) => (
                     <TextInput
                       value={value}
                       error={error}
-                      onChangeText={(text) => changeValue(setLove(text))}
+                      onChangeText={(text) => changeValue(setAttractionId1(text))}
                       placeholder=""
                       label="Девушка"
                     />
@@ -77,67 +85,101 @@ export default function AddScreen({ navigation }) {
                     <TextInput
                       value={value}
                       error={error}
-                      onChangeText={(text) => changeValue(setTitle(text))}
+                      onChangeText={(text) => changeValue(setAttractionId2(text))}
                       placeholder=""
                       label="Название свидания"
                     />
                   )}
-                </Field>
-                {selectLove === 'Катя' && (
+                </Field> */}
+                {attractionId1 === '1' && (
                   <>
-               
-                <Text > Лучшим выбором будет начать свидание в этих ресторанах: </Text>
+                    <Text> Лучшим выбором будет начать свидание в этих ресторанах: </Text>
 
+                    <RNPickerSelect
+                      onValueChange={(value) => setAttractionId1(value)}
+                      items={[
+                        allTypes[1].name.split(' ').map((rest) => {
+                          rest.name;
+                        }),
+                      ]}
+                    />
+                    {!rest === !{} && <Text> После ресторана следует вызвать ей такси </Text>}
+                  </>
+                )}
+                {selectLove === 'Оля' && (
+                  <>
+                    <Text> Лучшим выбором будет начать свидание с прогулки по парку </Text>
+                    <RNPickerSelect
+                      onValueChange={(value) => setPark(value)}
+                      items={[
+                        {
+                          label: 'Сокольники',
+                          value: {
+                            parkLat: '55.770864',
+                            parkLng: '37.755265',
+                            parkTitle: 'Сокольники',
+                          },
+                        },
+                        {
+                          label: 'Измайловский',
+                          value: {
+                            parkLat: '55.770864',
+                            parkLng: '37.755265',
+                            parkTitle: 'Измайловский',
+                          },
+                        },
+                        {
+                          label: 'Коломенский',
+                          value: {
+                            parkLat: '55.662907',
+                            parkLng: '37.665202',
+                            parkTitle: 'Коломенский',
+                          },
+                        },
+                      ]}
+                    />
+                    {park.parkTitle === 'Сокольники' && (
+                      <>
+                        <Text>
+                          {' '}
+                          После Сокольников идеальным вариантом будет удивить ее этими местами{' '}
+                        </Text>
+                        <RNPickerSelect
+                          onValueChange={(value) => setRest(value)}
+                          items={[
+                            {
+                              label: 'Ерш',
+                              value: {
+                                restLat: '55.821612',
+                                restLng: '37.660647',
+                                restTitle: 'Ерш',
+                              },
+                            },
+                            {
+                              label: 'ДжонДжоли',
+                              value: {
+                                restLat: '55.810727',
+                                restLng: '37.638079',
+                                restTitle: 'ДжонДжоли',
+                              },
+                            },
+                            {
+                              label: 'Тануки',
+                              value: {
+                                restLat: '55.795468',
+                                restLng: '37.705499',
+                                restTitle: 'Тануки',
+                              },
+                            },
+                          ]}
+                        />
+                        <Text> Ваше свидание укомплектовано </Text>
+                      </>
+                    )}
+                  </>
+                )}
 
-                <RNPickerSelect
-                  onValueChange={(value) => setRest(value)}
-                  items={[
-                    { label: 'Якитория', value: { restLat: '55.759971', restLng: '37.611643', restTitle: 'Якитория'} },
-                    { label: 'Dr. Живаго', value: { restLat: '55.756778', restLng: '37.614279', restTitle: 'Dr. Живаго'} },
-                    { label: 'White Rabbit', value: { restLat: '55.7470578', restLng: '37.5777096', restTitle: 'White Rabbit'} },
-                  ]}
-                  />
-                {!rest == !{} && (
-                  
-                  
-                  <Text > После ресторана следует вызвать ей такси </Text>
-                  
-                  
-                  )}
-
-
-</>
-)}
-  {selectLove === 'Оля' && (
-    <>
-  <Text > Лучшим выбором будет начать свидание с прогулки по парку </Text>
-<RNPickerSelect
-onValueChange={(value) => setPark(value)}
-items={[
-  { label: 'Сокольники', value: { parkLat: '55.770864', parkLng: '37.755265', parkTitle: 'Сокольники'} },
-  { label: 'Измайловский', value: { parkLat: '55.770864', parkLng: '37.755265', parkTitle: 'Измайловский'} },
-  { label: 'Коломенский', value: { parkLat: '55.662907', parkLng: '37.665202', parkTitle: 'Коломенский'} },
-]}
-/>
-{park.parkTitle === 'Сокольники' && (
-  <>
-  <Text > После Сокольников идеальным вариантом будет удивить ее этими местами </Text>
-  <RNPickerSelect
-                  onValueChange={(value) => setRest(value)}
-                  items={[
-                    { label: 'Ерш', value: { restLat: '55.821612', restLng: '37.660647', restTitle: 'Ерш'} },
-                    { label: 'ДжонДжоли', value: { restLat: '55.810727', restLng: '37.638079', restTitle: 'ДжонДжоли'} },
-                    { label: 'Тануки', value: { restLat: '55.795468', restLng: '37.705499', restTitle: 'Тануки'} },
-                  ]}
-                  />
-                  <Text > Ваше свидание укомплектовано </Text>
-  </>
-)}
-</>
-)}
-
-
-{/* <Field id="email">
+                {/* <Field id="email">
   {({ value, error, changeValue }) => (
     <TextInput
       value={value}
@@ -166,14 +208,9 @@ items={[
                   )}
                 </Field> */}
 
-
-
                 <Submit onSubmit={onFormSubmit}>
                   {({ submit }) => <Button title="Submit" onPress={submitHandler} />}
                 </Submit>
-
-
-
               </Form>
             </Card>
           </View>

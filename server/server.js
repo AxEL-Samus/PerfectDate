@@ -1,4 +1,5 @@
 const express = require('express');
+// eslint-disable-next-line import/no-extraneous-dependencies
 const morgan = require('morgan');
 const store = require('session-file-store');
 const session = require('express-session');
@@ -6,6 +7,7 @@ const cors = require('cors');
 const indexRouter = require('./router/indexRouter');
 const dateRouter = require('./router/dateRouter');
 const userRouter = require('./router/userRouter');
+const typesRouter = require('./router/typesRouter');
 
 require('dotenv').config();
 
@@ -40,5 +42,6 @@ app.use((req, res, next) => {
 app.use('/', indexRouter);
 app.use('/api/users/', userRouter);
 app.use('/api/dates/', dateRouter);
+app.use('/api/types/', typesRouter);
 
 app.listen(PORT, () => console.log(`Server has started on PORT ${PORT}`));
