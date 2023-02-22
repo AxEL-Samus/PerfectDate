@@ -23,6 +23,45 @@ export type DatesState = {
   userId: number;
 };
 
+export type Type = {
+  id: number;
+  name: string;
+  createdAt: Date;
+  updatedAt: Date;
+};
+
+export type Attraction = {
+  id: number;
+  name: string;
+  lat: string;
+  lng: string;
+  imgUrl: string;
+  url: string;
+  typeId: number;
+  createdAt: Date;
+  updatedAt: Date;
+  Type: Type;
+};
+
+export type Date = {
+  id: number;
+  time: string;
+  userId: number;
+  loveId: number;
+  createdAt: Date;
+  updatedAt: Date;
+};
+
+export type RootObject = {
+  id: number;
+  attractionId: number;
+  dateId: number;
+  createdAt: Date;
+  updatedAt: Date;
+  Attraction: Attraction;
+  Date: Date;
+};
+
 export type DateTypeSlice = {
-  date: DatesState[];
+  date: RootObject[];
 };
