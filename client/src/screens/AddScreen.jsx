@@ -4,16 +4,10 @@ import RNPickerSelect from 'react-native-picker-select';
 import Constants from 'expo-constants';
 import { Card, TextInput, Button } from 'react-native-paper';
 import { useAppDispatch, useAppSelector } from '../redux/hook';
-
 import { Form, Field, Submit } from 'react-swift-form';
 import { useState } from 'react';
 import { Formik } from 'formik';
-
-const enterObject = {
-  1: 'ресторан',
-  2: 'парк',
-  9: 'музей',
-};
+import { getType } from '../redux/typeSlice/typeSlice';
 
 const atraction = [
   { id: 1, glo: '12.412.42', name: 'Ресторан Гоголь1', photo: 'url', typeId: 1 },
@@ -45,6 +39,7 @@ export default function AddScreen({ navigation }) {
     dispatch(getType());
   }, []);
 
+  console.log(allTypes, 'this is allTypes 666');
   return (
     <TouchableWithoutFeedback
       onPress={() => {
@@ -64,7 +59,7 @@ export default function AddScreen({ navigation }) {
           <View style={styles.container}>
             <Card style={styles.card}>
               <Form initialState={initialValues} validator={validators}>
-                {/* <Field id="love">
+                <Field id="love">
                   {({ value, error, changeValue }) => (
                     <TextInput
                       value={value}
@@ -85,123 +80,23 @@ export default function AddScreen({ navigation }) {
                       label="Название свидания"
                     />
                   )}
-                </Field> */}
+                </Field>
                 {attractionId1 === '1' && (
                   <>
                     <Text> Лучшим выбором будет начать свидание в этих ресторанах: </Text>
-
                     <RNPickerSelect
                       onValueChange={(value) => setAttractionId1(value)}
                       items={[
                         allTypes.map((type) => {
-                          type.name;
+                          {
+                            type.name;
+                          }
                         }),
                       ]}
                     />
                     {!rest === !{} && <Text> После ресторана следует вызвать ей такси </Text>}
                   </>
                 )}
-                {selectLove === 'Оля' && (
-                  <>
-                    <Text> Лучшим выбором будет начать свидание с прогулки по парку </Text>
-                    <RNPickerSelect
-                      onValueChange={(value) => setPark(value)}
-                      items={[
-                        {
-                          label: 'Сокольники',
-                          value: {
-                            parkLat: '55.770864',
-                            parkLng: '37.755265',
-                            parkTitle: 'Сокольники',
-                          },
-                        },
-                        {
-                          label: 'Измайловский',
-                          value: {
-                            parkLat: '55.770864',
-                            parkLng: '37.755265',
-                            parkTitle: 'Измайловский',
-                          },
-                        },
-                        {
-                          label: 'Коломенский',
-                          value: {
-                            parkLat: '55.662907',
-                            parkLng: '37.665202',
-                            parkTitle: 'Коломенский',
-                          },
-                        },
-                      ]}
-                    />
-                    {park.parkTitle === 'Сокольники' && (
-                      <>
-                        <Text>
-                          {' '}
-                          После Сокольников идеальным вариантом будет удивить ее этими местами{' '}
-                        </Text>
-                        <RNPickerSelect
-                          onValueChange={(value) => setRest(value)}
-                          items={[
-                            {
-                              label: 'Ерш',
-                              value: {
-                                restLat: '55.821612',
-                                restLng: '37.660647',
-                                restTitle: 'Ерш',
-                              },
-                            },
-                            {
-                              label: 'ДжонДжоли',
-                              value: {
-                                restLat: '55.810727',
-                                restLng: '37.638079',
-                                restTitle: 'ДжонДжоли',
-                              },
-                            },
-                            {
-                              label: 'Тануки',
-                              value: {
-                                restLat: '55.795468',
-                                restLng: '37.705499',
-                                restTitle: 'Тануки',
-                              },
-                            },
-                          ]}
-                        />
-                        <Text> Ваше свидание укомплектовано </Text>
-                      </>
-                    )}
-                  </>
-                )}
-
-                {/* <Field id="email">
-  {({ value, error, changeValue }) => (
-    <TextInput
-      value={value}
-      error={error}
-      onChangeText={changeValue}
-      placeholder="кинотеатр"
-      label="Время кино"
-    />
-  )}
-</Field> */}
-
-                {/* <View
-            style={styles.card}
-          >
-          </View>
-                <Field id="age">
-                  {({ value, error, changeValue }) => (
-                    <TextInput
-                      value={value}
-                      error={error}
-                      onChangeText={(text) => changeValue(parseInt(text) || 0)}
-                      placeholder="Парк"
-                      label="Парк"
-                      keyboardType="number-pad"
-                    />
-                  )}
-                </Field> */}
 
                 <Submit onSubmit={onFormSubmit}>
                   {({ submit }) => <Button title="Submit" onPress={submitHandler} />}
