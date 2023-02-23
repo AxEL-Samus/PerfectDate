@@ -22,12 +22,12 @@ attractionDatesRouter.post('/', async (req, res) => {
         dateId: newDate.id,
       },
     ]);
-    // const newDateWithAttractions = await Date.findOne({
-    //   where: { id: newDate.id },
-    //   include: Attraction,
-    // });
-    // res.json(newDateWithAttractions);
-    res.sendStatus(200);
+    const newDateWithAttractions = await Date.findOne({
+      where: { id: newDate.id },
+      include: Attraction,
+    });
+    res.json(newDateWithAttractions);
+    // res.sendStatus(200);
   } catch (error) {
     console.log(error);
     res.status(500).send({ message: 'wtf??!' });
