@@ -17,8 +17,42 @@ export default function Modules({
   kinoUrl,
   restUrl,
   el,
+  paintingCoords,
+  museumCoords,
+  questName,
+  questCoords,
 }): JSX.Element {
-  console.log('-=-=-=-==--', el);
+  console.log(
+    '-=-=-=-==--!!!',
+    'парк',
+    park,
+    'кино',
+    kinoName,
+    'кордыПарк',
+    parksCoords,
+    'кордыРест',
+    coords,
+    'пе',
+    modalVariant,
+    'мп',
+    modalVisible,
+    'пи',
+    setModalVisible,
+    'кордыКино',
+    kinoCoords,
+    'УрлаКино',
+    kinoUrl,
+    'РестУрла',
+    restUrl,
+    'впи',
+    el,
+    'Картины',
+    paintingCoords,
+    'КордыМуз',
+    museumCoords,
+    'Квест',
+    questName,
+  );
 
   const dispatch = useAppDispatch();
   return (
@@ -86,11 +120,35 @@ export default function Modules({
                   />
                   <Marker
                     coordinate={{
+                      latitude: paintingCoords.lat,
+                      longitude: paintingCoords.lng,
+                    }}
+                    pinColor="white"
+                    title="Тут выставка"
+                  />
+                  <Marker
+                    coordinate={{
+                      latitude: museumCoords.lat,
+                      longitude: museumCoords.lng,
+                    }}
+                    pinColor="white"
+                    title="Тут музей"
+                  />
+                  <Marker
+                    coordinate={{
+                      latitude: questCoords.lat,
+                      longitude: questCoords.lng,
+                    }}
+                    pinColor="white"
+                    title="Тут квест"
+                  />
+                  <Marker
+                    coordinate={{
                       latitude: kinoCoords.lat,
                       longitude: kinoCoords.lng,
                     }}
                     title={`Тут кинотеатр: ${kinoName}`}
-                    description={`Cсылка на бронь: ${(<Button>Нажми</Button>)}`}
+                    description={'Cсылка на бронь: '}
                     pinColor="blue"
                     onPress={() => Linking.openURL(kinoUrl)}
                   >
@@ -99,8 +157,16 @@ export default function Modules({
                     </Callout>
                   </Marker>
                 </MapView>
-                <Text style={styles.paragraph}>{`Ресторан: ${modalVariant} (красная метка)`}</Text>
+                {modalVariant.name === '' ? null : (
+                  <Text
+                    style={styles.paragraph}
+                  >{`Ресторан: ${modalVariant.name} (красная метка)`}</Text>
+                )}
                 <Text style={styles.paragraph}>{`Парк: ${park} (черная метка)`}</Text>
+                {kinoName.name === '' ? null : (
+                  <Text style={styles.paragraph}>{`Кино: ${kinoName.name} (черная метка)`}</Text>
+                )}
+                <Text style={styles.paragraph}>{`Квест: ${questName.name} (черная метка)`}</Text>
                 <Button
                   style={[styles.button, styles.buttonClose]}
                   onPress={() => {

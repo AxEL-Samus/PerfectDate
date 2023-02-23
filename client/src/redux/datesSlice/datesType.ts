@@ -54,12 +54,12 @@ export type Date = {
 
 export type RootObject = {
   id: number;
-  attractionId: number;
-  dateId: number;
+  time: string;
+  userId: number;
+  loveId: number;
   createdAt: Date;
   updatedAt: Date;
-  Attraction: Attraction;
-  Date: Date;
+  Attractions: Attraction[];
 };
 
 export type DateTypeSlice = {
