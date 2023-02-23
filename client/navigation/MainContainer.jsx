@@ -60,7 +60,7 @@ export default function MainContainer({ user }) {
           {isAuth ? (
             <>
               <Tab.Screen name={homeName} component={HomeScreen} />
-              {/* <Tab.Screen name={addName} component={addLove} /> */}
+              <Tab.Screen name={addName} component={AddScreen} />
               <Tab.Screen name={profileName} component={ProfileScreen} />
             </>
           ) : (
