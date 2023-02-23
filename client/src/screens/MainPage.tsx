@@ -6,7 +6,6 @@ import Modules from './Modules';
 import { useAppDispatch, useAppSelector } from '../redux/hook';
 import { setDates } from '../redux/datesSlice/datesSlice';
 import OneDateCard from './OneDateCard';
-import OneCard from './OneCard';
 
 export default function MainPage(): JSX.Element {
   const dispatch = useAppDispatch();

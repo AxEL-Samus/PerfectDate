@@ -7,6 +7,7 @@ import { useAppDispatch, useAppSelector } from '../redux/hook';
 import { Formik } from 'formik';
 import { getType } from '../redux/typeSlice/typeSlice';
 import { postAttractionDates } from '../redux/attractionDatesSlice/AttractionDatesSlice';
+import { addDate } from '../redux/datesSlice/datesSlice';
 
 export default function AddScreen({ navigation }) {
   const [attr1, setAttr1] = useState({});
@@ -25,6 +26,7 @@ export default function AddScreen({ navigation }) {
   }, []);
 
   const submitHandler = () => {
+    dispatch(addDate())//dobavit object s typom RootObject
     dispatch(postAttractionDates({ id1: attr1.id, id2: attr2.id, id3: attr3.id }));
   };
 
