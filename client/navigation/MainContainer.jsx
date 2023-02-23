@@ -16,7 +16,6 @@ import Home from '../src/screens/Home';
 import App from '../src/screens/AddLove';
 import PRNRadioForm from '../src/screens/AddLove';
 import addLove from '../src/screens/AddLove';
-import AddLoveNative from '../src/screens/AddLoveNative';
 // import AddLoveRadio from '../src/screens/AddLoveRadio';
 
 const debugCard = 'Меню отладки';
@@ -69,7 +68,7 @@ export default function MainContainer({ user }) {
               <Tab.Screen
                 name="Perfect Date"
                 // component={HomeNavigator}
-                component={AddLoveNative}
+                component={HomeNavigator}
                 options={{ headerShown: false }}
               />
               {/* <Tab.Screen

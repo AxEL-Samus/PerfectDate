@@ -8,6 +8,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import AboutUs from '../src/screens/profile/AboutUs';
 import Profile from '../src/screens/profile/Profile';
 import { Login } from '../src/screens/user/Login';
+import AddLoveNative from '../src/screens/AddLoveNative';
 
 const Stack = createNativeStackNavigator();
 
@@ -16,7 +17,7 @@ export default function ProfileStack() {
     <Stack.Navigator>
       <Stack.Screen name="Profile" component={Profile} options={{ headerShown: false }} />
       <Stack.Screen name="NameChange" component={NameChange} />
-      <Stack.Screen name="Settings" component={Settings} />
+      <Stack.Screen name="Settings" component={AddLoveNative} />
       <Stack.Screen name="Login" component={Login} />
 
       <Stack.Screen name="Push" component={Push} />
