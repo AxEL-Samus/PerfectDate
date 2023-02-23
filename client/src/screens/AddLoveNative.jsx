@@ -21,15 +21,18 @@ import RadioForm, {
 } from 'react-native-simple-radio-button';
 import { useAppDispatch, useAppSelector } from '../redux/hook';
 import RNPickerSelect from 'react-native-picker-select';
+import axios from 'axios';
+import { useWindowDimensions } from 'react-native';
+import RenderHtml from 'react-native-render-html';
 
 const initialValues = {};
 
 // 1
 export default function AddLoveNative({ navigation }) {
-  //   useEffect(() => {
-  //  axios
-  //     dispatch(findUserAction());
-  //   }, []);
+  //     useEffect(() => {
+  //    axios
+  //       dispatch(findUserAction());
+  //     }, []);
   const dispatch = useAppDispatch();
 
   const [name, setName] = useState('');
@@ -48,6 +51,17 @@ export default function AddLoveNative({ navigation }) {
   const submitHandler = () => {
     dispatch(addDate({}));
   };
+
+  const source = {
+    html: `
+    <script src="//yastatic.net/taxi-widget/ya-taxi-widget.js"></script>
+    <div className="ya-taxi-widget" data-use-location="true" data-app="3" data-redirect="1178268795219780156" data-tariff="econom" data-lang="ru" data-size="xs" data-theme="action" data-title="Вызвать такси" data-point-a="" data-point-b="37.588144,55.733842" data-ref="195.133.246.50" data-proxy-url="http://{app}.redirect.appmetrica.yandex.com/route?start-lat={start-lat}&amp;start-lon={start-lon}&amp;end-lat={end-lat}&amp;end-lon={end-lon}&amp;ref={ref}&amp;appmetrica_tracking_id={redirect}&amp;tariffClass={tariff}&amp;lang={lang}"></div>
+  <p style='text-align:center;'>
+    Hello World!
+  </p>`
+  };
+
+  const { width } = useWindowDimensions();
 
   const kinoProps = [
     {
@@ -107,19 +121,19 @@ export default function AddLoveNative({ navigation }) {
                       {
                         label: 'Девушка',
                         value: {
-                          sex: 'female',
+                          sex: 'Девушка',
                         },
                       },
                       {
                         label: 'Парень',
                         value: {
-                          sex: 'male',
+                          sex: 'Парень',
                         },
                       },
                       {
                         label: 'Небинарная личность',
                         value: {
-                          sex: 'they',
+                          sex: 'Небинарная личность',
                         },
                       },
                     ]}
@@ -208,13 +222,24 @@ export default function AddLoveNative({ navigation }) {
                 <Button
                   title="Отправить"
                   onPress={() => {
-                    Alert.alert('Успешно');
-                    submitHandler();
+                    Alert.alert('Успешно добавлено');
+                    // submitHandler();
+                    // axios.post('/api/loves', [{
+                    //   name : name,
+                    //   sex: sex},
+                    //   { 2: rest,
+                    // 1: rest, 6: walk, 10: art, 4: active, 3: lepka, 7: elbrus, 11: spa},
+                    // ]);
+                    navigation.navigate('Свидания');
                   }}
                 />
               </Form>
               {/* </Card> */}
             </View>
+            {/* <RenderHtml
+      contentWidth={width}
+      source={source}
+    /> */}
           </ScrollView>
         </>
       </Formik>
