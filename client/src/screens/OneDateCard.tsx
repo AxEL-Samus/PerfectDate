@@ -4,8 +4,9 @@ import { StyleSheet, Text, View, Image, SafeAreaView } from 'react-native';
 import Modules from './Modules';
 import axios from 'axios';
 
-export default function OneDateCard({ dateAttractions, idDate }) {
+export default function OneDateCard({ dateAttraction, idDate }) {
   const [modalVisible, setModalVisible] = useState(false);
+  const [dateAttractions, setDateAttractions] = useState(dateAttraction);
   //   const [modalVariant, setModalVariant] = useState({});
   //   const [coords, setCoords] = useState({});
   //   const [parksCoords, setParksCoords] = useState({});
@@ -124,12 +125,15 @@ export default function OneDateCard({ dateAttractions, idDate }) {
                 <Image
                   style={styles.img2}
                   source={{
-                    uri: el1.Type.name === 'Ресторан' || 'Кино' ? el1.imgUrl : '',
+                    uri:
+                      el1.Type.name === 'Ресторан' || 'Кино'
+                        ? el1.imgUrl
+                        : 'https://psyfactor.org/lib/i/xsvidanie2.jpg.pagespeed.ic.3qILHEs0uQ.jpg',
                   }}
                 />
               ) : null,
             )}
-            <Text style={styles.paragraph}>{`Ваше свидание: ${idDate}`}</Text>
+            <Text style={styles.paragraph}>{`Ваше свидание: ${dateAttractions.id}`}</Text>
             <Button
               style={[styles.button, styles.buttonClose]}
               onPress={() => setModalVisible(true)}

@@ -32,7 +32,7 @@ export default function MainPage(): JSX.Element {
     <>
       <ScrollView>
         {dates.map((el) => (
-          <OneDateCard key={el.id} dateAttractions={el} idDate={el.id} />
+          <OneDateCard key={el.id} dateAttraction={el} idDate={el.id} />
         ))}
       </ScrollView>
     </>
