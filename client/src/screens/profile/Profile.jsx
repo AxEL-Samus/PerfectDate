@@ -93,7 +93,7 @@ export default function Profile({ navigation }) {
           onPress={() => navigation.navigate('Love')}
           style={{ fontSize: 26, fontWeight: 'bold' }}
         >
-          Настроить интересы
+          Настройка интересов
         </Text>
       </View>
       
