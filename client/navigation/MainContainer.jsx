@@ -13,6 +13,11 @@ import { Login } from '../src/screens/user/Login';
 import { Register } from '../src/screens/user/Register';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Home from '../src/screens/Home';
+import App from '../src/screens/AddLove';
+import PRNRadioForm from '../src/screens/AddLove';
+import addLove from '../src/screens/AddLove';
+import AddLoveNative from '../src/screens/AddLoveNative';
+// import AddLoveRadio from '../src/screens/AddLoveRadio';
 
 const debugCard = 'Меню отладки';
 const profileName = 'Профиль';
@@ -56,17 +61,23 @@ export default function MainContainer({ user }) {
           {isAuth ? (
             <>
               <Tab.Screen name={homeName} component={HomeScreen} />
-              <Tab.Screen name={addName} component={AddScreen} />
+              {/* <Tab.Screen name={addName} component={addLove} /> */}
               <Tab.Screen name={profileName} component={ProfileScreen} />
             </>
           ) : (
             <>
               <Tab.Screen
                 name="Perfect Date"
-                component={HomeNavigator}
+                // component={HomeNavigator}
+                component={AddLoveNative}
                 options={{ headerShown: false }}
               />
               {/* <Tab.Screen
+                name="Perfect Date"
+                component={addLove}
+                options={{ headerShown: false }}
+              /> */}
+              {/* <Tab.Screenr
                 name="Perfect Date"
                 component={AuthNavigator}
                 options={{ headerShown: false }}

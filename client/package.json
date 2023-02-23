@@ -9,6 +9,7 @@
     "web": "expo start --web"
   },
   "dependencies": {
+    "@react-native-community/checkbox": "^0.5.14",
     "@react-native-picker/picker": "^2.4.8",
     "@react-navigation/bottom-tabs": "^6.5.5",
     "@react-navigation/native": "^6.1.4",
@@ -26,9 +27,12 @@
     "npm": "^9.5.0",
     "react": "18.1.0",
     "react-native": "^0.70.5",
+    "react-native-button": "^3.0.1",
+    "react-native-checkbox-form": "^1.1.5",
     "react-native-maps": "^1.4.0",
     "react-native-paper": "^5.2.0",
     "react-native-picker-select": "^8.0.4",
+    "react-native-simple-radio-button": "^2.7.4",
     "react-native-vector-icons": "^9.2.0",
     "react-navigation": "^4.4.4",
     "react-navigation-stack": "^2.10.4",
