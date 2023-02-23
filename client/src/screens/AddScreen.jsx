@@ -1,5 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, StyleSheet, TouchableWithoutFeedback, Keyboard } from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  TouchableWithoutFeedback,
+  Keyboard,
+  TouchableOpacity,
+} from 'react-native';
 import RNPickerSelect from 'react-native-picker-select';
 import Constants from 'expo-constants';
 import { Card } from 'react-native-paper';
@@ -38,14 +45,21 @@ export default function AddScreen({ navigation }) {
     >
       {({ handleSubmit }) => (
         <>
-          <View style={{ display: 'flex', justifyContent: 'center' }}>
+          <View
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              height: '70%',
+            }}
+          >
             <Card
               style={{
-                alignItems: 'center',
-                margin: 20,
                 width: 350,
-                height: 50,
-                backgroundColor: 'lightblue',
+                height: 70,
+                marginTop: 20,
+                alignSelf: 'center',
+                shadowOpacity: 1,
+                shadowColor: 'lightgrey',
               }}
             >
               {allTypes
@@ -53,7 +67,9 @@ export default function AddScreen({ navigation }) {
                 .map((type) => (
                   <>
                     <View>
-                      <Text style={{ fontSize: '20' }}>Выберите {type.name}</Text>
+                      <Text style={{ fontSize: '20', alignSelf: 'center' }}>
+                        Выберите {type.name}
+                      </Text>
                     </View>
                     <RNPickerSelect
                       onValueChange={(value) => setAttr1(value)}
@@ -67,11 +83,12 @@ export default function AddScreen({ navigation }) {
             </Card>
             <Card
               style={{
-                alignItems: 'center',
-                margin: 20,
                 width: 350,
-                height: 50,
-                backgroundColor: 'lightblue',
+                height: 70,
+                marginTop: 20,
+                alignSelf: 'center',
+                shadowOpacity: 1,
+                shadowColor: 'lightgrey',
               }}
             >
               {allTypes
@@ -79,7 +96,9 @@ export default function AddScreen({ navigation }) {
                 .map((type) => (
                   <>
                     <View>
-                      <Text style={{ fontSize: '20' }}>Выберите {type.name}</Text>
+                      <Text style={{ fontSize: '20', alignSelf: 'center' }}>
+                        Выберите {type.name}
+                      </Text>
                     </View>
                     <RNPickerSelect
                       onValueChange={(value) => setAttr2(value)}
@@ -93,11 +112,12 @@ export default function AddScreen({ navigation }) {
             </Card>
             <Card
               style={{
-                alignItems: 'center',
-                margin: 20,
                 width: 350,
-                height: 50,
-                backgroundColor: 'lightblue',
+                height: 70,
+                marginTop: 20,
+                alignSelf: 'center',
+                shadowOpacity: 1,
+                shadowColor: 'lightgrey',
               }}
             >
               {allTypes
@@ -105,7 +125,9 @@ export default function AddScreen({ navigation }) {
                 .map((type) => (
                   <>
                     <View>
-                      <Text style={{ fontSize: '20' }}>Выберите {type.name}</Text>
+                      <Text style={{ fontSize: '20', alignSelf: 'center' }}>
+                        Выберите {type.name}
+                      </Text>
                     </View>
                     <RNPickerSelect
                       onValueChange={(value) => setAttr3(value)}
@@ -117,10 +139,30 @@ export default function AddScreen({ navigation }) {
                   </>
                 ))}
             </Card>
+            <Card
+              style={{
+                width: 100,
+                height: 50,
+                marginTop: 20,
+                alignSelf: 'center',
+                shadowOpacity: 1,
+                shadowColor: 'lightgrey',
+              }}
+            >
+              <TouchableOpacity>
+                <Text
+                  style={{
+                    fontSize: 30,
+                    alignItems: 'center',
+                    padding: 6,
+                  }}
+                  onPress={() => ({ handleSubmit }, navigation.navigate('Свидания'))}
+                >
+                  Далее
+                </Text>
+              </TouchableOpacity>
+            </Card>
           </View>
-          <Text style={{ fontSize: 30 }} onPress={handleSubmit}>
-            Далее
-          </Text>
         </>
       )}
     </Formik>

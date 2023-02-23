@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
-import { View, Text, Image } from 'react-native';
+import { View, Text, Image, TouchableOpacity } from 'react-native';
+import { Card } from 'react-native-paper';
 import { useAppDispatch, useAppSelector } from '../../redux/hook';
 import { removeUserFirestorm } from '../../redux/userSlice/fireStormSlice';
 import { findUserAction, logoutAction } from '../../redux/userSlice/userSlice';
@@ -15,141 +16,109 @@ export default function Profile({ navigation }) {
       style={{
         display: 'flex',
         flexDirection: 'column',
-        // height: '70%',
-        position: 'absolute',
       }}
     >
-      <View
+      <Card
         style={{
-          flex: 1,
-          alignItems: 'center',
-          justifyContent: 'center',
-          alignItems: 'center',
-          marginHorizontal: 20,
-          marginTop: 10,
-          borderWidth: 2,
-          borderRadius: 20,
           width: 350,
-          height: 90,
-          position: 'relative',
-          backgroundColor: 'lightgrey',
+          height: 70,
+          marginTop: 20,
+          alignSelf: 'center',
+          shadowOpacity: 1,
+          shadowColor: 'lightgrey',
         }}
       >
         <Image
           source={{
-            uri: 'https://cdn-icons-png.flaticon.com/512/149/149452.png',
+            uri: 'https://sun1-89.userapi.com/impg/VJtz54ZIDDcc7uwXwKAoj4sG3EH1XD9M1fD9vA/2EvUKWUz5d4.jpg?size=50x0&quality=96&crop=0,0,750,750&sign=adf77455259f834cf24bee6303031a61&ava=1',
           }}
-          style={{ width: 60, height: 60, position: 'relative' }}
-          onPress={() => console.log('1')}
         />
         <Text
           onPress={() => navigation.navigate('NameChange')}
-          style={{ fontSize: 20, fontWeight: 'bold' }}
+          style={{ fontSize: '20', alignSelf: 'center', padding: 20 }}
         >
           {user.email}
         </Text>
-      </View>
-      <View
+      </Card>
+      <Card
         style={{
-          flex: 1,
-          alignItems: 'center',
-          justifyContent: 'center',
-          alignItems: 'center',
-          marginHorizontal: 20,
-          marginTop: 10,
-          borderWidth: 2,
-          borderRadius: 20,
           width: 350,
-          height: 90,
-          position: 'relative',
-          backgroundColor: 'lightgrey',
+          height: 70,
+          marginTop: 20,
+          alignSelf: 'center',
+          shadowOpacity: 1,
+          shadowColor: 'lightgrey',
         }}
       >
         <Text
           onPress={() => navigation.navigate('StyleSettings')}
-          style={{ fontSize: 26, fontWeight: 'bold' }}
+          style={{ fontSize: '20', alignSelf: 'center', padding: 20 }}
         >
           Настройки стилей
         </Text>
-      </View>
-      <View
+      </Card>
+      <Card
         style={{
-          flex: 1,
-          alignItems: 'center',
-          justifyContent: 'center',
-          alignItems: 'center',
-          marginHorizontal: 20,
-          marginTop: 10,
-          marginBottom: 10,
-          borderWidth: 2,
-          borderRadius: 20,
           width: 350,
-          height: 90,
-          position: 'relative',
-          backgroundColor: 'lightgrey',
+          height: 70,
+          marginTop: 20,
+          alignSelf: 'center',
+          shadowOpacity: 1,
+          shadowColor: 'lightgrey',
         }}
       >
         <Text
           onPress={() => navigation.navigate('Love')}
-          style={{ fontSize: 26, fontWeight: 'bold' }}
+          style={{ fontSize: '20', alignSelf: 'center', padding: 20 }}
         >
           Настройка интересов
         </Text>
-      </View>
-      
-      <View
+      </Card>
+
+      <Card
         style={{
-          flex: 1,
-          alignItems: 'center',
-          justifyContent: 'center',
-          alignItems: 'center',
-          marginHorizontal: 20,
-          marginTop: 2,
-          marginBottom: 10,
-          borderWidth: 2,
-          borderRadius: 20,
           width: 350,
-          height: 90,
-          position: 'relative',
-          backgroundColor: 'lightgrey',
+          height: 70,
+          marginTop: 20,
+          alignSelf: 'center',
+          shadowOpacity: 1,
+          shadowColor: 'lightgrey',
         }}
       >
         <Text
           onPress={() => navigation.navigate('AboutUs')}
-          style={{ fontSize: 26, fontWeight: 'bold' }}
+          style={{ fontSize: '20', alignSelf: 'center', padding: 20 }}
         >
           О нас
         </Text>
-      </View>
-      <View
+      </Card>
+      <Card
         style={{
-          // flex: 1,
-          // alignItems: 'center',
-          justifyContent: 'center',
-          alignItems: 'center',
-          marginHorizontal: 20,
-          // marginTop: 10,
-          borderWidth: 2,
-          borderRadius: 20,
-          width: 150,
+          width: 100,
           height: 50,
-          backgroundColor: 'lightgrey',
-          // position: 'relative',
-          marginLeft: 120,
-          marginTop: 280,
+          marginTop: 20,
+          alignSelf: 'center',
+          shadowOpacity: 1,
+          shadowColor: 'lightgrey',
         }}
       >
-        <Text
-          onPress={() => {
-            dispatch(logoutAction());
-            dispatch(removeUserFirestorm());
-            navigation.navigate('Login');
-          }}
-          style={{ fontSize: 26, fontWeight: 'bold' }}
-        >
-          Выйти
-        </Text>
-      </View>
+        <TouchableOpacity>
+          <Text
+            style={{
+              fontSize: '20',
+              alignSelf: 'center',
+              padding: 12,
+            }}
+            onPress={() => {
+              dispatch(logoutAction());
+              dispatch(removeUserFirestorm());
+              navigation.navigate('Login');
+            }}
+          >
+            Выйти
+          </Text>
+        </TouchableOpacity>
+      </Card>
     </View>
   );
 }
