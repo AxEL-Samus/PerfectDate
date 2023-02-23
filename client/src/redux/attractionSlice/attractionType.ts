@@ -11,3 +11,4 @@ export type AttractionType = {
 export type AttractionTypeSlice = {
   attraction: AttractionType[];
 };
+
