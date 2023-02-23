@@ -6,7 +6,7 @@ import { Card } from 'react-native-paper';
 import { useAppDispatch, useAppSelector } from '../redux/hook';
 import { Formik } from 'formik';
 import { getType } from '../redux/typeSlice/typeSlice';
-import { addAttractionAction } from '../redux/attractionSlice/attractionSlice';
+import { addAttractionDates } from '../redux/attractionDatesSlice/AttractionDatesSlice';
 
 export default function AddScreen({ navigation }) {
   const [attr1, setAttr1] = useState({});
@@ -25,7 +25,7 @@ export default function AddScreen({ navigation }) {
   }, []);
 
   const submitHandler = () => {
-    dispatch(addAttractionAction({ id1: attr1, id2: attr2, id3: attr3 }));
+    dispatch(addAttractionDates({ id1: attr1, id2: attr2, id3: attr3 }));
   };
 
   return (
