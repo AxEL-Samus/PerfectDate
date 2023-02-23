@@ -21,11 +21,16 @@ export const AttractionDatesSlice = createSlice({
 
 export const { addAttractionDates } = AttractionDatesSlice.actions;
 
-export const postAttractionDates = (): AppThunk => (dispatch) => {
-  axios
-    .post<AttractionDatesType>('/api/attractiondates')
-    .then((res) => dispatch(addAttractionDates(res.data)))
-    .catch(console.log);
-};
+export const postAttractionDates =
+  ({ id1: attr1, id2: attr2, id3: attr3 }): AppThunk =>
+  (dispatch) => {
+    axios
+      .post<AttractionDatesType>('/api/attractiondates', { id1: attr1, id2: attr2, id3: attr3 })
+      .then((res) => {
+        console.log(res.data, '134652346');
+        dispatch(addAttractionDates(res.data));
+      })
+      .catch(console.log);
+  };
 
 export default AttractionDatesSlice.reducer;

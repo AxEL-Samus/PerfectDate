@@ -60,18 +60,11 @@ export default function MainContainer({ user }) {
               <Tab.Screen name={profileName} component={ProfileScreen} />
             </>
           ) : (
-            <>
-              <Tab.Screen
-                name="Perfect Date"
-                component={HomeNavigator}
-                options={{ headerShown: false }}
-              />
-              {/* <Tab.Screen
-                name="Perfect Date"
-                component={AuthNavigator}
-                options={{ headerShown: false }}
-              /> */}
-            </>
+            <Tab.Screen
+              name="Perfect Date"
+              component={HomeNavigator}
+              options={{ headerShown: false }}
+            />
           )}
         </Tab.Navigator>
       </NavigationContainer>
