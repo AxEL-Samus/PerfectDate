@@ -16,7 +16,7 @@ export default function MainPage(): JSX.Element {
   console.log('=-=-=-=-=-=-=-=--=', dates);
   const dateId1 = [];
   dates.map((date) => {
-    if (!dateId1.filter((el) => el.dateId1 === date.dateId).length) dateId1.push(date);
+    if (!dateId1.filter((el) => el.dateId === date.dateId).length) dateId1.push(date);
   });
   return (
     <>

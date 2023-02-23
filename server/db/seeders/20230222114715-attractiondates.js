@@ -11,19 +11,31 @@ module.exports = {
           updatedAt: new Date(),
         },
         {
-          attractionId: 2,
+          attractionId: 9,
           dateId: 1,
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
-          attractionId: 3,
+          attractionId: 20,
           dateId: 1,
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
+          attractionId: 27,
+          dateId: 2,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
           attractionId: 3,
+          dateId: 2,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          attractionId: 13,
           dateId: 2,
           createdAt: new Date(),
           updatedAt: new Date(),
