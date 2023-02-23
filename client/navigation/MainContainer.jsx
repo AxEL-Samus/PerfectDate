@@ -15,7 +15,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Home from '../src/screens/Home';
 import App from '../src/screens/AddLove';
 import PRNRadioForm from '../src/screens/AddLove';
-import addLove from '../src/screens/AddLove';
+import MainPage from '../src/screens/MainPage';
 // import AddLoveRadio from '../src/screens/AddLoveRadio';
 
 const debugCard = 'Меню отладки';
@@ -51,10 +51,9 @@ export default function MainContainer({ user }) {
             },
           })}
           tabBarOptions={{
-            activeTintColor: 'blue',
             inactiveTintColor: 'grey',
             labelStyle: { paddingBottom: 10, fontSize: 10 },
-            style: { padding: 10, height: 70 },
+            style: { padding: 0, height: 70 },
           }}
         >
           {isAuth ? (
@@ -64,25 +63,11 @@ export default function MainContainer({ user }) {
               <Tab.Screen name={profileName} component={ProfileScreen} />
             </>
           ) : (
-
-            <>
-              <Tab.Screen
-                name="Perfect Date"
-                // component={HomeNavigator}
-                component={HomeNavigator}
-                options={{ headerShown: false }}
-              />
-              {/* <Tab.Screen
-                name="Perfect Date"
-                component={addLove}
-                options={{ headerShown: false }}
-              /> */}
-              {/* <Tab.Screenr
-                name="Perfect Date"
-                component={AuthNavigator}
-                options={{ headerShown: false }}
-              /> */}
-            </>
+            <Tab.Screen
+              name="Perfect Date"
+              component={HomeNavigator}
+              options={{ headerShown: false }}
+            />
           )}
         </Tab.Navigator>
       </NavigationContainer>
@@ -107,6 +92,15 @@ function HomeNavigator() {
       <AuthStack.Screen name="Home" component={Home} />
       <AuthStack.Screen name="Login" component={Login} />
       <AuthStack.Screen name="Register" component={Register} />
+    </AuthStack.Navigator>
+  );
+}
+
+function AddToMainNavigator() {
+  return (
+    <AuthStack.Navigator initialRouteName="AddScreen">
+      <AuthStack.Screen name="AddScreen" component={AddScreen} />
+      <AuthStack.Screen name="MainPage" component={MainPage} />
     </AuthStack.Navigator>
   );
 }

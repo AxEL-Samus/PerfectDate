@@ -5,9 +5,11 @@ import Constants from 'expo-constants';
 import { Button, Card, TextInput } from 'react-native-paper';
 import { Form, Field, Submit } from 'react-swift-form';
 import { Formik } from 'formik';
-import RadioForm, {RadioButton, RadioButtonInput, RadioButtonLabel} from 'react-native-simple-radio-button';
-
-
+import RadioForm, {
+  RadioButton,
+  RadioButtonInput,
+  RadioButtonLabel,
+} from 'react-native-simple-radio-button';
 
 const kinoData = [
   {
@@ -104,26 +106,23 @@ const artData = [
   },
 ];
 
-
 const onFormSubmit = (values) => {
   alert(JSON.stringify(values, null, 2));
 };
 
 const submitHandler = () => {
-  dispatch(addDate({ kinoData, restData, walkData, artData}));
+  dispatch(addDate({ kinoData, restData, walkData, artData }));
 };
 
 const radio_props = [
-  {label: 'param1', value: 0 },
-  {label: 'param2', value: 1 }
+  { label: 'param1', value: 0 },
+  { label: 'param2', value: 1 },
 ];
 
 export default class addLove extends Component {
-
   _onSelect = (item) => {
     console.log(item);
   };
-
 
   render() {
     return (
@@ -209,13 +208,15 @@ export default class addLove extends Component {
                 </View>
                 <View>
                   <>
-          <RadioForm
-            radio_props={radio_props}
-            initial={0}
-            onPress={(value) => {this.setState({value:value})}}
-          />
-      </>
-        </View>
+                    <RadioForm
+                      radio_props={radio_props}
+                      initial={0}
+                      onPress={(value) => {
+                        this.setState({ value: value });
+                      }}
+                    />
+                  </>
+                </View>
               </Card>
             </View>
           </>
