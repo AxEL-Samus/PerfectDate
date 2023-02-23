@@ -5,9 +5,9 @@ const loveRouter = express.Router();
 
 loveRouter.post('/', async (req, res) => {
     const { id } = req.session.user;
-  const { name, sex } = { ...req.body };
+  const { name, sex, pref } = { ...req.body };
   try {
-    const newLove = await Love.create({ name, sex, userId: id });
+    await Love.create({ name, sex, userId: id, pref });
 
     // res.json(newLove);
   } catch (error) {

@@ -71,7 +71,7 @@ export default function Profile({ navigation }) {
           onPress={() => navigation.navigate('Love')}
           style={{ fontSize: '20', alignSelf: 'center', padding: 20 }}
         >
-          Настроить интересы
+          Настройка интересов
         </Text>
       </Card>
 
