@@ -6,7 +6,7 @@ import { findUserAction, logoutAction } from '../../redux/userSlice/userSlice';
 
 export default function Profile({ navigation }) {
   const dispatch = useAppDispatch();
-  const user = useAppSelector((store) => store.userSlice);
+  const user = useAppSelector((store) => store.userFirestorm);
   useEffect(() => {
     dispatch(findUserAction());
   }, []);
@@ -46,7 +46,7 @@ export default function Profile({ navigation }) {
           onPress={() => navigation.navigate('NameChange')}
           style={{ fontSize: 20, fontWeight: 'bold' }}
         >
-          {`${user.name}`}
+          {user.email}
         </Text>
       </View>
       <View
