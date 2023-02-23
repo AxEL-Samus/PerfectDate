@@ -15,10 +15,10 @@ export default function OneDateCard({ oneDate }) {
   const [kinoUrl, setKinoUrl] = useState('');
   const [restUrl, setRestUrl] = useState('');
   const [isSelectedModule, setIsSelectedModule] = useState(false);
-//   const [oneDate, setOneDate] = useState(oneDates);
-//   useEffect(() => {
-//     axios(`/api/dates/${oneDate.id}`).then((res) => setOneDate(res.data));
-//   }, []);
+  //   const [oneDate, setOneDate] = useState(oneDates);
+  //   useEffect(() => {
+  //     axios(`/api/dates/${oneDate.id}`).then((res) => setOneDate(res.data));
+  //   }, []);
   return (
     <>
       <SafeAreaView style={styles.container1}>
@@ -31,7 +31,7 @@ export default function OneDateCard({ oneDate }) {
             <Image
               style={styles.img2}
               source={{
-                uri: oneDate.Attraction.Type.name === 'Ресторан' ? oneDate.Attraction.imgUrl : '',
+                uri: oneDate.Attraction.Type.name === 'Рестороан' ? oneDate.Attraction.imgUrl : '',
               }}
             />
             <Text style={styles.paragraph}>{`Ваше свидание: ${oneDate.dateId}`}</Text>
@@ -39,8 +39,8 @@ export default function OneDateCard({ oneDate }) {
               style={[styles.button, styles.buttonClose]}
               onPress={() => {
                 setCoords({
-                  lat: oneDate.Attraction.Type.name === 'Ресторан' ? oneDate.Attraction.lat : '',
-                  lng: oneDate.Attraction.Type.name === 'Ресторан' ? oneDate.Attraction.lng : '',
+                  lat: oneDate.Attraction.Type.name === 'Рестороан' ? oneDate.Attraction.lat : '',
+                  lng: oneDate.Attraction.Type.name === 'Рестороан' ? oneDate.Attraction.lng : '',
                 });
                 setParksCoords({
                   lat: oneDate.Attraction.Type.name === 'Парк' ? oneDate.Attraction.lat : '',
@@ -52,11 +52,11 @@ export default function OneDateCard({ oneDate }) {
                 });
                 setKinoUrl(oneDate.Attraction.Type.name === 'Кино' ? oneDate.Attraction.url : '');
                 setRestUrl(
-                  oneDate.Attraction.Type.name === 'Ресторан' ? oneDate.Attraction.url : '',
+                  oneDate.Attraction.Type.name === 'Рестороан' ? oneDate.Attraction.url : '',
                 );
                 setPark(oneDate.Attraction.Type.name === 'Парк' ? oneDate.Attraction.name : '');
                 setModalVariant(
-                  oneDate.Attraction.Type.name === 'Ресторан' ? oneDate.Attraction.name : '',
+                  oneDate.Attraction.Type.name === 'Рестороан' ? oneDate.Attraction.name : '',
                 );
                 setKinoName({
                   name: oneDate.Attraction.Type.name === 'Кино' ? oneDate.Attraction.name : '',

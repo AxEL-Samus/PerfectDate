@@ -41,7 +41,7 @@ dateRouter
   .route('/:id')
   .get(async (req, res) => {
     try {
-      const oneDate = await Date.findByPk(req.params.id);
+      const oneDate = await AttractionDate.findByPk(req.params.id);
       res.json(oneDate);
     } catch (error) {
       console.log(error);

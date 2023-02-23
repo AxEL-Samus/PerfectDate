@@ -36,7 +36,7 @@ export const deleteCard =
   (id: number): AppThunk =>
   (dispatch) => {
     axios
-      .delete(`/api/dates/${id}`)
+      .delete<RootObject['id']>(`/api/dates/${id}`)
       .then(() => dispatch(deleteOneCard(id)))
       .catch(console.log);
   };

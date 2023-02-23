@@ -22,17 +22,17 @@ export default function Modules({
 
   const dispatch = useAppDispatch();
   return (
-    <ScrollView>
-      <SafeAreaView
+    <SafeAreaView
+      style={{
+        backgroundColor: 'rgba(0,0,0, 0.8)',
+      }}
+    >
+      <View
         style={{
           backgroundColor: 'rgba(0,0,0, 0.8)',
         }}
       >
-        <View
-          style={{
-            backgroundColor: 'rgba(0,0,0, 0.8)',
-          }}
-        >
+        <ScrollView>
           <Modal
             animationType="fade"
             transparent={true}
@@ -119,9 +119,9 @@ export default function Modules({
               </Card>
             </View>
           </Modal>
-        </View>
-      </SafeAreaView>
-    </ScrollView>
+        </ScrollView>
+      </View>
+    </SafeAreaView>
   );
 }
 
