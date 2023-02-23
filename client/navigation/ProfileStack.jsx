@@ -17,10 +17,11 @@ export default function ProfileStack() {
     <Stack.Navigator>
       <Stack.Screen name="Profile" component={Profile} options={{ headerShown: false }} />
       <Stack.Screen name="NameChange" component={NameChange} />
-      <Stack.Screen name="Settings" component={AddLoveNative} />
+      {/* <Stack.Screen name="Settings" component={AddLoveNative} /> */}
       <Stack.Screen name="Login" component={Login} />
 
       <Stack.Screen name="Push" component={Push} />
+      <Stack.Screen name="Love" component={AddLoveNative} options={{ headerShown: false }}/>
       <Stack.Screen name="StyleSettings" component={StyleSettings} />
       <Stack.Screen name="AboutUs" component={AboutUs} />
     </Stack.Navigator>
