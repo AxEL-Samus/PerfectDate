@@ -31,7 +31,7 @@ export default function OneDateCard({ oneDate }) {
             <Image
               style={styles.img2}
               source={{
-                uri: oneDate.Attraction.Type.name === 'Рестороан' ? oneDate.Attraction.imgUrl : '',
+                uri: oneDate.Attraction.Type.name === 'Ресторан' ? oneDate.Attraction.imgUrl : '',
               }}
             />
             <Text style={styles.paragraph}>{`Ваше свидание: ${oneDate.dateId}`}</Text>
@@ -39,8 +39,8 @@ export default function OneDateCard({ oneDate }) {
               style={[styles.button, styles.buttonClose]}
               onPress={() => {
                 setCoords({
-                  lat: oneDate.Attraction.Type.name === 'Рестороан' ? oneDate.Attraction.lat : '',
-                  lng: oneDate.Attraction.Type.name === 'Рестороан' ? oneDate.Attraction.lng : '',
+                  lat: oneDate.Attraction.Type.name === 'Ресторан' ? oneDate.Attraction.lat : '',
+                  lng: oneDate.Attraction.Type.name === 'Ресторан' ? oneDate.Attraction.lng : '',
                 });
                 setParksCoords({
                   lat: oneDate.Attraction.Type.name === 'Парк' ? oneDate.Attraction.lat : '',
@@ -52,11 +52,11 @@ export default function OneDateCard({ oneDate }) {
                 });
                 setKinoUrl(oneDate.Attraction.Type.name === 'Кино' ? oneDate.Attraction.url : '');
                 setRestUrl(
-                  oneDate.Attraction.Type.name === 'Рестороан' ? oneDate.Attraction.url : '',
+                  oneDate.Attraction.Type.name === 'Ресторан' ? oneDate.Attraction.url : '',
                 );
                 setPark(oneDate.Attraction.Type.name === 'Парк' ? oneDate.Attraction.name : '');
                 setModalVariant(
-                  oneDate.Attraction.Type.name === 'Рестороан' ? oneDate.Attraction.name : '',
+                  oneDate.Attraction.Type.name === 'Ресторан' ? oneDate.Attraction.name : '',
                 );
                 setKinoName({
                   name: oneDate.Attraction.Type.name === 'Кино' ? oneDate.Attraction.name : '',
