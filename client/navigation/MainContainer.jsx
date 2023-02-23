@@ -15,7 +15,6 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Home from '../src/screens/Home';
 import App from '../src/screens/AddLove';
 import PRNRadioForm from '../src/screens/AddLove';
-import addLove from '../src/screens/AddLove';
 // import AddLoveRadio from '../src/screens/AddLoveRadio';
 
 const debugCard = 'Меню отладки';
@@ -51,10 +50,9 @@ export default function MainContainer({ user }) {
             },
           })}
           tabBarOptions={{
-            activeTintColor: 'blue',
             inactiveTintColor: 'grey',
             labelStyle: { paddingBottom: 10, fontSize: 10 },
-            style: { padding: 10, height: 70 },
+            style: { padding: 0, height: 70 },
           }}
         >
           {isAuth ? (
