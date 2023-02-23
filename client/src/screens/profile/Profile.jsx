@@ -90,6 +90,31 @@ export default function Profile({ navigation }) {
         }}
       >
         <Text
+          onPress={() => navigation.navigate('Love')}
+          style={{ fontSize: 26, fontWeight: 'bold' }}
+        >
+          Настроить интересы
+        </Text>
+      </View>
+      
+      <View
+        style={{
+          flex: 1,
+          alignItems: 'center',
+          justifyContent: 'center',
+          alignItems: 'center',
+          marginHorizontal: 20,
+          marginTop: 2,
+          marginBottom: 10,
+          borderWidth: 2,
+          borderRadius: 20,
+          width: 350,
+          height: 90,
+          position: 'relative',
+          backgroundColor: 'lightgrey',
+        }}
+      >
+        <Text
           onPress={() => navigation.navigate('AboutUs')}
           style={{ fontSize: 26, fontWeight: 'bold' }}
         >

@@ -13,16 +13,25 @@ export default function MainPage(): JSX.Element {
   useEffect(() => {
     dispatch(setDates());
   }, []);
-  console.log('=-=-=-=-=-=-=-=--=', dates);
-  const dateId1 = [];
-  dates.map((date) => {
-    if (!dateId1.filter((el) => el.dateId1 === date.dateId).length) dateId1.push(date);
-  });
+  console.log('=-=-=-=-=-=-=-=--=//', dates);
+  // const lol = dates.filter((el) => el.dateId === dates);
+  // console.log('1234567890-', lol);
+
+  // const dateId1 = [];
+  // dates.map((date) => {
+  //   if (!dateId1.filter((el) => el.dateId === date.dateId).length) dateId1.push(date);
+  // });
+  // const dateId = [];
+  // const dateId1 = dates.filter((date) =>
+  //   date.dateId === date.Date.id ? dateId.push(date.Attraction) : null,
+  // );
+  // console.log('========/../././././.', dateId);
+
   return (
     <>
       <ScrollView>
-        {dateId1.map((el) => (
-          <OneDateCard key={el.id} oneDate={el} />
+        {dates.map((el) => (
+          <OneDateCard key={el.id} oneDate={el.Attractions.map((el1) => el1)} idDate={el.id} />
         ))}
       </ScrollView>
     </>

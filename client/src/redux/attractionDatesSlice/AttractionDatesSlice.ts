@@ -21,6 +21,7 @@ export const AttractionDatesSlice = createSlice({
 
 export const { addAttractionDates } = AttractionDatesSlice.actions;
 
+
 export const postAttractionDates =
   ({ id1: attr1, id2: attr2, id3: attr3 }): AppThunk =>
   (dispatch) => {
@@ -32,5 +33,6 @@ export const postAttractionDates =
       })
       .catch(console.log);
   };
+
 
 export default AttractionDatesSlice.reducer;
