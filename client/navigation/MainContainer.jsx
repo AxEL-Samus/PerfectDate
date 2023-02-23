@@ -64,6 +64,7 @@ export default function MainContainer({ user }) {
               <Tab.Screen name={profileName} component={ProfileScreen} />
             </>
           ) : (
+
             <>
               <Tab.Screen
                 name="Perfect Date"
