@@ -23,9 +23,9 @@ export default function Modules({
   // questName,
   // questCoords,
 }): JSX.Element {
-  // const dispatch = useAppDispatch();
-  console.log('00000000000000000000', dateAttractions);
-  console.log('=======>', dateAttractions.Attractions[0].Type.name);
+  // // const dispatch = useAppDispatch();
+  // console.log('00000000000000000000', dateAttractions);
+  // console.log('=======>', dateAttractions.Attractions[0].Type.name);
   return (
     <SafeAreaView
       style={{

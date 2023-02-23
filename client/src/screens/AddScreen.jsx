@@ -156,7 +156,7 @@ export default function AddScreen({ navigation }) {
                     alignItems: 'center',
                     padding: 6,
                   }}
-                  onPress={handleSubmit}
+                  onPress={() => ({ handleSubmit }, navigation.navigate('Свидания'))}
                 >
                   Далее
                 </Text>
