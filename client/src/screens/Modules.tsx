@@ -69,11 +69,11 @@ export default function Modules({
                       longitude: coords.lng,
                     }}
                     pinColor="red"
-                    title={`Тут рестороан: ${modalVariant}`}
+                    title={`Тут Ресторан: ${modalVariant}`}
                     onPress={() => Linking.openURL(restUrl)}
                   >
                     <Callout>
-                      <Button>{`Тут рестороан: ${modalVariant}`}</Button>
+                      <Button>{`Тут Ресторан: ${modalVariant}`}</Button>
                     </Callout>
                   </Marker>
                   <Marker

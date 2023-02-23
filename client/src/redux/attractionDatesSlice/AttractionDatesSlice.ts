@@ -13,15 +13,17 @@ export const AttractionDatesSlice = createSlice({
   name: 'attractionDates',
   initialState,
   reducers: {
-    addAttractionDates: (state, action: PayloadAction<AttractionDatesType>) =>
-      state.attractionDates.unshift(action.payload),
+    addAttractionDates: (state, action: PayloadAction<AttractionDatesType>) => {
+      state.attractionDates.unshift(action.payload);
+    },
   },
 });
 
 export const { addAttractionDates } = AttractionDatesSlice.actions;
 
 export const postAttractionDates = (): AppThunk => (dispatch) => {
-  axios<AttractionDatesType>.post('/api/attractiondates/')
+  axios
+    .post<AttractionDatesType>('/api/attractiondates/')
     .then((res) => dispatch(addAttractionDates(res.data)))
     .catch(console.log);
 };
