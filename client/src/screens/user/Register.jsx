@@ -81,7 +81,12 @@ export function Register({ navigation }) {
                 }}
               >
                 <TextInput
-                  style={{ paddingHorizontal: 10 }}
+                  style={{
+                    height: 40,
+                    margin: 12,
+                    width: 290,
+                    padding: 10,
+                  }}
                   placeholder="Имя"
                   onChangeText={handleChange('name')}
                   onBlur={handleBlur('name')}
@@ -102,7 +107,12 @@ export function Register({ navigation }) {
                 }}
               >
                 <TextInput
-                  style={{ paddingHorizontal: 10 }}
+                  style={{
+                    height: 40,
+                    margin: 12,
+                    width: 290,
+                    padding: 10,
+                  }}
                   placeholder="Электронная почта"
                   onChangeText={handleChange('email')}
                   onBlur={handleBlur('email')}
@@ -122,7 +132,12 @@ export function Register({ navigation }) {
                 }}
               >
                 <TextInput
-                  style={{ paddingHorizontal: 10 }}
+                  style={{
+                    height: 40,
+                    margin: 12,
+                    width: 290,
+                    padding: 10,
+                  }}
                   placeholder="Придумайте пароль"
                   onChangeText={handleChange('password')}
                   onBlur={handleBlur('password')}
@@ -147,7 +162,7 @@ export function Register({ navigation }) {
                   items={[
                     { label: 'Мужчина', value: 'Мужчина' },
                     { label: 'Девушка', value: 'Девушка' },
-                    { label: 'Не бинарная личность', value: 'Не бинарная личность' },
+                    { label: 'Небинарная личность', value: 'Не бинарная личность' },
                   ]}
                 />
               </View>

@@ -227,7 +227,7 @@ export default function AddLoveNative({ navigation }) {
                     // axios.post('/api/loves', [{
                     //   name : name,
                     //   sex: sex},
-                    //   { 2: rest,
+                    //   pref: { 2: rest,
                     // 1: rest, 6: walk, 10: art, 4: active, 3: lepka, 7: elbrus, 11: spa},
                     // ]);
                     navigation.navigate('Свидания');

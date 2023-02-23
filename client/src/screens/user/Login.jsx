@@ -8,6 +8,7 @@ import {
   Image,
   TouchableOpacity,
   Keyboard,
+  SafeAreaView,
 } from 'react-native';
 import { Formik } from 'formik';
 import { useDispatch, useSelector } from 'react-redux';
@@ -81,7 +82,12 @@ export const Login = ({ navigation }) => {
               >
                 <TouchableOpacity>
                   <TextInput
-                    style={{ paddingHorizontal: 10 }}
+                    style={{
+                      height: 40,
+                      margin: 12,
+                      width: 290,
+                      padding: 10,
+                    }}
                     placeholder="Введите логин"
                     onChangeText={handleChange('email')}
                     onBlur={handleBlur('email')}
@@ -89,6 +95,7 @@ export const Login = ({ navigation }) => {
                   />
                 </TouchableOpacity>
               </View>
+              <SafeAreaView>
               <View
                 style={{
                   flexDirection: 'row',
@@ -103,7 +110,12 @@ export const Login = ({ navigation }) => {
               >
                 <TouchableOpacity>
                   <TextInput
-                    style={{ paddingHorizontal: 10 }}
+                    style={{
+                      height: 40,
+                      margin: 12,
+                      width: 290,
+                      padding: 10,
+                    }}
                     placeholder="Введите пароль"
                     onChangeText={handleChange('password')}
                     onBlur={handleBlur('password')}
@@ -112,6 +124,8 @@ export const Login = ({ navigation }) => {
                   />
                 </TouchableOpacity>
               </View>
+              </SafeAreaView>
+              
               <View
                 style={{
                   flexDirection: 'row',
