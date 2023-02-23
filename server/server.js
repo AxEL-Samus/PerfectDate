@@ -9,6 +9,7 @@ const dateRouter = require('./router/dateRouter');
 const userRouter = require('./router/userRouter');
 const typesRouter = require('./router/typesRouter');
 const attractionDatesRouter = require('./router/attractionDatesRouter');
+const loveRouter = require('./router/loveRouter');
 
 require('dotenv').config();
 
@@ -45,5 +46,6 @@ app.use('/api/users/', userRouter);
 app.use('/api/dates/', dateRouter);
 app.use('/api/types/', typesRouter);
 app.use('/api/attractiondates/', attractionDatesRouter);
+app.use('/api/loves/', loveRouter);
 
 app.listen(PORT, () => console.log(`Server has started on PORT ${PORT}`));

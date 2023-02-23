@@ -4,21 +4,32 @@ import { StyleSheet, Text, View, Image, SafeAreaView } from 'react-native';
 import Modules from './Modules';
 import axios from 'axios';
 
-export default function OneDateCard({ oneDate }) {
+export default function OneDateCard({ oneDate, idDate }) {
   const [modalVisible, setModalVisible] = useState(false);
-  const [modalVariant, setModalVariant] = useState('');
+  const [modalVariant, setModalVariant] = useState({});
   const [coords, setCoords] = useState({});
   const [parksCoords, setParksCoords] = useState({});
   const [park, setPark] = useState('');
   const [kinoName, setKinoName] = useState({});
+  const [masterClassCoords, setMasterClassCoords] = useState({});
+  const [kartingCoords, setKartingCoords] = useState({});
+  const [bowlingCoords, setBowlingCoords] = useState({});
+  const [questCoords, setQuestCoords] = useState({});
+  const [teaCoords, setTeaCoords] = useState({});
+  const [horseCoords, setHorseCoords] = useState({});
+  const [konkiCoords, setKonkiCoords] = useState({});
+  const [excursionCoords, setExcursionCoords] = useState({});
+  const [museumCoords, setMuseumCoords] = useState({});
+  const [paintingCoords, setPaintingCoords] = useState({});
   const [kinoCoords, setKinoCoords] = useState({});
+  const [questName, setQuestName] = useState({});
   const [kinoUrl, setKinoUrl] = useState('');
   const [restUrl, setRestUrl] = useState('');
   const [isSelectedModule, setIsSelectedModule] = useState(false);
-//   const [oneDate, setOneDate] = useState(oneDates);
-//   useEffect(() => {
-//     axios(`/api/dates/${oneDate.id}`).then((res) => setOneDate(res.data));
-//   }, []);
+  //   const [oneDate, setOneDate] = useState(oneDates);
+  //   useEffect(() => {
+  //     axios(`/api/dates/${oneDate.id}`).then((res) => setOneDate(res.data));
+  //   }, []);
   return (
     <>
       <SafeAreaView style={styles.container1}>
@@ -31,35 +42,48 @@ export default function OneDateCard({ oneDate }) {
             <Image
               style={styles.img2}
               source={{
-                uri: oneDate.Attraction.Type.name === 'Ресторан' ? oneDate.Attraction.imgUrl : '',
+                uri: oneDate === 'Ресторан' || 'Кино' ? oneDate.imgUrl : '',
               }}
             />
-            <Text style={styles.paragraph}>{`Ваше свидание: ${oneDate.dateId}`}</Text>
+            <Text style={styles.paragraph}>{`Ваше свидание: ${idDate}`}</Text>
             <Button
               style={[styles.button, styles.buttonClose]}
               onPress={() => {
+                setMuseumCoords({
+                  lat: oneDate.Type.name === 'Музей' ? oneDate.lat : '',
+                  lng: oneDate.Type.name === 'Музей' ? oneDate.lng : '',
+                });
                 setCoords({
-                  lat: oneDate.Attraction.Type.name === 'Ресторан' ? oneDate.Attraction.lat : '',
-                  lng: oneDate.Attraction.Type.name === 'Ресторан' ? oneDate.Attraction.lng : '',
+                  lat: oneDate.Type.name === 'Ресторан' ? oneDate.lat : '',
+                  lng: oneDate.Type.name === 'Ресторан' ? oneDate.lng : '',
                 });
                 setParksCoords({
-                  lat: oneDate.Attraction.Type.name === 'Парк' ? oneDate.Attraction.lat : '',
-                  lng: oneDate.Attraction.Type.name === 'Парк' ? oneDate.Attraction.lng : '',
+                  lat: oneDate.Type.name === 'Парк' ? oneDate.lat : '',
+                  lng: oneDate.Type.name === 'Парк' ? oneDate.lng : '',
                 });
                 setKinoCoords({
-                  lat: oneDate.Attraction.Type.name === 'Кино' ? oneDate.Attraction.lat : '',
-                  lng: oneDate.Attraction.Type.name === 'Кино' ? oneDate.Attraction.lng : '',
+                  lat: oneDate.Type.name === 'Кино' ? oneDate.lat : '',
+                  lng: oneDate.Type.name === 'Кино' ? oneDate.lng : '',
                 });
-                setKinoUrl(oneDate.Attraction.Type.name === 'Кино' ? oneDate.Attraction.url : '');
-                setRestUrl(
-                  oneDate.Attraction.Type.name === 'Ресторан' ? oneDate.Attraction.url : '',
-                );
-                setPark(oneDate.Attraction.Type.name === 'Парк' ? oneDate.Attraction.name : '');
-                setModalVariant(
-                  oneDate.Attraction.Type.name === 'Ресторан' ? oneDate.Attraction.name : '',
-                );
+                setQuestCoords({
+                  lat: oneDate.Type.name === 'Квест' ? oneDate.lat : '',
+                  lng: oneDate.Type.name === 'Квест' ? oneDate.lng : '',
+                });
+                setQuestName({
+                  name: oneDate.Type.name === 'Квест' ? oneDate.name : '',
+                });
+                setKinoUrl(oneDate.Type.name === 'Кино' ? oneDate.url : '');
+                setRestUrl(oneDate.Type.name === 'Ресторан' ? oneDate.url : '');
+                setPark(oneDate.Type.name === 'Парк' ? oneDate.name : '');
+                setPaintingCoords({
+                  lat: oneDate.Type.name === 'Картинная выставка' ? oneDate.lat : '',
+                  lng: oneDate.Type.name === 'Картинная выставка' ? oneDate.lng : '',
+                });
+                setModalVariant({
+                  name: oneDate.Type.name === 'Ресторан' ? oneDate.name : '',
+                });
                 setKinoName({
-                  name: oneDate.Attraction.Type.name === 'Кино' ? oneDate.Attraction.name : '',
+                  name: oneDate.Type.name === 'Кино' ? oneDate.name : '',
                 });
                 setModalVisible(!modalVisible);
                 setIsSelectedModule(true);
@@ -72,6 +96,10 @@ export default function OneDateCard({ oneDate }) {
       </SafeAreaView>
       {isSelectedModule && (
         <Modules
+          questCoords={questCoords}
+          questName={questName}
+          museumCoords={museumCoords}
+          paintingCoords={paintingCoords}
           el={oneDate}
           key={oneDate.id}
           restUrl={restUrl}

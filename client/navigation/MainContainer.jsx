@@ -13,6 +13,10 @@ import { Login } from '../src/screens/user/Login';
 import { Register } from '../src/screens/user/Register';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Home from '../src/screens/Home';
+import App from '../src/screens/AddLove';
+import PRNRadioForm from '../src/screens/AddLove';
+import addLove from '../src/screens/AddLove';
+// import AddLoveRadio from '../src/screens/AddLoveRadio';
 
 const debugCard = 'Меню отладки';
 const profileName = 'Профиль';
