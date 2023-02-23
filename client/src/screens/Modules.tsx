@@ -6,55 +6,26 @@ import { useAppDispatch } from '../redux/hook';
 import { deleteCard } from '../redux/datesSlice/datesSlice';
 
 export default function Modules({
-  park,
-  kinoName,
-  parksCoords,
-  coords,
-  modalVariant,
+  // park,
+  // kinoName,
+  // parksCoords,
+  // coords,
+  // modalVariant,
+  dateAttractions,
   modalVisible,
   setModalVisible,
-  kinoCoords,
-  kinoUrl,
-  restUrl,
-  el,
-  paintingCoords,
-  museumCoords,
-  questName,
-  questCoords,
+  // kinoCoords,
+  // kinoUrl,
+  // restUrl,
+  // // el,
+  // paintingCoords,
+  // museumCoords,
+  // questName,
+  // questCoords,
 }): JSX.Element {
-  console.log(
-    '-=-=-=-==--!!!',
-    'парк',
-    park,
-    'кино',
-    kinoName,
-    'кордыПарк',
-    parksCoords,
-    'кордыРест',
-    coords,
-    'пе',
-    modalVariant,
-    'мп',
-    modalVisible,
-    'пи',
-    setModalVisible,
-    'кордыКино',
-    kinoCoords,
-    'УрлаКино',
-    kinoUrl,
-    'РестУрла',
-    restUrl,
-    'впи',
-    el,
-    'Картины',
-    paintingCoords,
-    'КордыМуз',
-    museumCoords,
-    'Квест',
-    questName,
-  );
-
-  const dispatch = useAppDispatch();
+  // const dispatch = useAppDispatch();
+  console.log('00000000000000000000', dateAttractions);
+  console.log('=======>', dateAttractions.Attractions[0].Type.name);
   return (
     <SafeAreaView
       style={{
@@ -91,91 +62,31 @@ export default function Modules({
                   }}
                   showsUserLocation={true}
                   region={{
-                    latitude: coords.lat,
-                    longitude: coords.lng,
+                    latitude: 55.751244,
+                    longitude: 37.618423,
                     latitudeDelta: 0.0374,
                     longitudeDelta: 0.0321,
                   }}
                 >
-                  <Marker
-                    coordinate={{
-                      latitude: coords.lat,
-                      longitude: coords.lng,
-                    }}
-                    pinColor="red"
-                    title={`Тут Ресторан: ${modalVariant}`}
-                    onPress={() => Linking.openURL(restUrl)}
-                  >
-                    <Callout>
-                      <Button>{`Тут Ресторан: ${modalVariant}`}</Button>
-                    </Callout>
-                  </Marker>
-                  <Marker
-                    coordinate={{
-                      latitude: parksCoords.lat,
-                      longitude: parksCoords.lng,
-                    }}
-                    pinColor="black"
-                    title="Тут парк"
-                  />
-                  <Marker
-                    coordinate={{
-                      latitude: paintingCoords.lat,
-                      longitude: paintingCoords.lng,
-                    }}
-                    pinColor="white"
-                    title="Тут выставка"
-                  />
-                  <Marker
-                    coordinate={{
-                      latitude: museumCoords.lat,
-                      longitude: museumCoords.lng,
-                    }}
-                    pinColor="white"
-                    title="Тут музей"
-                  />
-                  <Marker
-                    coordinate={{
-                      latitude: questCoords.lat,
-                      longitude: questCoords.lng,
-                    }}
-                    pinColor="white"
-                    title="Тут квест"
-                  />
-                  <Marker
-                    coordinate={{
-                      latitude: kinoCoords.lat,
-                      longitude: kinoCoords.lng,
-                    }}
-                    title={`Тут кинотеатр: ${kinoName}`}
-                    description={'Cсылка на бронь: '}
-                    pinColor="blue"
-                    onPress={() => Linking.openURL(kinoUrl)}
-                  >
-                    <Callout>
-                      <Button>{`Тут кинотеатр: ${kinoName}`}</Button>
-                    </Callout>
-                  </Marker>
+                  {dateAttractions.Attractions.map((marker) => (
+                    <Marker
+                      coordinate={{
+                        latitude: marker.lat,
+                        longitude: marker.lng,
+                      }}
+                      pinColor="red"
+                      // title={`Тут ${marker.name}`}
+                      onPress={() => Linking.openURL(marker.url)}
+                    >
+                      <Callout>
+                        <Button>{`Тут ${marker.name}`}</Button>
+                      </Callout>
+                    </Marker>
+                  ))}
                 </MapView>
-                {modalVariant.name === '' ? null : (
-                  <Text
-                    style={styles.paragraph}
-                  >{`Ресторан: ${modalVariant.name} (красная метка)`}</Text>
-                )}
-                <Text style={styles.paragraph}>{`Парк: ${park} (черная метка)`}</Text>
-                {kinoName.name === '' ? null : (
-                  <Text style={styles.paragraph}>{`Кино: ${kinoName.name} (черная метка)`}</Text>
-                )}
-                <Text style={styles.paragraph}>{`Квест: ${questName.name} (черная метка)`}</Text>
-                <Button
-                  style={[styles.button, styles.buttonClose]}
-                  onPress={() => {
-                    dispatch(deleteCard(el.id));
-                    setModalVisible(!modalVisible);
-                  }}
-                >
-                  <Text style={styles.paragraph}>Удалить</Text>
-                </Button>
+                {dateAttractions.Attractions.map((date) => (
+                  <Text style={styles.paragraph}>{`${date.Type.name}: ${date.name}`}</Text>
+                ))}
                 <Button
                   style={[styles.button, styles.buttonClose]}
                   onPress={() => setModalVisible(!modalVisible)}

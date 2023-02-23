@@ -6,6 +6,7 @@ import Modules from './Modules';
 import { useAppDispatch, useAppSelector } from '../redux/hook';
 import { setDates } from '../redux/datesSlice/datesSlice';
 import OneDateCard from './OneDateCard';
+import OneCard from './OneCard';
 
 export default function MainPage(): JSX.Element {
   const dispatch = useAppDispatch();
@@ -31,7 +32,7 @@ export default function MainPage(): JSX.Element {
     <>
       <ScrollView>
         {dates.map((el) => (
-          <OneDateCard key={el.id} oneDate={el.Attractions.map((el1) => el1)} idDate={el.id} />
+          <OneDateCard key={el.id} dateAttractions={el} idDate={el.id} />
         ))}
       </ScrollView>
     </>
