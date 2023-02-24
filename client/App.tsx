@@ -10,7 +10,7 @@ import axios from 'axios';
 import MainContainer from './navigation/MainContainer';
 
 axios.defaults.withCredentials = true;
-axios.defaults.baseURL = 'http://localhost:3002';
+axios.defaults.baseURL = 'http://192.168.3.208:3002';
 
 const App = ({ user }) => {
   return (

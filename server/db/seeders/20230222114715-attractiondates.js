@@ -11,7 +11,7 @@ module.exports = {
           updatedAt: new Date(),
         },
         {
-          attractionId: 9,
+          attractionId: 14,
           dateId: 1,
           createdAt: new Date(),
           updatedAt: new Date(),
@@ -29,13 +29,13 @@ module.exports = {
           updatedAt: new Date(),
         },
         {
-          attractionId: 3,
+          attractionId: 34,
           dateId: 2,
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
-          attractionId: 8,
+          attractionId: 6,
           dateId: 2,
           createdAt: new Date(),
           updatedAt: new Date(),
@@ -47,13 +47,13 @@ module.exports = {
           updatedAt: new Date(),
         },
         {
-          attractionId: 6,
+          attractionId: 2,
           dateId: 3,
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
-          attractionId: 21,
+          attractionId: 27,
           dateId: 3,
           createdAt: new Date(),
           updatedAt: new Date(),
@@ -65,13 +65,13 @@ module.exports = {
           updatedAt: new Date(),
         },
         {
-          attractionId: 9,
+          attractionId: 24,
           dateId: 4,
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
-          attractionId: 18,
+          attractionId: 31,
           dateId: 4,
           createdAt: new Date(),
           updatedAt: new Date(),
