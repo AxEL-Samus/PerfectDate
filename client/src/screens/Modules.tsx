@@ -84,8 +84,11 @@ export default function Modules({
                     </Marker>
                   ))}
                 </MapView>
-                {dateAttractions.Attractions.map((date) => (
-                  <Text style={styles.paragraph}>{`${date.Type.name}: ${date.name}`}</Text>
+                <Text style={styles.paragraph}>Ваш план на свидание:</Text>
+                {dateAttractions.Attractions.map((date, i) => (
+                  <Text style={styles.paragraph}>{`${i + 1}. ${date.Type.name}: ${
+                    date.name
+                  }`}</Text>
                 ))}
                 <Button
                   style={[styles.button, styles.buttonClose]}
