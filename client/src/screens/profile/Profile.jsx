@@ -25,7 +25,7 @@ export default function Profile({ navigation }) {
           marginTop: 20,
           alignSelf: 'center',
           shadowOpacity: 1,
-          shadowColor: 'lightgrey',
+          shadowColor: 'lightblue',
         }}
       >
         <Image
@@ -47,7 +47,7 @@ export default function Profile({ navigation }) {
           marginTop: 20,
           alignSelf: 'center',
           shadowOpacity: 1,
-          shadowColor: 'lightgrey',
+          shadowColor: 'lightblue',
         }}
       >
         <Text
@@ -64,7 +64,7 @@ export default function Profile({ navigation }) {
           marginTop: 20,
           alignSelf: 'center',
           shadowOpacity: 1,
-          shadowColor: 'lightgrey',
+          shadowColor: 'lightblue',
         }}
       >
         <Text
@@ -82,7 +82,7 @@ export default function Profile({ navigation }) {
           marginTop: 20,
           alignSelf: 'center',
           shadowOpacity: 1,
-          shadowColor: 'lightgrey',
+          shadowColor: 'lightblue',
         }}
       >
         <Text
@@ -99,7 +99,7 @@ export default function Profile({ navigation }) {
           marginTop: 20,
           alignSelf: 'center',
           shadowOpacity: 1,
-          shadowColor: 'lightgrey',
+          shadowColor: 'lightblue',
         }}
       >
         <TouchableOpacity>

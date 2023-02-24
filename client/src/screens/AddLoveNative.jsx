@@ -58,7 +58,7 @@ export default function AddLoveNative({ navigation }) {
     <div className="ya-taxi-widget" data-use-location="true" data-app="3" data-redirect="1178268795219780156" data-tariff="econom" data-lang="ru" data-size="xs" data-theme="action" data-title="Вызвать такси" data-point-a="" data-point-b="37.588144,55.733842" data-ref="195.133.246.50" data-proxy-url="http://{app}.redirect.appmetrica.yandex.com/route?start-lat={start-lat}&amp;start-lon={start-lon}&amp;end-lat={end-lat}&amp;end-lon={end-lon}&amp;ref={ref}&amp;appmetrica_tracking_id={redirect}&amp;tariffClass={tariff}&amp;lang={lang}"></div>
   <p style='text-align:center;'>
     Hello World!
-  </p>`
+  </p>`,
   };
 
   const { width } = useWindowDimensions();
@@ -104,6 +104,7 @@ export default function AddLoveNative({ navigation }) {
                   <Field id="title">
                     {({ value, error, changeValue }) => (
                       <TextInput
+                        style={{ backgroundColor: 'lightblue' }}
                         value={value}
                         error={error}
                         onChangeText={(text) => changeValue(setName(text))}
@@ -114,7 +115,7 @@ export default function AddLoveNative({ navigation }) {
                   </Field>
                 </Card>
                 <Card style={styles.card}>
-                  <Text> Выберите пол: </Text>
+                  <Text style={styles.text}> Выберите пол: </Text>
                   <RNPickerSelect
                     onValueChange={(value) => setSex(value)}
                     items={[
@@ -140,7 +141,7 @@ export default function AddLoveNative({ navigation }) {
                   />
                 </Card>
                 <Card style={styles.card}>
-                  <Text> Ваша девушка любит кино? </Text>
+                  <Text style={styles.text}> Ваша девушка любит кино? </Text>
                   <RadioForm
                     radio_props={kinoProps}
                     initial={0}
@@ -150,7 +151,7 @@ export default function AddLoveNative({ navigation }) {
                   />
                 </Card>
                 <Card style={styles.card}>
-                  <Text> Девушка посещает рестораны? </Text>
+                  <Text style={styles.text}> Девушка посещает рестораны? </Text>
                   <RadioForm
                     radio_props={kinoProps}
                     initial={0}
@@ -160,7 +161,7 @@ export default function AddLoveNative({ navigation }) {
                   />
                 </Card>
                 <Card style={styles.card}>
-                  <Text> Девушка любит гулять? </Text>
+                  <Text style={styles.text}> Девушка любит гулять? </Text>
                   <RadioForm
                     radio_props={kinoProps}
                     initial={0}
@@ -170,7 +171,7 @@ export default function AddLoveNative({ navigation }) {
                   />
                 </Card>
                 <Card style={styles.card}>
-                  <Text> Девушка любить на выставки? </Text>
+                  <Text style={styles.text}> Девушка любить на выставки? </Text>
                   <RadioForm
                     radio_props={kinoProps}
                     initial={0}
@@ -180,7 +181,7 @@ export default function AddLoveNative({ navigation }) {
                   />
                 </Card>
                 <Card style={styles.card}>
-                  <Text> Девушка любит активные времяпрепровождение? </Text>
+                  <Text style={styles.text}> Девушка любит активные времяпрепровождение? </Text>
                   <RadioForm
                     radio_props={kinoProps}
                     initial={0}
@@ -190,7 +191,7 @@ export default function AddLoveNative({ navigation }) {
                   />
                 </Card>
                 <Card style={styles.card}>
-                  <Text> Ваша девушка посещала лепку? </Text>
+                  <Text style={styles.text}> Ваша девушка посещала лепку? </Text>
                   <RadioForm
                     radio_props={kinoProps}
                     initial={0}
@@ -200,7 +201,10 @@ export default function AddLoveNative({ navigation }) {
                   />
                 </Card>
                 <Card style={styles.card}>
-                  <Text> Ваша девушка была на дне открытых дверей Эльбруса? </Text>
+                  <Text style={styles.text}>
+                    {' '}
+                    Ваша девушка была на дне открытых дверей Эльбруса?{' '}
+                  </Text>
                   <RadioForm
                     radio_props={kinoProps}
                     initial={0}
@@ -210,7 +214,7 @@ export default function AddLoveNative({ navigation }) {
                   />
                 </Card>
                 <Card style={styles.card}>
-                  <Text> Ваша девушка посещала СПА-салон? </Text>
+                  <Text style={styles.text}> Ваша девушка посещала СПА-салон? </Text>
                   <RadioForm
                     radio_props={kinoProps}
                     initial={0}
@@ -250,11 +254,18 @@ export default function AddLoveNative({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: Constants.statusBarHeight + 24,
     backgroundColor: '#ecf0f1',
     padding: 8,
   },
   card: {
     padding: 12,
+    marginTop: 13,
+    shadowOpacity: 1,
+    shadowColor: 'lightblue',
+  },
+  text: {
+    marginBottom: 10,
+    fontWeight: 'bold',
+    fontSize: 15,
   },
 });

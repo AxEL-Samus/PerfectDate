@@ -118,6 +118,8 @@ export default function OneDateCard({ dateAttraction, idDate }) {
           <Card
             style={{
               borderRadius: 20,
+              shadowOpacity: 1,
+              shadowColor: 'lightblue',
             }}
           >
             {dateAttractions.Attractions.map((el1) =>

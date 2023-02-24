@@ -43,7 +43,6 @@ export const loginAction = (input) => (dispatch) => {
     .post('/api/users/login', input)
     .then((res) => dispatch(setUser(res.data)))
     .catch((err) => {
-      Alert.alert('Error', err.response.data.message);
       console.log(err.response.data);
     });
 };
