@@ -109,7 +109,7 @@ export default function AddLoveNative({ navigation }) {
                         error={error}
                         onChangeText={(text) => changeValue(setName(text))}
                         placeholder=""
-                        label="Имя девушки"
+                        label="Имя вашего партнера"
                       />
                     )}
                   </Field>
@@ -141,7 +141,7 @@ export default function AddLoveNative({ navigation }) {
                   />
                 </Card>
                 <Card style={styles.card}>
-                  <Text style={styles.text}> Ваша девушка любит кино? </Text>
+                  <Text> Ваш партнер любит кино? </Text>
                   <RadioForm
                     radio_props={kinoProps}
                     initial={0}
@@ -151,7 +151,7 @@ export default function AddLoveNative({ navigation }) {
                   />
                 </Card>
                 <Card style={styles.card}>
-                  <Text style={styles.text}> Девушка посещает рестораны? </Text>
+                  <Text> Любит посещать рестораны? </Text>
                   <RadioForm
                     radio_props={kinoProps}
                     initial={0}
@@ -161,7 +161,7 @@ export default function AddLoveNative({ navigation }) {
                   />
                 </Card>
                 <Card style={styles.card}>
-                  <Text style={styles.text}> Девушка любит гулять? </Text>
+                  <Text> Партнер любит гулять? </Text>
                   <RadioForm
                     radio_props={kinoProps}
                     initial={0}
@@ -171,7 +171,7 @@ export default function AddLoveNative({ navigation }) {
                   />
                 </Card>
                 <Card style={styles.card}>
-                  <Text style={styles.text}> Девушка любить на выставки? </Text>
+                  <Text> Ходит на выставки? </Text>
                   <RadioForm
                     radio_props={kinoProps}
                     initial={0}
@@ -181,7 +181,7 @@ export default function AddLoveNative({ navigation }) {
                   />
                 </Card>
                 <Card style={styles.card}>
-                  <Text style={styles.text}> Девушка любит активные времяпрепровождение? </Text>
+                  <Text> Партнер любит активное времяпрепровождение? </Text>
                   <RadioForm
                     radio_props={kinoProps}
                     initial={0}
@@ -191,7 +191,7 @@ export default function AddLoveNative({ navigation }) {
                   />
                 </Card>
                 <Card style={styles.card}>
-                  <Text style={styles.text}> Ваша девушка посещала лепку? </Text>
+                  <Text> Ему(Ей) нравится лепка из глины? </Text>
                   <RadioForm
                     radio_props={kinoProps}
                     initial={0}
@@ -201,10 +201,7 @@ export default function AddLoveNative({ navigation }) {
                   />
                 </Card>
                 <Card style={styles.card}>
-                  <Text style={styles.text}>
-                    {' '}
-                    Ваша девушка была на дне открытых дверей Эльбруса?{' '}
-                  </Text>
+                  <Text> Ваш партнер была на дне открытых дверей Эльбруса? </Text>
                   <RadioForm
                     radio_props={kinoProps}
                     initial={0}
@@ -214,7 +211,7 @@ export default function AddLoveNative({ navigation }) {
                   />
                 </Card>
                 <Card style={styles.card}>
-                  <Text style={styles.text}> Ваша девушка посещала СПА-салон? </Text>
+                  <Text> Ваш объект любви посещал когда-то СПА-салоны? </Text>
                   <RadioForm
                     radio_props={kinoProps}
                     initial={0}

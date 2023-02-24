@@ -1,7 +1,25 @@
 const express = require('express');
-const { AttractionDate, Date, Attraction } = require('../db/models');
+const { AttractionDate, Date, Attraction, Type } = require('../db/models');
 
 const attractionDatesRouter = express.Router();
+
+// attractionDatesRouter.get(async (req, res) => {
+//   try {
+//     const allDates = await Date.findAll({
+//       include: {
+//         model: Attraction,
+//         include: {
+//           model: Type,
+//         },
+//       },
+//       order: [['createdAt', 'ASC']],
+//     });
+//     res.json(allDates);
+//   } catch (error) {
+//     console.log(error);
+//     res.sendStatus(500);
+//   }
+// });
 
 attractionDatesRouter.post('/', async (req, res) => {
   try {

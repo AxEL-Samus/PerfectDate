@@ -30,7 +30,10 @@ export const { setDatesCards, deleteOneCard, addDateCard } = datesSlice.actions;
 
 export const setDates = (): AppThunk => (dispatch) => {
   axios<RootObject[]>('/api/dates')
-    .then((res) => dispatch(setDatesCards(res.data)))
+    .then((res) => {
+      console.log('=======>', res.data);
+      dispatch(setDatesCards(res.data));
+    })
     .catch(console.log);
 };
 

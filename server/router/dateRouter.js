@@ -14,7 +14,7 @@ dateRouter
             model: Type,
           },
         },
-        order: [['createdAt', 'DESC']],
+        order: [['createdAt', 'ASC']],
       });
       res.json(allDates);
     } catch (error) {
