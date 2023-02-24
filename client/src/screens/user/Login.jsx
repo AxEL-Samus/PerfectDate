@@ -96,40 +96,41 @@ export const Login = ({ navigation }) => {
                 </TouchableOpacity>
               </View>
               <SafeAreaView>
-              <View
-                style={{
-                  flexDirection: 'row',
-                  alignItems: 'center',
-                  marginHorizontal: 55,
-                  marginTop: 10,
-                  borderWidth: 2,
-                  borderRadius: 7,
-                  width: 300,
-                  height: 40,
-                }}
-              >
-                <TouchableOpacity>
-                  <TextInput
-                    style={{
-                      height: 40,
-                      margin: 12,
-                      width: 290,
-                      padding: 10,
-                    }}
-                    placeholder="Введите пароль"
-                    onChangeText={handleChange('password')}
-                    onBlur={handleBlur('password')}
-                    value={values.password}
-                    secureTextEntry={true}
-                  />
-                </TouchableOpacity>
-              </View>
+                <View
+                  style={{
+                    flexDirection: 'row',
+                    alignItems: 'center',
+                    marginHorizontal: 55,
+                    marginTop: 10,
+                    borderWidth: 2,
+                    borderRadius: 7,
+                    width: 300,
+                    height: 40,
+                  }}
+                >
+                  <TouchableOpacity>
+                    <TextInput
+                      style={{
+                        height: 40,
+                        margin: 12,
+                        width: 290,
+                        padding: 10,
+                      }}
+                      placeholder="Введите пароль"
+                      onChangeText={handleChange('password')}
+                      onBlur={handleBlur('password')}
+                      value={values.password}
+                      secureTextEntry={true}
+                    />
+                  </TouchableOpacity>
+                </View>
               </SafeAreaView>
-              
+
               <View
                 style={{
                   flexDirection: 'row',
                   alignItems: 'center',
+                  backgroundColor: '#CCB188',
                   justifyContent: 'center',
                   marginHorizontal: 55,
                   marginTop: 10,
@@ -140,7 +141,7 @@ export const Login = ({ navigation }) => {
                   marginLeft: 150,
                 }}
               >
-                <Button onPress={handleSubmit} title="Войти" />
+                <Button onPress={handleSubmit} title="Войти" style={{ color: 'black' }} />
               </View>
               <View
                 style={{
