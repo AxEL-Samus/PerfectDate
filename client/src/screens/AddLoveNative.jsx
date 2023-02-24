@@ -104,6 +104,7 @@ export default function AddLoveNative({ navigation }) {
                   <Field id="title">
                     {({ value, error, changeValue }) => (
                       <TextInput
+                        style={{ backgroundColor: 'lightblue' }}
                         value={value}
                         error={error}
                         onChangeText={(text) => changeValue(setName(text))}
@@ -114,7 +115,7 @@ export default function AddLoveNative({ navigation }) {
                   </Field>
                 </Card>
                 <Card style={styles.card}>
-                  <Text> Выберите пол: </Text>
+                  <Text style={styles.text}> Выберите пол: </Text>
                   <RNPickerSelect
                     onValueChange={(value) => setSex(value)}
                     items={[
@@ -250,11 +251,18 @@ export default function AddLoveNative({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: Constants.statusBarHeight + 24,
     backgroundColor: '#ecf0f1',
     padding: 8,
   },
   card: {
     padding: 12,
+    marginTop: 13,
+    shadowOpacity: 1,
+    shadowColor: 'lightblue',
+  },
+  text: {
+    marginBottom: 10,
+    fontWeight: 'bold',
+    fontSize: 15,
   },
 });

@@ -131,7 +131,7 @@ const styles = StyleSheet.create({
   },
   button: {
     borderRadius: 20,
-    padding: 10,
+    paddingB: 20,
   },
   buttonClose: {
     margin: 10,

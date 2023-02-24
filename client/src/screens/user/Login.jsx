@@ -56,7 +56,7 @@ export const Login = ({ navigation }) => {
               source={{
                 uri: 'https://freesvg.org/img/publicdomainq-couple_love.png',
               }}
-              style={{ width: 350, height: 300, marginTop: 0 }}
+              style={{ width: 350, height: 300, marginTop: 0, alignSelf: 'center' }}
             />
             <View>
               <Text
@@ -96,36 +96,36 @@ export const Login = ({ navigation }) => {
                 </TouchableOpacity>
               </View>
               <SafeAreaView>
-              <View
-                style={{
-                  flexDirection: 'row',
-                  alignItems: 'center',
-                  marginHorizontal: 55,
-                  marginTop: 10,
-                  borderWidth: 2,
-                  borderRadius: 7,
-                  width: 300,
-                  height: 40,
-                }}
-              >
-                <TouchableOpacity>
-                  <TextInput
-                    style={{
-                      height: 40,
-                      margin: 12,
-                      width: 290,
-                      padding: 10,
-                    }}
-                    placeholder="Введите пароль"
-                    onChangeText={handleChange('password')}
-                    onBlur={handleBlur('password')}
-                    value={values.password}
-                    secureTextEntry={true}
-                  />
-                </TouchableOpacity>
-              </View>
+                <View
+                  style={{
+                    flexDirection: 'row',
+                    alignItems: 'center',
+                    marginHorizontal: 55,
+                    marginTop: 10,
+                    borderWidth: 2,
+                    borderRadius: 7,
+                    width: 300,
+                    height: 40,
+                  }}
+                >
+                  <TouchableOpacity>
+                    <TextInput
+                      style={{
+                        height: 40,
+                        margin: 12,
+                        width: 290,
+                        padding: 10,
+                      }}
+                      placeholder="Введите пароль"
+                      onChangeText={handleChange('password')}
+                      onBlur={handleBlur('password')}
+                      value={values.password}
+                      secureTextEntry={true}
+                    />
+                  </TouchableOpacity>
+                </View>
               </SafeAreaView>
-              
+
               <View
                 style={{
                   flexDirection: 'row',
