@@ -16,6 +16,7 @@ import Home from '../src/screens/Home';
 import App from '../src/screens/AddLove';
 import PRNRadioForm from '../src/screens/AddLove';
 import MainPage from '../src/screens/MainPage';
+import { View } from 'react-native';
 // import AddLoveRadio from '../src/screens/AddLoveRadio';
 
 const debugCard = 'Меню отладки';
@@ -64,7 +65,7 @@ export default function MainContainer({ user }) {
             </>
           ) : (
             <Tab.Screen
-              name="Perfect Date"
+              name="PERFECT DATE"
               component={HomeNavigator}
               options={{ headerShown: false }}
             />
@@ -77,30 +78,12 @@ export default function MainContainer({ user }) {
 
 const AuthStack = createNativeStackNavigator();
 
-// function AuthNavigator() {
-//   return (
-//     <AuthStack.Navigator initialRouteName="Login">
-//       <AuthStack.Screen name="Login" component={Login} />
-//       <AuthStack.Screen name="Register" component={Register} />
-//     </AuthStack.Navigator>
-//   );
-//
-
 function HomeNavigator() {
   return (
     <AuthStack.Navigator initialRouteName="Home">
       <AuthStack.Screen name="Home" component={Home} />
       <AuthStack.Screen name="Login" component={Login} />
       <AuthStack.Screen name="Register" component={Register} />
-    </AuthStack.Navigator>
-  );
-}
-
-function AddToMainNavigator() {
-  return (
-    <AuthStack.Navigator initialRouteName="AddScreen">
-      <AuthStack.Screen name="AddScreen" component={AddScreen} />
-      <AuthStack.Screen name="MainPage" component={MainPage} />
     </AuthStack.Navigator>
   );
 }

@@ -56,7 +56,7 @@ export const Login = ({ navigation }) => {
               source={{
                 uri: 'https://freesvg.org/img/publicdomainq-couple_love.png',
               }}
-              style={{ width: 350, height: 300, marginTop: 0 }}
+              style={{ width: 350, height: 300, marginTop: 0, alignSelf: 'center' }}
             />
             <View>
               <Text
