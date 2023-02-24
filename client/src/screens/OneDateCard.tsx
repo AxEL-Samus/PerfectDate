@@ -127,10 +127,7 @@ export default function OneDateCard({ dateAttraction, idDate }) {
                 <Image
                   style={styles.img2}
                   source={{
-                    uri:
-                      el1.Type.name === 'Ресторан' || 'Кино'
-                        ? el1.imgUrl
-                        : 'https://psyfactor.org/lib/i/xsvidanie2.jpg.pagespeed.ic.3qILHEs0uQ.jpg',
+                    uri: el1.imgUrl,
                   }}
                 />
               ) : null,

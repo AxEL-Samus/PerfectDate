@@ -3,7 +3,7 @@ const { AttractionDate, Date, Attraction, Type } = require('../db/models');
 
 const attractionDatesRouter = express.Router();
 
-// attractionDatesRouter.get(async (req, res) => {
+// attractionDatesRouter.get('/', async (req, res) => {
 //   try {
 //     const allDates = await Date.findAll({
 //       include: {
