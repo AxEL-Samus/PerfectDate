@@ -21,6 +21,24 @@ const attractionDatesRouter = express.Router();
 //   }
 // });
 
+attractionDatesRouter.get('/', async (req, res) => {
+  try {
+    const newDateWithAttractions = await Date.findOne({
+      where: { id: 4 },
+      include: {
+        model: Attraction,
+        include: {
+          model: Type,
+        },
+      },
+    });
+    res.json(newDateWithAttractions);
+  } catch (error) {
+    console.log(error);
+    res.status(500).send({ message: 'wtf??!' });
+  }
+});
+
 attractionDatesRouter.post('/', async (req, res) => {
   try {
     const { id1, id2, id3 } = req.body;
@@ -42,7 +60,12 @@ attractionDatesRouter.post('/', async (req, res) => {
     ]);
     const newDateWithAttractions = await Date.findOne({
       where: { id: newDate.id },
-      include: Attraction,
+      include: {
+        model: Attraction,
+        include: {
+          model: Type,
+        },
+      },
     });
     res.json(newDateWithAttractions);
     // res.sendStatus(200);

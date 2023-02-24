@@ -162,7 +162,6 @@ export function Register({ navigation }) {
                   items={[
                     { label: 'Мужчина', value: 'Мужчина' },
                     { label: 'Девушка', value: 'Девушка' },
-                    { label: 'Небинарная личность', value: 'Не бинарная личность' },
                   ]}
                 />
               </View>

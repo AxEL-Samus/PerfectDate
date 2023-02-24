@@ -35,7 +35,8 @@ export default function AddScreen({ navigation }) {
   }, []);
 
   const submitHandler = () => {
-    dispatch(addDate())//dobavit object s typom RootObject
+    // dispatch(addDate())//dobavit object s typom RootObject
+    console.log('in submit handler');
     dispatch(postAttractionDates({ id1: attr1.id, id2: attr2.id, id3: attr3.id }));
   };
 
@@ -48,11 +49,12 @@ export default function AddScreen({ navigation }) {
       <Formik
         initialValues={{ attr1: '', attr2: '', attr3: '' }}
         onSubmit={(values, { resetForm }) => {
+          console.log('in on submit');
           submitHandler(values.attr1, values.attr2, values.attr3);
           resetForm({ values: '' });
         }}
       >
-        {({ handleSubmit }) => (
+        {(props) => (
           <>
             <View
               style={{
@@ -124,9 +126,11 @@ export default function AddScreen({ navigation }) {
               <Button
                 title="Отправить"
                 onPress={() => {
-                  ({ handleSubmit }), navigation.navigate('Свидания');
+                  props.handleSubmit();
+                  navigation.navigate('Свидания');
                   Alert.alert('Успешно добавлено');
                 }}
+                // onPress={handleSubmit}
               />
             </View>
           </>
