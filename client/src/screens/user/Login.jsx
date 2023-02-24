@@ -130,6 +130,7 @@ export const Login = ({ navigation }) => {
                 style={{
                   flexDirection: 'row',
                   alignItems: 'center',
+                  backgroundColor: '#CCB188',
                   justifyContent: 'center',
                   marginHorizontal: 55,
                   marginTop: 10,
@@ -140,7 +141,7 @@ export const Login = ({ navigation }) => {
                   marginLeft: 150,
                 }}
               >
-                <Button onPress={handleSubmit} title="Войти" />
+                <Button onPress={handleSubmit} title="Войти" style={{ color: 'black' }} />
               </View>
               <View
                 style={{
