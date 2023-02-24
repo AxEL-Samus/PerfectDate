@@ -10,9 +10,10 @@ import OneDateCard from './OneDateCard';
 export default function MainPage(): JSX.Element {
   const dispatch = useAppDispatch();
   const dates = useAppSelector((store) => store.dates.date);
+  const poebota = useAppSelector((store) => store.AttractionDatesSlice)
   useEffect(() => {
     dispatch(setDates());
-  }, []);
+  }, [poebota]);
   console.log('=-=-=-=-=-=-=-=--=//', dates);
   // const lol = dates.filter((el) => el.dateId === dates);
   // console.log('1234567890-', lol);

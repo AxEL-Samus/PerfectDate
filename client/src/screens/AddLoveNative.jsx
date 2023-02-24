@@ -131,12 +131,6 @@ export default function AddLoveNative({ navigation }) {
                           sex: 'Парень',
                         },
                       },
-                      {
-                        label: 'Небинарная личность',
-                        value: {
-                          sex: 'Небинарная личность',
-                        },
-                      },
                     ]}
                   />
                 </Card>
