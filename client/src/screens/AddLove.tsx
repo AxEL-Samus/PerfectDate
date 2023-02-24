@@ -141,7 +141,7 @@ export default class addLove extends Component {
           <>
             <View style={styles.container}>
               <Card style={styles.card}>
-                <Text> Ваша девушка любит кино? </Text>
+                <Text> Ваша партнер любит кино? </Text>
                 <View style={{ marginVertical: 10, backgroundColor: '#E7E7E7' }}>
                   <CheckboxFormX
                     style={{ width: 350 - 30 }}
@@ -154,7 +154,7 @@ export default class addLove extends Component {
                     onChecked={(item) => this._onSelect(item)}
                   />
                 </View>
-                <Text> Девушка посещает рестораны? </Text>
+                <Text> Партнер посещает рестораны? </Text>
                 <View style={{ marginVertical: 10, backgroundColor: '#E7E7E7' }}>
                   <CheckboxFormX
                     style={{ width: 350 - 30 }}
@@ -167,7 +167,7 @@ export default class addLove extends Component {
                     onChecked={(item) => this._onSelect(item)}
                   />
                 </View>
-                <Text> Девушка любит гулять? </Text>
+                <Text> Партнер любит гулять? </Text>
                 <View style={{ marginVertical: 10, backgroundColor: '#E7E7E7' }}>
                   <CheckboxFormX
                     style={{ width: 350 - 30 }}
@@ -180,7 +180,7 @@ export default class addLove extends Component {
                     onChecked={(item) => this._onSelect(item)}
                   />
                 </View>
-                <Text> Девушка любить на выставки? </Text>
+                <Text> Партнер любит ходить на выставки? </Text>
                 <View style={{ marginVertical: 10, backgroundColor: '#E7E7E7' }}>
                   <CheckboxFormX
                     style={{ width: 350 - 30 }}
@@ -193,7 +193,7 @@ export default class addLove extends Component {
                     onChecked={(item) => this._onSelect(item)}
                   />
                 </View>
-                <Text> Девушка любит активные времяпрепровождение? </Text>
+                <Text> Партнер любит активное времяпрепровождение? </Text>
                 <View style={{ marginVertical: 10, backgroundColor: '#E7E7E7' }}>
                   <CheckboxFormX
                     style={{ width: 350 - 30 }}
